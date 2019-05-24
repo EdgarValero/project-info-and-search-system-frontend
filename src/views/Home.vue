@@ -16,6 +16,7 @@
           ></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -35,6 +36,13 @@
           <div class="carousel-item">
             <img
               src="../assets/img/banner-3.jpg"
+              class="d-block w-100"
+              alt=""
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="../assets/img/banner-4.jpg"
               class="d-block w-100"
               alt=""
             />
@@ -79,15 +87,6 @@
             />
             <div class="card-body">
               <p>
-                Categoria del Producto:
-                <strong>{{ productFeatured.productCategory }}</strong>
-              </p>
-              <p>
-                Precio de Venta:
-                <strong>{{ productFeatured.salePrice }}</strong>
-              </p>
-              <p>
-                Description del Producto:
                 <strong>{{ productFeatured.productDescription }}</strong>
               </p>
             </div>

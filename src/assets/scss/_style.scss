@@ -15,8 +15,12 @@ html {
   cursor: pointer;
 }
 
+.button-collapse:focus {
+  outline: 5px auto #999 !important;
+}
+
 .mt-6 {
-  margin-top: 3.5rem !important;
+  margin-top: 4rem !important;
 }
 
 .textarea-form-admin {
@@ -144,20 +148,4 @@ html {
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
-}
-
-.slide-down-enter-active {
-  transition: all 0.3s cubic-bezier(0, 1.0, 0.5, 1.0);
-}
-
-.slide-down-leave-active {
-  transition: all 0.3s cubic-bezier(0, 1.0, 0.5, 1.0);
-}
-
-.slide-down-enter-to {
-  transform: translateY(2px);
-}
-
-.slide-down-leave-to {
-  transform: translateY(2px);
 }

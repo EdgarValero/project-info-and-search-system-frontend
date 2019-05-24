@@ -20,14 +20,6 @@
               />
             </div>
             <p>
-              Categoria del Producto:
-              <strong>{{ product.productCategory }}</strong>
-            </p>
-            <p>
-              Precio de Venta: <strong>{{ product.salePrice }}</strong>
-            </p>
-            <p>
-              Description del Producto:
               <strong>{{ product.productDescription }}</strong>
             </p>
           </div>

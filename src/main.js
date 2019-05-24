@@ -15,7 +15,8 @@ import {
   faAngleDown,
   faTrash,
   faEdit,
-  faBan
+  faBan,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -26,7 +27,8 @@ library.add(
   faAngleDown,
   faTrash,
   faEdit,
-  faBan
+  faBan,
+  faSearch
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

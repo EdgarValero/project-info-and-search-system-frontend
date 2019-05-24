@@ -2,7 +2,7 @@
   <div class="dashboard">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 col-md-3 col-lg-3 col-xl-2 p-3 bg-light">
+        <div class="col-12 col-md-3 col-lg-3 col-xl-2 p-3 bg-dark text-white">
           <div class="d-inline-block">
             <button
               class="btn btn-dark d-md-none mb-2 collapsed"
@@ -39,58 +39,64 @@
           <nav class="bd-links collapse p-3" id="NavDashboard">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a
-                  class="btn btn-primary btn-block text-white cursor-pointer"
-                  @click="showProductOptions"
-                  >Products <font-awesome-icon icon="angle-down"
-                /></a>
-                <transition name="slide-down">
-                  <div v-if="productOptions">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a
-                          class="nav-link text-center cursor-pointer"
-                          @click="showFormAddProduct"
-                          >Add Product <font-awesome-icon icon="plus"
-                        /></a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link text-center cursor-pointer"
-                          @click="showTableProducts"
-                          >All Products <font-awesome-icon icon="list-alt"
-                        /></a>
-                      </li>
-                    </ul>
-                  </div>
-                </transition>
+                <button
+                  type="button"
+                  class="btn btn-success btn-block text-white"
+                  data-toggle="collapse"
+                  data-target="#productsOptions"
+                  aria-expanded="false"
+                  aria-controls="productsOptions"
+                >
+                  Products <font-awesome-icon icon="angle-down" />
+                </button>
+                <div class="collapse" id="productsOptions">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link text-center cursor-pointer"
+                        @click="showFormAddProduct"
+                        >Add Product <font-awesome-icon icon="plus"
+                      /></a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link text-center cursor-pointer"
+                        @click="showTableProducts"
+                        >All Products <font-awesome-icon icon="list-alt"
+                      /></a>
+                    </li>
+                  </ul>
+                </div>
               </li>
               <li class="nav-item mt-2">
-                <a
-                  class="btn btn-primary btn-block text-white cursor-pointer"
-                  @click="showCategoryOptions"
-                  >Products Categories <font-awesome-icon icon="angle-down"
-                /></a>
-                <transition name="slide-down">
-                  <div v-if="categoryOptions">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a
-                          class="nav-link text-center cursor-pointer"
-                          @click="showFormAddCategory"
-                          >Add Category <font-awesome-icon icon="plus"
-                        /></a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link text-center cursor-pointer"
-                          @click="showTableCategory"
-                          >All Categories <font-awesome-icon icon="list-alt"
-                        /></a>
-                      </li>
-                    </ul>
-                  </div>
-                </transition>
+                <button
+                  type="button"
+                  class="btn btn-success btn-block text-white"
+                  data-toggle="collapse"
+                  data-target="#categoryOptions"
+                  aria-expanded="false"
+                  aria-controls="categoryOptions"
+                >
+                  Categories <font-awesome-icon icon="angle-down" />
+                </button>
+                <div class="collapse" id="categoryOptions">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link text-center cursor-pointer"
+                        @click="showFormAddCategory"
+                        >Add Category <font-awesome-icon icon="plus"
+                      /></a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link text-center cursor-pointer"
+                        @click="showTableCategory"
+                        >All Categories <font-awesome-icon icon="list-alt"
+                      /></a>
+                    </li>
+                  </ul>
+                </div>
               </li>
             </ul>
           </nav>
@@ -453,7 +459,6 @@
                     <tr>
                       <th scope="col">Product Name</th>
                       <th scope="col">Product Category</th>
-                      <th scope="col">Url Img</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -461,7 +466,6 @@
                     <tr v-for="category in categories" v-bind:key="category.id">
                       <td>{{ category.categoryName }}</td>
                       <td>{{ category.categoryDescription }}</td>
-                      <td>{{ category.imagePath }}</td>
                       <td class="p-2">
                         <button
                           type="button"
@@ -523,7 +527,6 @@ export default {
       },
       products: [],
       productToEdit: "",
-      productOptions: false,
       varShowFormAddProduct: false,
       varShowTableProducts: true,
       varShowFormEditProduct: false,
@@ -534,7 +537,6 @@ export default {
       },
       categories: [],
       categoryToEdit: "",
-      categoryOptions: false,
       varShowTableCategory: false,
       varShowFormAddCategory: false,
       varShowFormEditCategory: false
@@ -622,9 +624,6 @@ export default {
       this.varShowFormEditProduct = false;
       this.varShowTableProducts = true;
     },
-    showProductOptions() {
-      this.productOptions = !this.productOptions;
-    },
     showTableProducts() {
       this.varShowTableProducts = true;
       this.varShowFormEditProduct = false;
@@ -647,6 +646,8 @@ export default {
       await categoryController.addCategory(fd);
       this.getCategories();
       this.category = new Category();
+      this.varShowFormAddCategory = false;
+      this.varShowTableCategory = true;
     },
     async deleteCategory(id) {
       await categoryController.deleteCategory(id);
@@ -660,9 +661,6 @@ export default {
     },
     async onFileImgCategory(event) {
       this.category.image = event.target.files[0];
-    },
-    showCategoryOptions() {
-      this.categoryOptions = !this.categoryOptions;
     },
     showTableCategory() {
       this.varShowTableCategory = true;
