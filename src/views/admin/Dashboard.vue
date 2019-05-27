@@ -5,13 +5,13 @@
         <div class="col-12 col-md-3 col-lg-3 col-xl-2 p-3 bg-dark text-white">
           <div class="d-inline-block">
             <button
-              class="btn btn-dark d-md-none mb-2 collapsed"
+              class="btn btn-success d-md-none mb-2 collapsed"
               type="button"
               data-toggle="collapse"
               data-target="#NavDashboard"
               aria-controls="NavDashboard"
               aria-expanded="true"
-              aria-label=""
+              aria-label="Toggle Dashboard"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,389 +105,407 @@
           role="main"
           class="col-12 col-md-9 col-lg-9 col-xl-10 ml-sm-auto px-4 pb-5"
         >
-          <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-          >
-            <h1 class="h2">
-              <font-awesome-icon
-                icon="tachometer-alt"
-                style="font-size:30px;"
-              />
-              Dashboard
-            </h1>
+          <div v-if="loading">
+            <h2>
+              Esta cargando la informacion de los productos en el dashboard....
+            </h2>
           </div>
-          <!--FORM ADD PRODUCT-->
-          <transition name="slide-fade">
-            <div v-if="varShowFormAddProduct">
-              <div class="row">
-                <div class="col-12 col-md-10 col-lg-6 px-4 py-3 mx-auto">
-                  <div class="card">
-                    <div class="card-header bg-primary text-white text-center">
-                      <h3>Add Product</h3>
-                    </div>
-                    <div class="card-body">
-                      <form @submit.prevent="addProduct">
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Product Name"
-                            v-model="product.productName"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Product Category"
-                            v-model="product.productCategory"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Product Sale Price"
-                            v-model="product.salePrice"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <textarea
-                            class="form-control textarea-form-admin"
-                            placeholder="Product Description"
-                            v-model="product.productDescription"
-                          >
-                          </textarea>
-                        </div>
-                        <div class="input-group">
-                          <div class="custom-file">
+          <div v-else>
+            <div
+              class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+            >
+              <h1 class="h2">
+                <font-awesome-icon
+                  icon="tachometer-alt"
+                  style="font-size:30px;"
+                />
+                Dashboard
+              </h1>
+            </div>
+            <!--FORM ADD PRODUCT-->
+            <transition name="slide-fade">
+              <div v-if="varShowFormAddProduct">
+                <div class="row">
+                  <div class="col-12 col-md-10 col-lg-6 px-4 py-3 mx-auto">
+                    <div class="card">
+                      <div
+                        class="card-header bg-primary text-white text-center"
+                      >
+                        <h3>Add Product</h3>
+                      </div>
+                      <div class="card-body">
+                        <form @submit.prevent="addProduct">
+                          <div class="form-group">
                             <input
-                              type="file"
-                              class="custom-file-input"
-                              id="img"
-                              aria-describedby="inputGroupFileAddon01"
-                              @change="onFileImg"
+                              type="text"
+                              class="form-control"
+                              placeholder="Product Name"
+                              v-model="product.productName"
                             />
-                            <label
-                              class="custom-file-label"
-                              for="inputGroupFile01"
-                              >Choose Image</label
-                            >
                           </div>
-                        </div>
-                        <div class="form-group mt-2">
-                          <button
-                            type="submit"
-                            class="btn btn-primary btn-block"
-                          >
-                            Add Product <font-awesome-icon icon="plus" />
-                          </button>
-                          <button
-                            type="button"
-                            class="btn btn-danger btn-block"
-                            @click="cancelFormAddProduct"
-                          >
-                            Cancel <font-awesome-icon icon="ban" />
-                          </button>
-                        </div>
-                      </form>
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Product Category"
+                              v-model="product.productCategory"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Product Sale Price"
+                              v-model="product.salePrice"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <textarea
+                              class="form-control textarea-form-admin"
+                              placeholder="Product Description"
+                              v-model="product.productDescription"
+                            >
+                            </textarea>
+                          </div>
+                          <div class="input-group">
+                            <div class="custom-file">
+                              <input
+                                type="file"
+                                class="custom-file-input"
+                                id="img"
+                                aria-describedby="inputGroupFileAddon01"
+                                @change="onFileImg"
+                              />
+                              <label
+                                class="custom-file-label"
+                                for="inputGroupFile01"
+                                >Choose Image</label
+                              >
+                            </div>
+                          </div>
+                          <div class="form-group mt-2">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-block"
+                            >
+                              Add Product <font-awesome-icon icon="plus" />
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-danger btn-block"
+                              @click="cancelFormAddProduct"
+                            >
+                              Cancel <font-awesome-icon icon="ban" />
+                            </button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </transition>
-          <!--FORM EDIT PRODUCT-->
-          <transition name="slide-fade">
-            <div v-if="varShowFormEditProduct">
-              <div class="row">
-                <div class="col-12 col-md-10 col-lg-6 px-4 py-3 mx-auto">
-                  <div class="card">
-                    <div class="card-header bg-primary text-white text-center">
-                      <h3>Edit Product</h3>
-                    </div>
-                    <div class="card-body">
-                      <form @submit.prevent="sendEditProduct">
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Product Name"
-                            v-model="product.productName"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Product Category"
-                            v-model="product.productCategory"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Product Sale Price"
-                            v-model="product.salePrice"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <textarea
-                            class="form-control"
-                            placeholder="Product Description"
-                            v-model="product.productDescription"
-                          >
-                          </textarea>
-                        </div>
-                        <div class="input-group">
-                          <div class="custom-file">
+            </transition>
+            <!--FORM EDIT PRODUCT-->
+            <transition name="slide-fade">
+              <div v-if="varShowFormEditProduct">
+                <div class="row">
+                  <div class="col-12 col-md-10 col-lg-6 px-4 py-3 mx-auto">
+                    <div class="card">
+                      <div
+                        class="card-header bg-primary text-white text-center"
+                      >
+                        <h3>Edit Product</h3>
+                      </div>
+                      <div class="card-body">
+                        <form @submit.prevent="sendEditProduct">
+                          <div class="form-group">
                             <input
-                              type="file"
-                              class="custom-file-input"
-                              id="img"
-                              aria-describedby="inputGroupFileAddon01"
-                              @change="onFileImg"
+                              type="text"
+                              class="form-control"
+                              placeholder="Product Name"
+                              v-model="product.productName"
                             />
-                            <label
-                              class="custom-file-label"
-                              for="inputGroupFile01"
-                              >Choose Image</label
-                            >
                           </div>
-                        </div>
-                        <div class="form-group mt-2">
-                          <button
-                            type="submit"
-                            class="btn btn-primary btn-block"
-                          >
-                            Edit Product <font-awesome-icon icon="edit" />
-                          </button>
-                          <button
-                            type="button"
-                            class="btn btn-danger btn-block"
-                            @click="cancelFormEditProduct"
-                          >
-                            Cancel <font-awesome-icon icon="ban" />
-                          </button>
-                        </div>
-                      </form>
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Product Category"
+                              v-model="product.productCategory"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Product Sale Price"
+                              v-model="product.salePrice"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <textarea
+                              class="form-control"
+                              placeholder="Product Description"
+                              v-model="product.productDescription"
+                            >
+                            </textarea>
+                          </div>
+                          <div class="input-group">
+                            <div class="custom-file">
+                              <input
+                                type="file"
+                                class="custom-file-input"
+                                id="img"
+                                aria-describedby="inputGroupFileAddon01"
+                                @change="onFileImg"
+                              />
+                              <label
+                                class="custom-file-label"
+                                for="inputGroupFile01"
+                                >Choose Image</label
+                              >
+                            </div>
+                          </div>
+                          <div class="form-group mt-2">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-block"
+                            >
+                              Edit Product <font-awesome-icon icon="edit" />
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-danger btn-block"
+                              @click="cancelFormEditProduct"
+                            >
+                              Cancel <font-awesome-icon icon="ban" />
+                            </button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </transition>
-          <!--PRODUCT TABLE-->
-          <transition name="slide-fade">
-            <div v-if="varShowTableProducts">
-              <h2>Products Table</h2>
-              <div class="table-responsive">
-                <table class="table table-bordered table-sm text-center">
-                  <thead class="bg-primary text-white">
-                    <tr>
-                      <th scope="col">Product Name</th>
-                      <th scope="col">Product Category</th>
-                      <th scope="col">Sale Price</th>
-                      <th scope="col">Product Description</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="product in products" v-bind:key="product.id">
-                      <td>{{ product.productName }}</td>
-                      <td>{{ product.productCategory }}</td>
-                      <td>{{ product.salePrice }}</td>
-                      <td>{{ product.productDescription }}</td>
-                      <td class="p-2">
-                        <button
-                          type="button"
-                          class="btn btn-danger my-1 mx-1"
-                          @click="deleteProduct(product._id)"
-                        >
-                          <font-awesome-icon icon="trash" />
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success my-1 mx-1"
-                          @click="editProduct(product._id)"
-                        >
-                          Edit <font-awesome-icon icon="edit" />
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </transition>
-          <!--FORM ADD CATEGORY-->
-          <transition name="slide-fade">
-            <div v-if="varShowFormAddCategory">
-              <div class="row">
-                <div class="col-12 col-md-10 col-lg-6 px-4 py-3 mx-auto">
-                  <div class="card">
-                    <div class="card-header bg-primary text-white text-center">
-                      <h3>Add Category</h3>
-                    </div>
-                    <div class="card-body">
-                      <form @submit.prevent="addCategory">
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Category Name"
-                            v-model="category.categoryName"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <textarea
-                            class="form-control textarea-form-admin"
-                            placeholder="Category Description"
-                            v-model="category.categoryDescription"
-                          >
-                          </textarea>
-                        </div>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input
-                              type="file"
-                              class="custom-file-input"
-                              aria-describedby="inputGroupFileAddon01"
-                              @change="onFileImgCategory"
-                            />
-                            <label
-                              class="custom-file-label"
-                              for="inputGroupFile01"
-                              >Choose Image</label
-                            >
-                          </div>
-                        </div>
-                        <div class="form-group mt-2">
+            </transition>
+            <!--PRODUCT TABLE-->
+            <transition name="slide-fade">
+              <div v-if="varShowTableProducts">
+                <h2>Products Table</h2>
+                <div class="table-responsive">
+                  <table class="table table-bordered table-sm text-center">
+                    <thead class="bg-primary text-white">
+                      <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Category</th>
+                        <th scope="col">Sale Price</th>
+                        <th scope="col">Product Description</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="product in products" v-bind:key="product.id">
+                        <td>{{ product.productName }}</td>
+                        <td>{{ product.productCategory }}</td>
+                        <td>{{ product.salePrice }}</td>
+                        <td>{{ product.productDescription }}</td>
+                        <td class="p-2">
                           <button
-                            type="submit"
-                            class="btn btn-primary btn-block"
+                            type="button"
+                            class="btn btn-danger my-1 mx-1"
+                            @click="deleteProduct(product._id)"
                           >
-                            Add Category <font-awesome-icon icon="plus" />
+                            <font-awesome-icon icon="trash" />
                           </button>
                           <button
                             type="button"
-                            class="btn btn-danger btn-block"
-                            @click="cancelFormAddCategory"
+                            class="btn btn-success my-1 mx-1"
+                            @click="editProduct(product._id)"
                           >
-                            Cancel <font-awesome-icon icon="ban" />
+                            Edit <font-awesome-icon icon="edit" />
                           </button>
-                        </div>
-                      </form>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </transition>
+            <!--FORM ADD CATEGORY-->
+            <transition name="slide-fade">
+              <div v-if="varShowFormAddCategory">
+                <div class="row">
+                  <div class="col-12 col-md-10 col-lg-6 px-4 py-3 mx-auto">
+                    <div class="card">
+                      <div
+                        class="card-header bg-primary text-white text-center"
+                      >
+                        <h3>Add Category</h3>
+                      </div>
+                      <div class="card-body">
+                        <form @submit.prevent="addCategory">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Category Name"
+                              v-model="category.categoryName"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <textarea
+                              class="form-control textarea-form-admin"
+                              placeholder="Category Description"
+                              v-model="category.categoryDescription"
+                            >
+                            </textarea>
+                          </div>
+                          <div class="input-group">
+                            <div class="custom-file">
+                              <input
+                                type="file"
+                                class="custom-file-input"
+                                aria-describedby="inputGroupFileAddon01"
+                                @change="onFileImgCategory"
+                              />
+                              <label
+                                class="custom-file-label"
+                                for="inputGroupFile01"
+                                >Choose Image</label
+                              >
+                            </div>
+                          </div>
+                          <div class="form-group mt-2">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-block"
+                            >
+                              Add Category <font-awesome-icon icon="plus" />
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-danger btn-block"
+                              @click="cancelFormAddCategory"
+                            >
+                              Cancel <font-awesome-icon icon="ban" />
+                            </button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </transition>
-          <!--FORM EDIT CATEGORY-->
-          <transition name="slide-fade">
-            <div v-if="varShowFormEditCategory">
-              <div class="row">
-                <div class="col-12 col-md-10 col-lg-6 px-4 py-3 mx-auto">
-                  <div class="card">
-                    <div class="card-header bg-primary text-white text-center">
-                      <h3>Edit Category</h3>
-                    </div>
-                    <div class="card-body">
-                      <form @submit.prevent="sendEditCategory">
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Category Name"
-                            v-model="category.categoryName"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <textarea
-                            class="form-control"
-                            placeholder="Category Description"
-                            v-model="category.categoryDescription"
-                          >
-                          </textarea>
-                        </div>
-                        <div class="input-group">
-                          <div class="custom-file">
+            </transition>
+            <!--FORM EDIT CATEGORY-->
+            <transition name="slide-fade">
+              <div v-if="varShowFormEditCategory">
+                <div class="row">
+                  <div class="col-12 col-md-10 col-lg-6 px-4 py-3 mx-auto">
+                    <div class="card">
+                      <div
+                        class="card-header bg-primary text-white text-center"
+                      >
+                        <h3>Edit Category</h3>
+                      </div>
+                      <div class="card-body">
+                        <form @submit.prevent="sendEditCategory">
+                          <div class="form-group">
                             <input
-                              type="file"
-                              class="custom-file-input"
-                              aria-describedby="inputGroupFileAddon01"
-                              @change="onFileImgCategory"
+                              type="text"
+                              class="form-control"
+                              placeholder="Category Name"
+                              v-model="category.categoryName"
                             />
-                            <label
-                              class="custom-file-label"
-                              for="inputGroupFile01"
-                              >Choose Image</label
-                            >
                           </div>
-                        </div>
-                        <div class="form-group mt-2">
-                          <button
-                            type="submit"
-                            class="btn btn-primary btn-block"
-                          >
-                            Edit Category <font-awesome-icon icon="edit" />
-                          </button>
-                          <button
-                            type="button"
-                            class="btn btn-danger btn-block"
-                            @click="cancelFormEditCategory"
-                          >
-                            Cancel <font-awesome-icon icon="ban" />
-                          </button>
-                        </div>
-                      </form>
+                          <div class="form-group">
+                            <textarea
+                              class="form-control"
+                              placeholder="Category Description"
+                              v-model="category.categoryDescription"
+                            >
+                            </textarea>
+                          </div>
+                          <div class="input-group">
+                            <div class="custom-file">
+                              <input
+                                type="file"
+                                class="custom-file-input"
+                                aria-describedby="inputGroupFileAddon01"
+                                @change="onFileImgCategory"
+                              />
+                              <label
+                                class="custom-file-label"
+                                for="inputGroupFile01"
+                                >Choose Image</label
+                              >
+                            </div>
+                          </div>
+                          <div class="form-group mt-2">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-block"
+                            >
+                              Edit Category <font-awesome-icon icon="edit" />
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-danger btn-block"
+                              @click="cancelFormEditCategory"
+                            >
+                              Cancel <font-awesome-icon icon="ban" />
+                            </button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </transition>
-          <!--CATEGORIES TABLE-->
-          <transition name="slide-fade">
-            <div v-if="varShowTableCategory">
-              <h2>Table of Products Categories</h2>
-              <div class="table-responsive">
-                <table class="table table-bordered table-sm text-center">
-                  <thead class="bg-primary text-center text-white">
-                    <tr>
-                      <th scope="col">Product Name</th>
-                      <th scope="col">Product Category</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="category in categories" v-bind:key="category.id">
-                      <td>{{ category.categoryName }}</td>
-                      <td>{{ category.categoryDescription }}</td>
-                      <td class="p-2">
-                        <button
-                          type="button"
-                          class="btn btn-danger my-1 mx-1"
-                          @click="deleteCategory(category._id)"
-                        >
-                          <font-awesome-icon icon="trash" />
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success my-1 mx-1"
-                          @click="editCategory(category._id)"
-                        >
-                          Edit <font-awesome-icon icon="edit" />
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+            </transition>
+            <!--CATEGORIES TABLE-->
+            <transition name="slide-fade">
+              <div v-if="varShowTableCategory">
+                <h2>Table of Products Categories</h2>
+                <div class="table-responsive">
+                  <table class="table table-bordered table-sm text-center">
+                    <thead class="bg-primary text-center text-white">
+                      <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Category</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="category in categories"
+                        v-bind:key="category.id"
+                      >
+                        <td>{{ category.categoryName }}</td>
+                        <td>{{ category.categoryDescription }}</td>
+                        <td class="p-2">
+                          <button
+                            type="button"
+                            class="btn btn-danger my-1 mx-1"
+                            @click="deleteCategory(category._id)"
+                          >
+                            <font-awesome-icon icon="trash" />
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-success my-1 mx-1"
+                            @click="editCategory(category._id)"
+                          >
+                            Edit <font-awesome-icon icon="edit" />
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-          </transition>
+            </transition>
+          </div>
         </main>
       </div>
     </div>
@@ -518,6 +536,7 @@ export default {
   name: "app",
   data() {
     return {
+      loading: true,
       product: {
         productName: "",
         productCategory: "",
@@ -550,6 +569,7 @@ export default {
     ///////   Products   ////////////////////////////////////////////
     async getProducts() {
       const products = await productController.getProducts();
+      this.loading = false;
       this.products = products;
     },
     async addProduct() {
@@ -635,6 +655,7 @@ export default {
     ///////   CATEGORIES  ////////////////////////////////////////////
     async getCategories() {
       const categories = await categoryController.getCategories();
+      this.loading = false;
       this.categories = categories;
     },
     async addCategory() {

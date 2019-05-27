@@ -5,15 +5,30 @@
     >
       <router-link class="navbar-brand" to="/">API SIB</router-link>
       <button
-        class="navbar-toggler button-collapse bg-primary text-white"
+        class="navbar-toggler button-collapse bg-primary text-white mr-2"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
-        aria-label="Toggle navigation"
+        aria-label="Toggle Navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          role="img"
+          focusable="false"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-miterlimit="10"
+            stroke-width="2"
+            d="M4 7h22M4 15h22M4 23h22"
+          ></path>
+        </svg>
       </button>
       <div class="collapse navbar-collapse row my-2 ml-md-2" id="navbarNav">
         <div class="col-12 col-md-6">
@@ -28,7 +43,7 @@
               <div class="input-group-prepend">
                 <button
                   type="submit"
-                  class="btn btn-primary ml-2"
+                  class="btn btn-primary ml-2 mr-2"
                   style="border-radius: 50%;"
                 >
                   <font-awesome-icon icon="search" />
@@ -37,8 +52,8 @@
             </div>
           </form>
         </div>
-        <div class="col-12 col-md-6">
-          <ul class="navbar-nav ml-auto">
+        <div class="col-12 col-md-6 p-0">
+          <ul class="navbar-nav mx-4">
             <li class="nav-item">
               <router-link class="nav-link" to="/products"
                 >Productos</router-link

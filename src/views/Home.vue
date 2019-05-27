@@ -68,54 +68,63 @@
         </a>
       </div>
     </section>
-    <!--Product Section-->
-    <section class="mt-3 mb-2">
-      <h3 class="h1 d-flex justify-content-center">Productos Destacados</h3>
-      <div class="row mx-4">
-        <div
-          class="col-12 col-md-6 col-lg-4 col-xl-3 mt-2"
-          v-for="productFeatured in productsFeatureds"
-          v-bind:key="productFeatured._id"
-        >
-          <div class="card shadow">
-            <div class="card-header bg-primary text-center text-white">
-              <h3>{{ productFeatured.productName }}</h3>
-            </div>
+    <!-- View Loading-->
+    <div v-if="loading" class="my-5">
+      <h2 class="display-3 d-flex justify-content-center align-items-center">
+        Esta cargando la informacion...
+      </h2>
+    </div>
+    <div v-else>
+      <!--Products Featureds Section Glide-->
+      <section class="mt-3 mb-2">
+        <h3 class="h1 d-flex justify-content-center">Productos Destacados</h3>
+        <hooper :itemsToShow="3.5" :infiniteScroll="true">
+          <slide
+            class="mr-1"
+            v-for="productFeatured in productsFeatureds"
+            v-bind:key="productFeatured._id"
+          >
+            <router-link to="/products">
+              <img
+                v-bind:src="`http://localhost:3000${productFeatured.imagePath}`"
+                class="img-fluid"
+                style="height:200px;"
+              />
+            </router-link>
             <img
               v-bind:src="`http://localhost:3000${productFeatured.imagePath}`"
               class="img-fluid"
+              style="height:200px;"
             />
-            <div class="card-body">
-              <p>
-                <strong>{{ productFeatured.productDescription }}</strong>
-              </p>
+          </slide>
+          <hooper-navigation slot="hooper-addons"></hooper-navigation>
+        </hooper>
+      </section>
+      <!--Category section Section-->
+      <section class="mt3- mb-2">
+        <h3 class="h1 d-flex justify-content-center">
+          Categorias de Productos
+        </h3>
+        <div class="row mx-4">
+          <div
+            class="col-12 col-md-6 col-lg-4 col-xl-3 mt-2"
+            v-for="category in categories"
+            v-bind:key="category._id"
+          >
+            <div class="card shadow">
+              <div class="card-header bg-primary text-center text-white">
+                <h3>{{ category.categoryName }}</h3>
+              </div>
+              <img
+                v-bind:src="`http://localhost:3000${category.imagePath}`"
+                class="img-fluid"
+                style="height:250px;"
+              />
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!--Category section Section-->
-    <section class="mt3- mb-2">
-      <h3 class="h1 d-flex justify-content-center">Categorias de Productos</h3>
-      <div class="row mx-4">
-        <div
-          class="col-12 col-md-6 col-lg-4 col-xl-3 mt-2"
-          v-for="category in categories"
-          v-bind:key="category._id"
-        >
-          <div class="card shadow">
-            <div class="card-header bg-primary text-center text-white">
-              <h3>{{ category.categoryName }}</h3>
-            </div>
-            <img
-              v-bind:src="`http://localhost:3000${category.imagePath}`"
-              class="img-fluid"
-              style="height:250px;"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
     <Footer />
   </div>
 </template>
@@ -126,14 +135,21 @@ import Footer from "@/components/Footer.vue";
 import productController from "../controllers/products.controller";
 import categoryController from "../controllers/categories.controller";
 
+import { Hooper, Slide, Navigation as HooperNavigation } from "hooper";
+import "hooper/dist/hooper.css";
+
 export default {
   name: "home",
   components: {
     Navigation,
-    Footer
+    Footer,
+    Hooper,
+    Slide,
+    HooperNavigation
   },
   data() {
     return {
+      loading: true,
       productsFeatureds: [],
       categories: []
     };
@@ -145,10 +161,12 @@ export default {
   methods: {
     async getProductsFeatureds() {
       const productsFeatureds = await productController.getProductsFeatureds();
+      this.loading = false;
       this.productsFeatureds = productsFeatureds;
     },
     async getCategories() {
       const categories = await categoryController.getCategories();
+      this.loading = false;
       this.categories = categories;
     }
   }

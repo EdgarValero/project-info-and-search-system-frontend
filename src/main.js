@@ -30,9 +30,7 @@ library.add(
   faBan,
   faSearch
 );
-
 Vue.component("font-awesome-icon", FontAwesomeIcon);
-
 Vue.config.productionTip = false;
 
 new Vue({

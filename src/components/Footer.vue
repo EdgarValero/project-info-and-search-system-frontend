@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="footer">
     <footer class="navbar navbar-expand-md navbar-dark bg-dark mt-3">
       <router-link class="navbar-brand" to="/">
         Copyright&copy; - 2019

@@ -6,7 +6,7 @@ html {
     width: 100%;
     #app {
       height: 100%;
-      width: 100%
+      width: 100%;
     }
   }
 }
@@ -15,12 +15,20 @@ html {
   cursor: pointer;
 }
 
+/*
+  Focus Button Navbar Toggler
+*/
+
 .button-collapse:focus {
-  outline: 5px auto #999 !important;
+  outline: 5px auto #007bff !important;
 }
 
 .mt-6 {
   margin-top: 4rem !important;
+}
+
+.mt-7 {
+  margin-top: 5rem !important;
 }
 
 .textarea-form-admin {
@@ -30,10 +38,6 @@ html {
 
 .border-circle {
   border-radius: 10px;
-}
-
-.shadow {
-  box-shadow: 6px 6px 6px grey !important;
 }
 
 .bd-links {
