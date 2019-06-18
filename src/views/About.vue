@@ -60,7 +60,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="category in categories" v-bind:key="category.id">
+            <tr v-for="category in categories" :key="category.id">
               <th scope="row">{{ category._id }}</th>
               <td>{{ category.categoryName }}</td>
               <td>{{ category.categoryDescription }}</td>

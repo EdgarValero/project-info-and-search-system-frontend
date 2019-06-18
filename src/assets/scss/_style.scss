@@ -1,14 +1,52 @@
 html {
   height: 100%;
-  width: 100%;
   body {
     height: 100%;
-    width: 100%;
     #app {
       height: 100%;
-      width: 100%;
     }
   }
+}
+
+.button-pagination {
+  border-radius: 100%;
+  margin-left: 0.5 rem;
+}
+
+.footer-icon-facebook {
+  font-size: 3rem;
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.footer-icon-twitter {
+  font-size: 3rem;
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.footer-icon-instagram {
+  font-size: 3rem;
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.footer-link {
+  font-size: 18px;
+  color: #fff;
+}
+
+.footer-link:hover {
+  font-size: 18px;
+  color: #28a745;
+}
+
+.badge-disponibility {
+  border-radius: 30px;
+}
+
+.text-black {
+  color: #000;
 }
 
 .cursor-pointer {
@@ -29,6 +67,14 @@ html {
 
 .mt-7 {
   margin-top: 5rem !important;
+}
+
+.mt-8{
+  margin-top: 5.5rem !important;
+}
+
+.mt-9 {
+  margin-top: 6.5rem !important;
 }
 
 .textarea-form-admin {

@@ -70,57 +70,59 @@
     </section>
     <!-- View Loading-->
     <div v-if="loading" class="my-5">
-      <h2 class="display-3 d-flex justify-content-center align-items-center">
+      <h2 class="display-4 d-flex justify-content-center align-items-center">
         Esta cargando la informacion...
       </h2>
     </div>
     <div v-else>
       <!--Products Featureds Section Glide-->
       <section class="mt-3 mb-2">
-        <h3 class="h1 d-flex justify-content-center">Productos Destacados</h3>
+        <h3 class="h1 d-flex justify-content-center text-center px-3">
+          Productos Destacados
+        </h3>
         <hooper :itemsToShow="3.5" :infiniteScroll="true">
           <slide
             class="mr-1"
             v-for="productFeatured in productsFeatureds"
-            v-bind:key="productFeatured._id"
+            :key="productFeatured._id"
           >
-            <router-link to="/products">
+            <router-link :to="`/product/${productFeatured._id}`">
               <img
-                v-bind:src="`http://localhost:3000${productFeatured.imagePath}`"
+                :src="`http://localhost:3000${productFeatured.imagePath}`"
                 class="img-fluid"
                 style="height:200px;"
               />
             </router-link>
-            <img
-              v-bind:src="`http://localhost:3000${productFeatured.imagePath}`"
-              class="img-fluid"
-              style="height:200px;"
-            />
           </slide>
           <hooper-navigation slot="hooper-addons"></hooper-navigation>
         </hooper>
       </section>
       <!--Category section Section-->
       <section class="mt3- mb-2">
-        <h3 class="h1 d-flex justify-content-center">
+        <h3 class="h1 d-flex justify-content-center text-center px-3">
           Categorias de Productos
         </h3>
         <div class="row mx-4">
           <div
             class="col-12 col-md-6 col-lg-4 col-xl-3 mt-2"
             v-for="category in categories"
-            v-bind:key="category._id"
+            :key="category._id"
           >
-            <div class="card shadow">
-              <div class="card-header bg-primary text-center text-white">
-                <h3>{{ category.categoryName }}</h3>
+            <router-link
+              :to="`${category.categoryUrl}`"
+              style="text-decoration: none;"
+            >
+              <div class="card shadow">
+                <div class="card-header bg-success px-2 text-center text-white">
+                  <h3>{{ category.categoryName }}</h3>
+                </div>
+                <img
+                  :src="`http://localhost:3000${category.imagePath}`"
+                  class="img-fluid"
+                  style="height:250px;"
+                />
               </div>
-              <img
-                v-bind:src="`http://localhost:3000${category.imagePath}`"
-                class="img-fluid"
-                style="height:250px;"
-              />
-            </div>
+            </router-link>
           </div>
         </div>
       </section>

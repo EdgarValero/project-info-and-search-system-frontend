@@ -1,5 +1,5 @@
 <template>
-  <div class="products">
+  <div>
     <Navigation />
     <!--Carrousel Section-->
     <section class="container-fluid px-0 mt-6">
@@ -21,28 +21,28 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              src="../assets/img/banner-1.jpg"
+              src="../../assets/img/banner-1.jpg"
               class="d-block w-100"
               alt=""
             />
           </div>
           <div class="carousel-item">
             <img
-              src="../assets/img/banner-2.jpg"
+              src="../../assets/img/banner-2.jpg"
               class="d-block w-100"
               alt=""
             />
           </div>
           <div class="carousel-item">
             <img
-              src="../assets/img/banner-3.jpg"
+              src="../../assets/img/banner-3.jpg"
               class="d-block w-100"
               alt=""
             />
           </div>
           <div class="carousel-item">
             <img
-              src="../assets/img/banner-4.jpg"
+              src="../../assets/img/banner-4.jpg"
               class="d-block w-100"
               alt=""
             />
@@ -118,7 +118,7 @@
           </ul>
         </nav>
       </div>
-      <main class="col-12 col-md-9 col-lg-9 col-xl-10 ml-sm-auto px-4">
+      <main class="col-12 col-md-9 col-lg-9 col-xl-10 ml-sm-auto px-4 pb-5">
         <!-- View Loading-->
         <div v-if="loading" style="margin:100px 0;">
           <h2
@@ -130,7 +130,7 @@
         <!--View Products-->
         <div v-else>
           <h2 class="h1 d-flex justify-content-center mt-3 text-center px-3">
-            Todos los Productos
+            Alimentos Básicos
           </h2>
           <div class="row mx-5">
             <div
@@ -140,15 +140,15 @@
             >
               <router-link
                 :to="`/product/${product._id}`"
-                style="text-decoration: none"
+                style="text-decoration: none;"
               >
                 <div class="card shadow text-black">
                   <img
                     :src="`http://localhost:3000${product.imagePath}`"
                     class="img-fluid"
                   />
-                  <div class="card-body border-top">
-                    <p class="mb-1">
+                  <div class="card-body">
+                    <p>
                       <strong>{{ product.productDescription }}</strong>
                     </p>
                     <div class="d-flex justify-content-end">
@@ -203,8 +203,8 @@
 <script>
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
-import productController from "../controllers/products.controller";
-import categoryController from "../controllers/categories.controller";
+import productController from "../../controllers/products.controller";
+import categoryController from "../../controllers/categories.controller";
 
 export default {
   components: {
@@ -227,7 +227,7 @@ export default {
   },
   methods: {
     async getProducts() {
-      const products = await productController.getProducts();
+      const products = await productController.getProductsCategoryAlimentosBasicos();
       this.loading = false;
       this.products = products;
     },

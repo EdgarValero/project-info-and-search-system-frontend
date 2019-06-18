@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-success fixed-top" style="border-bottom:3px solid #007bff;">
+  <div class="bg-success fixed-top" style="border-bottom:5px solid #007bff;">
     <nav
       class="navbar navbar-expand-md navbar navbar-dark bg-success container"
     >
@@ -65,12 +65,14 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/admin/dashboard">
-                Dashboard
+              <router-link class="nav-link" to="/about">
+                Acerca
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">About</router-link>
+              <router-link class="nav-link" to="/admin/dashboard">
+                Dashboard
+              </router-link>
             </li>
           </ul>
         </div>

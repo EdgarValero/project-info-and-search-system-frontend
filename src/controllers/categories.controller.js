@@ -4,7 +4,7 @@ class categoryController {
   }
   async getCategories() {
     const response = await fetch(this.URI);
-    const categories = response.json();
+    const categories = await response.json();
     return categories;
   }
   async addCategory(input) {
@@ -12,22 +12,19 @@ class categoryController {
       method: "POST",
       body: input
     });
-    const data = response.json();
+    const data = await response.json();
     console.log(data);
   }
   async deleteCategory(id) {
     const response = await fetch(`${this.URI}/delete-category/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      }
+      method: "DELETE"
     });
-    const data = response.json();
+    const data = await response.json();
     console.log(data);
   }
-  async editCategory(id) {
+  async getCategory(id) {
     const response = await fetch(`${this.URI}/${id}`);
-    const category = response.json();
+    const category = await response.json();
     return category;
   }
   async sendEditCategory(id, input) {
@@ -35,7 +32,7 @@ class categoryController {
       method: "PUT",
       body: input
     });
-    const data = response.json();
+    const data = await response.json();
     console.log(data);
   }
 }
