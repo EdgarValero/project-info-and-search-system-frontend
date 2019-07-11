@@ -126,7 +126,7 @@
       </div>
     </footer>
     <div
-      class="bg-success pt-3 pb-1 px-2 m-0 mt-2 text-white"
+      class="bg-success pt-4 pb-1 px-2 m-0 mt-2 text-white"
       style="border-bottom: solid 8px #007bff;"
     >
       <div class="row mx-3 text-center">

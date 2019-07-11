@@ -111,16 +111,22 @@
             <router-link
               :to="`${category.categoryUrl}`"
               style="text-decoration: none;"
+              class="img-hover"
             >
               <div class="card shadow">
-                <div class="card-header bg-success px-2 text-center text-white">
-                  <h3>{{ category.categoryName }}</h3>
+                <div class="card-header bg-success text-center text-white d-md-none">
+                  <h3>
+                    {{ category.categoryName }}
+                  </h3>
                 </div>
                 <img
                   :src="`http://localhost:3000${category.imagePath}`"
                   class="img-fluid"
                   style="height:250px;"
                 />
+                <div class="overlay">
+                  <div class="text"> {{ category.categoryName }} </div>
+                </div>
               </div>
             </router-link>
           </div>
@@ -174,3 +180,33 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+  .img-hover:hover .overlay {
+    opacity: 1;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color:rgba(40, 167, 69, 0.8);
+  }
+  .text {
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+</style>
+
