@@ -102,7 +102,7 @@
         <h3 class="h1 d-flex justify-content-center text-center px-3">
           Categorias de Productos
         </h3>
-        <div class="row mx-4">
+        <div class="row mx-4 d-flex justify-content-center">
           <div
             class="col-12 col-md-6 col-lg-4 col-xl-3 mt-2"
             v-for="category in categories"
