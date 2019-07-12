@@ -2,7 +2,7 @@
   <div class="home">
     <Navigation />
     <!--Carrousel Section-->
-    <section class="container-fluid px-0 mt-6">
+    <section class="container-fluid px-0" style="margin-top: 6rem;">
       <div
         id="carouselExampleIndicators"
         class="carousel slide"

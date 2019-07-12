@@ -1,9 +1,11 @@
 <template>
   <div class="bg-success fixed-top" style="border-bottom:5px solid #007bff;">
     <nav
-      class="navbar navbar-expand-md navbar navbar-dark bg-success container"
+      class="navbar navbar-expand-md navbar navbar-dark bg-success container p-0 px-2"
     >
-      <router-link class="navbar-brand" to="/">API SIB</router-link>
+      <router-link class="navbar-brand" to="/">
+        <img src="../assets/img/logo-sis-web.png" height="85" width="85" />
+      </router-link>
       <button
         class="navbar-toggler button-collapse bg-primary text-white mr-2"
         type="button"
