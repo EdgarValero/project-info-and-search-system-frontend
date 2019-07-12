@@ -4,7 +4,7 @@
     <div class="row mx-1">
       <div class="col-12 col-md-4 mt-md-8 mb-5">
         <div class="m-2 text-primary cursor-pointer" onclick="history.back()">
-          <font-awesome-icon icon="angle-left" style="font-size: 1rem;"/>
+          <font-awesome-icon icon="angle-left" style="font-size: 1rem;" />
           <strong class="ml-2">Atrás</strong>
         </div>
         <div class="d-flex justify-content-center">
@@ -94,18 +94,17 @@ export default {
 </script>
 <style lang="scss">
 .mt-md-8 {
-    margin-top: 4.5rem;
-    @media screen and (min-width: 768px) {
-      margin-top: 7rem;
-    }
+  margin-top: 4.5rem;
+  @media screen and (min-width: 768px) {
+    margin-top: 7rem;
   }
-  .mt-md-9 {
-    @media screen and (min-width: 576px) {
-      margin-top: 0;
-    }
-    @media screen and (min-width: 768px) {
-      margin-top: 7rem;
-    }
+}
+.mt-md-9 {
+  @media screen and (min-width: 576px) {
+    margin-top: 0;
   }
+  @media screen and (min-width: 768px) {
+    margin-top: 7rem;
+  }
+}
 </style>
-
