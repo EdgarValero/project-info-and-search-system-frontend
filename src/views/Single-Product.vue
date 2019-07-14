@@ -54,7 +54,7 @@
 <script>
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
-import productController from "../controllers/products.controller";
+import productController from "@/controllers/products.controller";
 
 export default {
   name: "single-product",

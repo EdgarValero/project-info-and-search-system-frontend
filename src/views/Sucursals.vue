@@ -26,7 +26,7 @@
 <script>
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
-import sucursalController from "../controllers/sucursals.controller";
+import sucursalController from "@/controllers/sucursals.controller";
 
 export default {
   name: "sucursals",
