@@ -3,7 +3,10 @@
     <Navigation />
     <div class="row mx-1">
       <div class="col-12 col-md-4 mt-md-8 mb-5">
-        <div class="m-atras text-primary cursor-pointer" onclick="history.back()">
+        <div
+          class="m-atras text-primary cursor-pointer"
+          onclick="history.back()"
+        >
           <font-awesome-icon icon="angle-left" style="font-size: 1rem;" />
           <strong class="ml-2">Atrás</strong>
         </div>
@@ -107,7 +110,7 @@ export default {
     margin-top: 7rem;
   }
 }
-.m-atras{
+.m-atras {
   margin-top: 3rem;
   @media screen and (min-width: 768px) {
     margin-top: 1rem;

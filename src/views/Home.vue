@@ -21,7 +21,7 @@
             v-for="productFeatured in productsFeatureds"
             :key="productFeatured._id"
           >
-            <router-link 
+            <router-link
               :to="`/product/${productFeatured._id}`"
               style="text-decoration: none;"
             >
@@ -164,7 +164,7 @@ export default {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-.p-products-slide{
+.p-products-slide {
   @media screen and (min-width: 576px) {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -190,7 +190,7 @@ export default {
     padding-bottom: 1rem;
   }
 }
-.d-none-product-slide{
+.d-none-product-slide {
   @media screen and (max-width: 576px) {
     display: none;
   }
