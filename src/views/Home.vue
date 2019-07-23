@@ -15,18 +15,36 @@
         <h3 class="h1 d-flex justify-content-center text-center px-3">
           Productos Destacados
         </h3>
-        <hooper :itemsToShow="3.5" :infiniteScroll="true">
+        <hooper :itemsToShow="3.5" :infiniteScroll="true" style="height: 100%;">
           <slide
-            class="mr-1"
+            class="mr-1 p-products-slide"
             v-for="productFeatured in productsFeatureds"
             :key="productFeatured._id"
           >
-            <router-link :to="`/product/${productFeatured._id}`">
-              <img
-                :src="`http://localhost:3000${productFeatured.imagePath}`"
-                class="img-fluid"
-                style="height:200px;"
-              />
+            <router-link 
+              :to="`/product/${productFeatured._id}`"
+              style="text-decoration: none;"
+            >
+              <div class="card shadow text-black mb-2">
+                <img
+                  :src="`http://localhost:3000${productFeatured.imagePath}`"
+                  class="img-fluid"
+                />
+                <div class="card-body d-none-product-slide">
+                  <p class="mb-1">
+                    <strong>{{ productFeatured.productDescription }}</strong>
+                  </p>
+                  <div class="d-flex justify-content-end">
+                    <button
+                      type="button"
+                      class="btn btn-primary text-white px-2 py-1"
+                      style="border-radius: 50%;"
+                    >
+                      <font-awesome-icon icon="search" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </router-link>
           </slide>
           <hooper-navigation slot="hooper-addons"></hooper-navigation>
@@ -145,5 +163,36 @@ export default {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+}
+.p-products-slide{
+  @media screen and (min-width: 576px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  @media screen and (min-width: 992px) {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  @media screen and (min-width: 1200px) {
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+.d-none-product-slide{
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
 }
 </style>
