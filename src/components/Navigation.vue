@@ -34,13 +34,14 @@
       </button>
       <div class="collapse navbar-collapse row my-2 ml-md-2" id="navbarNav">
         <div class="col-12 col-md-6">
-          <form>
+          <form @submit.prevent="searchProduct">
             <div class="input-group">
               <input
                 type="text"
                 class="form-control"
                 placeholder="Search ..."
                 style="border-radius: 20px; padding: 20px;"
+                v-model="search"
               />
               <div class="input-group-prepend">
                 <button
@@ -84,5 +85,27 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      search: ""
+    };
+  },
+  methods: {
+    async searchProduct() {
+      console.log(this.search);
+
+      const formData = new FormData();
+      formData.append("productSearch", this.search);
+
+      const res = await fetch("http://localhost:3000/api/search", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      console.log(data);
+      this.$router.push("/products-searchs");
+    }
+  }
+};
 </script>

@@ -29,6 +29,11 @@ export default new Router({
       component: () => import("./views/admin/Dashboard.vue")
     },
     {
+      path: "/admin/signin",
+      name: "signin",
+      component: () => import("./views/admin/SignIn-Admin.vue")
+    },
+    {
       path: "/products",
       name: "products",
       component: () => import("./views/Products.vue")
@@ -37,6 +42,11 @@ export default new Router({
       path: "/product/:id",
       name: "single-product",
       component: () => import("./views/Single-Product.vue")
+    },
+    {
+      path: "/products-searchs",
+      name: "products-searchs",
+      component: () => import("./views/Product-Search.vue")
     },
     {
       path: "/categoria/alimentos-basicos",
