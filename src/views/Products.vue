@@ -74,7 +74,7 @@
               :key="product._id"
             >
               <router-link
-                :to="`/product/${product._id}`"
+                :to="`/producto/${product._id}`"
                 style="text-decoration: none"
               >
                 <div class="card shadow text-black">

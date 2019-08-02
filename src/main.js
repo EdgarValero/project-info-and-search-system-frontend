@@ -15,11 +15,12 @@ import {
   faListAlt,
   faAngleDown,
   faTrash,
-  faEdit,
+  faSyncAlt,
   faBan,
   faSearch,
   faAngleRight,
-  faAngleLeft
+  faAngleLeft,
+  faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -33,11 +34,12 @@ library.add(
   faListAlt,
   faAngleDown,
   faTrash,
-  faEdit,
+  faSyncAlt,
   faBan,
   faSearch,
   faAngleRight,
-  faAngleLeft
+  faAngleLeft,
+  faExclamationCircle
 );
 
 library.add(faFacebook, faTwitter, faInstagram);

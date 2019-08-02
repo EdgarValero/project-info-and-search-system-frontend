@@ -22,7 +22,7 @@
             :key="productFeatured._id"
           >
             <router-link
-              :to="`/product/${productFeatured._id}`"
+              :to="`/producto/${productFeatured._id}`"
               style="text-decoration: none;"
             >
               <div class="card shadow text-black mb-2">

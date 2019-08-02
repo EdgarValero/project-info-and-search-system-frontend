@@ -58,12 +58,12 @@
         <div class="col-12 col-md-6 p-0">
           <ul class="navbar-nav mx-4">
             <li class="nav-item">
-              <router-link class="nav-link" to="/products"
+              <router-link class="nav-link" to="/productos"
                 >Productos</router-link
               >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/sucursals">
+              <router-link class="nav-link" to="/sucursales">
                 Sucursales
               </router-link>
             </li>
@@ -104,7 +104,7 @@ export default {
       });
       const data = await res.json();
       console.log(data);
-      this.$router.push("/products-searchs");
+      this.$router.push("/productos-buscados");
     }
   }
 };

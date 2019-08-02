@@ -474,12 +474,12 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Add Product <font-awesome-icon icon="plus" />
+                              Edit Product <font-awesome-icon icon="sync-alt" />
                             </button>
                             <button
                               type="button"
                               class="btn btn-danger btn-block"
-                              @click="cancelFormAddProduct"
+                              @click="cancelFormEditProduct"
                             >
                               Cancel <font-awesome-icon icon="ban" />
                             </button>
@@ -529,7 +529,7 @@
                             class="btn btn-success my-1 mx-1"
                             @click="editProduct(product._id)"
                           >
-                            Edit <font-awesome-icon icon="edit" />
+                            <font-awesome-icon icon="sync-alt" />
                           </button>
                         </td>
                       </tr>
@@ -692,7 +692,7 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Edit Category <font-awesome-icon icon="edit" />
+                              Edit Category <font-awesome-icon icon="sync-alt" />
                             </button>
                             <button
                               type="button"
@@ -741,7 +741,7 @@
                             class="btn btn-success my-1 mx-1"
                             @click="editCategory(category._id)"
                           >
-                            Edit <font-awesome-icon icon="edit" />
+                            <font-awesome-icon icon="sync-alt" />
                           </button>
                         </td>
                       </tr>
@@ -872,7 +872,7 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Edit Sucursal <font-awesome-icon icon="edit" />
+                              Edit Sucursal <font-awesome-icon icon="sync-alt" />
                             </button>
                             <button
                               type="button"
@@ -919,7 +919,7 @@
                             class="btn btn-success my-1 mx-1"
                             @click="editSucursal(sucursal._id)"
                           >
-                            Edit <font-awesome-icon icon="edit" />
+                            <font-awesome-icon icon="sync-alt" />
                           </button>
                         </td>
                       </tr>
