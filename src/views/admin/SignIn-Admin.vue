@@ -9,7 +9,10 @@
         <transition name="slide-fade">
           <div v-if="message.value">
             <div class="alert p-2" :class="message.class" role="alert">
-              <strong><font-awesome-icon :icon="message.icon" class="mr-2"/> {{message.content}}</strong>
+              <strong
+                ><font-awesome-icon :icon="message.icon" class="mr-2" />
+                {{ message.content }}</strong
+              >
               <button type="button" class="close" @click="closeMessage">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -62,9 +65,9 @@ export default {
       },
       message: {
         value: false,
-        content: '',
-        class: '',
-        icon: '',
+        content: "",
+        class: "",
+        icon: ""
       }
     };
   },
@@ -81,33 +84,33 @@ export default {
       const data = await res.json();
       const msg = data.msg;
       const token = data.token;
-      if(msg === "intro_your_email") {
+      if (msg === "intro_your_email") {
         this.message.content = "Intoduzca su correo electrico";
         this.message.class = "custom-alert-danger";
         this.message.icon = "exclamation-circle";
         this.message.value = true;
       }
-      if(msg === "incorrect_password") {
+      if (msg === "incorrect_password") {
         this.message.content = "Su contraseña es incorrecta";
         this.message.class = "custom-alert-danger";
-        
+
         this.message.value = true;
       }
-      if(msg === "intro_your_password") {
+      if (msg === "intro_your_password") {
         this.message.content = "Introduzca su contraseña";
         this.message.class = "custom-alert-danger";
-        
+
         this.message.value = true;
       }
-      if(msg === "user_not_found") {
+      if (msg === "user_not_found") {
         this.message.content = "Usuario no existe!";
         this.message.class = "custom-alert-danger";
-        
+
         this.message.value = true;
       }
-      if(!msg) {
+      if (!msg) {
         this.$router.push("/admin/dashboard");
-        console.log('Usuario Logeado');
+        console.log("Usuario Logeado");
       }
     },
     closeMessage() {

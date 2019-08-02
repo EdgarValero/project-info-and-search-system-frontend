@@ -47,7 +47,7 @@
                   aria-expanded="false"
                   aria-controls="productsOptions"
                 >
-                  Products <font-awesome-icon icon="angle-down" />
+                  Productos <font-awesome-icon icon="angle-down" />
                 </button>
                 <div class="collapse" id="productsOptions">
                   <ul class="navbar-nav">
@@ -55,14 +55,14 @@
                       <a
                         class="nav-link text-center cursor-pointer"
                         @click="showFormAddProduct"
-                        >Add Product <font-awesome-icon icon="plus"
+                        >Agregar Producto <font-awesome-icon icon="plus"
                       /></a>
                     </li>
                     <li class="nav-item">
                       <a
                         class="nav-link text-center cursor-pointer"
                         @click="showTableProducts"
-                        >All Products <font-awesome-icon icon="list-alt"
+                        >Productos <font-awesome-icon icon="list-alt"
                       /></a>
                     </li>
                   </ul>
@@ -77,7 +77,7 @@
                   aria-expanded="false"
                   aria-controls="categoryOptions"
                 >
-                  Categories <font-awesome-icon icon="angle-down" />
+                  Categorias <font-awesome-icon icon="angle-down" />
                 </button>
                 <div class="collapse" id="categoryOptions">
                   <ul class="navbar-nav">
@@ -85,14 +85,14 @@
                       <a
                         class="nav-link text-center cursor-pointer"
                         @click="showFormAddCategory"
-                        >Add Category <font-awesome-icon icon="plus"
+                        >Agregar Categoria <font-awesome-icon icon="plus"
                       /></a>
                     </li>
                     <li class="nav-item">
                       <a
                         class="nav-link text-center cursor-pointer"
                         @click="showTableCategory"
-                        >All Categories <font-awesome-icon icon="list-alt"
+                        >Categorias <font-awesome-icon icon="list-alt"
                       /></a>
                     </li>
                   </ul>
@@ -107,7 +107,7 @@
                   aria-expanded="false"
                   aria-controls="sucursalOptions"
                 >
-                  Sucursals <font-awesome-icon icon="angle-down" />
+                  Sucursales <font-awesome-icon icon="angle-down" />
                 </button>
                 <div class="collapse" id="sucursalOptions">
                   <ul class="navbar-nav">
@@ -115,14 +115,14 @@
                       <a
                         class="nav-link text-center cursor-pointer"
                         @click="showFormAddSucursal"
-                        >Add Sucursal <font-awesome-icon icon="plus"
+                        >Agregar Sucursal <font-awesome-icon icon="plus"
                       /></a>
                     </li>
                     <li class="nav-item">
                       <a
                         class="nav-link text-center cursor-pointer"
                         @click="showTableSucursals"
-                        >All Sucursals <font-awesome-icon icon="list-alt"
+                        >Sucursales <font-awesome-icon icon="list-alt"
                       /></a>
                     </li>
                   </ul>
@@ -161,14 +161,14 @@
                       <div
                         class="card-header bg-primary text-white text-center"
                       >
-                        <h3>Add Product</h3>
+                        <h3>Agregar Producto</h3>
                       </div>
                       <div class="card-body">
                         <form @submit.prevent="addProduct">
                           <div class="form-row">
                             <div class="form-group col-12 col-md-6">
                               <label for="product.productName"
-                                >Product Name</label
+                                >Nombre del Producto</label
                               >
                               <input
                                 type="text"
@@ -180,7 +180,7 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                               <label for="product.productType"
-                                >Product Type</label
+                                >Tipo de Producto</label
                               >
                               <input
                                 type="text"
@@ -194,7 +194,7 @@
                           <div class="form-row">
                             <div class="form-group col-12 col-md-6">
                               <label for="product.productCategory"
-                                >Product Category</label
+                                >Categoria del Producto</label
                               >
                               <select
                                 v-model="product.productCategory"
@@ -202,7 +202,7 @@
                                 required
                               >
                                 <option selected="selected" value="" disabled>
-                                  Select a Product Category
+                                  Seleccionar categoria del producto
                                 </option>
                                 <option value="alimentos basicos" selected
                                   >Alimentos Básicos</option
@@ -233,7 +233,7 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                               <label for="product.salePrice"
-                                >Product Sale Price</label
+                                >Precio de Venta Producto</label
                               >
                               <input
                                 type="text"
@@ -247,7 +247,7 @@
                           <div class="form-row">
                             <div class="form-group col-12 col-md-6">
                               <label for="product.disponibility"
-                                >Product Disponibility</label
+                                >Disponibilidad del Producto</label
                               >
                               <select
                                 v-model="product.disponibility"
@@ -255,7 +255,7 @@
                                 required
                               >
                                 <option selected="selected" value="" disabled>
-                                  Select a Product Disponibility
+                                  Seleccionar disponibilidad del producto
                                 </option>
                                 <option value="disponible" selected
                                   >Disponible</option
@@ -270,7 +270,7 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                               <label for="product.image"
-                                >Choose Product Image</label
+                                >Subir Imagen del Producto</label
                               >
                               <div class="input-group">
                                 <div class="custom-file">
@@ -285,19 +285,19 @@
                                   <label
                                     class="custom-file-label"
                                     for="inputGroupFile01"
-                                    >Choose Image</label
+                                    >Subir Imagen</label
                                   >
                                 </div>
                               </div>
                             </div>
                           </div>
                           <label for="product.productDescription"
-                            >Product Description</label
+                            >Descripcion del Producto</label
                           >
                           <div class="form-group">
                             <textarea
                               class="form-control textarea-form-admin"
-                              placeholder="Product Description"
+                              placeholder="Descripcion del Producto"
                               v-model="product.productDescription"
                               required
                             >
@@ -308,14 +308,14 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Add Product <font-awesome-icon icon="plus" />
+                              Agregar Producto <font-awesome-icon icon="plus" />
                             </button>
                             <button
                               type="button"
                               class="btn btn-danger btn-block"
                               @click="cancelFormAddProduct"
                             >
-                              Cancel <font-awesome-icon icon="ban" />
+                              Cancelar <font-awesome-icon icon="ban" />
                             </button>
                           </div>
                         </form>
@@ -334,14 +334,14 @@
                       <div
                         class="card-header bg-primary text-white text-center"
                       >
-                        <h3>Edit Product</h3>
+                        <h3>Editar Producto</h3>
                       </div>
                       <div class="card-body">
                         <form @submit.prevent="sendEditProduct">
                           <div class="form-row">
                             <div class="form-group col-12 col-md-6">
                               <label for="product.productName"
-                                >Product Name</label
+                                >Nombre del Producto</label
                               >
                               <input
                                 type="text"
@@ -352,7 +352,7 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                               <label for="product.productType"
-                                >Product Type</label
+                                >Tipo del Producto</label
                               >
                               <input
                                 type="text"
@@ -365,14 +365,14 @@
                           <div class="form-row">
                             <div class="form-group col-12 col-md-6">
                               <label for="product.productCategory"
-                                >Product Category</label
+                                >Categoria del Producto</label
                               >
                               <select
                                 v-model="product.productCategory"
                                 class="form-control"
                               >
                                 <option selected="selected" value="" disabled>
-                                  Select a Product Category
+                                  Seleccionar categoria del producto
                                 </option>
                                 <option value="alimentos basicos" selected
                                   >Alimentos Básicos</option
@@ -403,7 +403,7 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                               <label for="product.salePrice"
-                                >Product Sale Price</label
+                                >Precio de Venta Producto</label
                               >
                               <input
                                 type="text"
@@ -416,14 +416,14 @@
                           <div class="form-row">
                             <div class="form-group col-12 col-md-6">
                               <label for="product.disponibility"
-                                >Product Disponibility</label
+                                >Disponibilidad del Producto</label
                               >
                               <select
                                 v-model="product.disponibility"
                                 class="form-control"
                               >
                                 <option selected="selected" value="" disabled>
-                                  Select a Product Disponibility
+                                  Seleccional disponibilidad del producto
                                 </option>
                                 <option value="disponible" selected
                                   >Disponible</option
@@ -438,7 +438,7 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                               <label for="product.image"
-                                >Choose Product Image</label
+                                >Subir Imagen del Producto</label
                               >
                               <div class="input-group">
                                 <div class="custom-file">
@@ -452,19 +452,19 @@
                                   <label
                                     class="custom-file-label"
                                     for="inputGroupFile01"
-                                    >Choose Image</label
+                                    >Subir Imagen</label
                                   >
                                 </div>
                               </div>
                             </div>
                           </div>
                           <label for="product.productDescription"
-                            >Product Description</label
+                            >Descripcion del Producto</label
                           >
                           <div class="form-group">
                             <textarea
                               class="form-control textarea-form-admin"
-                              placeholder="Product Description"
+                              placeholder="Descripcion del Producto"
                               v-model="product.productDescription"
                             >
                             </textarea>
@@ -474,14 +474,15 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Edit Product <font-awesome-icon icon="sync-alt" />
+                              Editar Producto
+                              <font-awesome-icon icon="sync-alt" />
                             </button>
                             <button
                               type="button"
                               class="btn btn-danger btn-block"
                               @click="cancelFormEditProduct"
                             >
-                              Cancel <font-awesome-icon icon="ban" />
+                              Cancelar <font-awesome-icon icon="ban" />
                             </button>
                           </div>
                         </form>
@@ -494,18 +495,18 @@
             <!--PRODUCT TABLE-->
             <transition name="slide-fade">
               <div v-if="varShowTableProducts">
-                <h2>Products Table</h2>
+                <h2>Tabla de Productos</h2>
                 <div class="table-responsive">
                   <table class="table table-bordered table-sm text-center">
                     <thead class="bg-primary text-white">
                       <tr>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Product Category</th>
-                        <th scope="col">Product Type</th>
-                        <th scope="col">Sale Price</th>
-                        <th scope="col">Product Disponibility</th>
-                        <th scope="col">Product Description</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Nombre del Producto</th>
+                        <th scope="col">Categoria del Producto</th>
+                        <th scope="col">Tipo del Producto</th>
+                        <th scope="col">Precio de Venta</th>
+                        <th scope="col">Disponibilidad</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Accion</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -547,13 +548,13 @@
                       <div
                         class="card-header bg-primary text-white text-center"
                       >
-                        <h3>Add Category</h3>
+                        <h3>Agregar Categoria</h3>
                       </div>
                       <div class="card-body">
                         <form @submit.prevent="addCategory">
                           <div class="form-group">
                             <label for="category.categoryName"
-                              >Category Name</label
+                              >Nombre de la Categoria</label
                             >
                             <input
                               type="text"
@@ -565,7 +566,7 @@
                           </div>
                           <div class="form-group">
                             <label for="category.categoryDescription"
-                              >Category Description</label
+                              >Descripcion de la Categoria</label
                             >
                             <textarea
                               class="form-control textarea-form-admin"
@@ -577,7 +578,7 @@
                           </div>
                           <div class="form-group">
                             <label for="category.categoryUrl"
-                              >Category Url</label
+                              >Url de la Categoria</label
                             >
                             <input
                               type="text"
@@ -599,7 +600,7 @@
                                 <label
                                   class="custom-file-label"
                                   for="inputGroupFile01"
-                                  >Choose Image</label
+                                  >Subir Imagen</label
                                 >
                               </div>
                             </div>
@@ -609,14 +610,15 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Add Category <font-awesome-icon icon="plus" />
+                              Agregar Categoria
+                              <font-awesome-icon icon="plus" />
                             </button>
                             <button
                               type="button"
                               class="btn btn-danger btn-block"
                               @click="cancelFormAddCategory"
                             >
-                              Cancel <font-awesome-icon icon="ban" />
+                              Cancelar <font-awesome-icon icon="ban" />
                             </button>
                           </div>
                         </form>
@@ -635,13 +637,13 @@
                       <div
                         class="card-header bg-primary text-white text-center"
                       >
-                        <h3>Edit Category</h3>
+                        <h3>Editar Categoria</h3>
                       </div>
                       <div class="card-body">
                         <form @submit.prevent="sendEditCategory">
                           <div class="form-group">
                             <label for="category.categoryName"
-                              >Category Name</label
+                              >Nombre de la Categoria</label
                             >
                             <input
                               type="text"
@@ -652,7 +654,7 @@
                           </div>
                           <div class="form-group">
                             <label for="category.categoryDescription"
-                              >Category Description</label
+                              >Descripcion de la Categoria</label
                             >
                             <textarea
                               class="form-control"
@@ -663,7 +665,7 @@
                           </div>
                           <div class="form-group">
                             <label for="category.categoryUrl"
-                              >Category Url</label
+                              >Url de la Categoria</label
                             >
                             <input
                               type="text"
@@ -683,7 +685,7 @@
                               <label
                                 class="custom-file-label"
                                 for="inputGroupFile01"
-                                >Choose Image</label
+                                >Subir Imagen</label
                               >
                             </div>
                           </div>
@@ -692,14 +694,15 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Edit Category <font-awesome-icon icon="sync-alt" />
+                              Editar Categoria
+                              <font-awesome-icon icon="sync-alt" />
                             </button>
                             <button
                               type="button"
                               class="btn btn-danger btn-block"
                               @click="cancelFormEditCategory"
                             >
-                              Cancel <font-awesome-icon icon="ban" />
+                              Cancelar <font-awesome-icon icon="ban" />
                             </button>
                           </div>
                         </form>
@@ -712,15 +715,15 @@
             <!--CATEGORIES TABLE-->
             <transition name="slide-fade">
               <div v-if="varShowTableCategory">
-                <h2>Table of Products Categories</h2>
+                <h2>Tabla de Categorias de Productos</h2>
                 <div class="table-responsive">
                   <table class="table table-bordered table-sm text-center">
                     <thead class="bg-primary text-center text-white">
                       <tr>
-                        <th scope="col">Category Name</th>
-                        <th scope="col">Category Description</th>
-                        <th scope="col">Category Url</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Nombre de la Categoria</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Url de la Categoria</th>
+                        <th scope="col">Accion</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -759,13 +762,13 @@
                       <div
                         class="card-header bg-primary text-white text-center"
                       >
-                        <h3>Add Sucursal</h3>
+                        <h3>Agregar Sucursal</h3>
                       </div>
                       <div class="card-body">
                         <form @submit.prevent="addSucursal">
                           <div class="form-group">
                             <label for="sucursal.direction"
-                              >Sucursal Direction</label
+                              >Direccion de la Sucursal</label
                             >
                             <input
                               type="text"
@@ -777,7 +780,7 @@
                           </div>
                           <div class="form-group">
                             <label for="sucursal.numberContact"
-                              >Number Contact</label
+                              >Numero de Contacto</label
                             >
                             <input
                               type="text"
@@ -804,14 +807,14 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Add Sucursal <font-awesome-icon icon="plus" />
+                              Agregar Sucursal <font-awesome-icon icon="plus" />
                             </button>
                             <button
                               type="button"
                               class="btn btn-danger btn-block"
                               @click="cancelFormAddSucursal"
                             >
-                              Cancel <font-awesome-icon icon="ban" />
+                              Cancelar <font-awesome-icon icon="ban" />
                             </button>
                           </div>
                         </form>
@@ -830,13 +833,13 @@
                       <div
                         class="card-header bg-primary text-white text-center"
                       >
-                        <h3>Edit Sucursal</h3>
+                        <h3>Editar Sucursal</h3>
                       </div>
                       <div class="card-body">
                         <form @submit.prevent="sendEditSucursal">
                           <div class="form-group">
                             <label for="sucursal.direction"
-                              >Sucursal Direction</label
+                              >Direccion de la Sucursal</label
                             >
                             <input
                               type="text"
@@ -847,7 +850,7 @@
                           </div>
                           <div class="form-group">
                             <label for="sucursal.numberContact"
-                              >Number Contact</label
+                              >Numero de Contacto</label
                             >
                             <input
                               type="text"
@@ -872,14 +875,15 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Edit Sucursal <font-awesome-icon icon="sync-alt" />
+                              Editar Sucursal
+                              <font-awesome-icon icon="sync-alt" />
                             </button>
                             <button
                               type="button"
                               class="btn btn-danger btn-block"
                               @click="calcelFormEditSucursal"
                             >
-                              Cancel <font-awesome-icon icon="ban" />
+                              Cancelar <font-awesome-icon icon="ban" />
                             </button>
                           </div>
                         </form>
@@ -892,14 +896,14 @@
             <!--SUCURSALS TABLE-->
             <transition name="slide-fade">
               <div v-if="varShowTableSucursals">
-                <h2>Sucursals Table</h2>
+                <h2>Tabla de Sucursales</h2>
                 <div class="table-responsive">
                   <table class="table table-bordered table-sm text-center">
                     <thead class="bg-primary text-center text-white">
                       <tr>
-                        <th scope="col">Sucursal Direction</th>
-                        <th scope="col">Number Contact</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Direccion de la Sucursal</th>
+                        <th scope="col">Numero de Contacto</th>
+                        <th scope="col">Accion</th>
                       </tr>
                     </thead>
                     <tbody>
