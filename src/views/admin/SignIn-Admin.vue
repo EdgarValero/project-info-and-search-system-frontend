@@ -6,6 +6,9 @@
         <div class="d-flex justify-content-center">
           <img src="../../assets/img/logo-sin-fondo.png" class="img-fluid" />
         </div>
+        <div class="d-flex justify-content-center text-center">
+          <h3>Admin Sign In</h3>
+        </div>
         <transition name="slide-fade">
           <div v-if="message.value">
             <div class="alert p-2" :class="message.class" role="alert">
@@ -20,25 +23,26 @@
           </div>
         </transition>
         <div class="card shadow">
-          <div class="card-header bg-success text-white text-center">
-            <h3>Admin SignIn</h3>
-          </div>
           <div class="card-body">
             <form @submit.prevent="sendSignin">
               <div class="form-group">
+                <label for="signin.email" class="font-weight-bold"
+                  >Correo Electronico</label
+                >
                 <input
                   type="email"
                   v-model="signin.email"
                   class="form-control"
-                  placeholder="Email"
                 />
               </div>
               <div class="form-group">
+                <label for="signin.password" class="font-weight-bold"
+                  >Contraseña</label
+                >
                 <input
                   type="password"
                   v-model="signin.password"
                   class="form-control"
-                  placeholder="Password"
                 />
               </div>
               <button type="submit" class="btn btn-primary btn-block">
@@ -87,25 +91,25 @@ export default {
       if (msg === "intro_your_email") {
         this.message.content = "Intoduzca su correo electrico";
         this.message.class = "custom-alert-danger";
-        this.message.icon = "exclamation-circle";
+        this.message.icon = "exclamation-triangle";
         this.message.value = true;
       }
       if (msg === "incorrect_password") {
         this.message.content = "Su contraseña es incorrecta";
         this.message.class = "custom-alert-danger";
-
+        this.message.icon = "exclamation-triangle";
         this.message.value = true;
       }
       if (msg === "intro_your_password") {
         this.message.content = "Introduzca su contraseña";
         this.message.class = "custom-alert-danger";
-
+        this.message.icon = "exclamation-triangle";
         this.message.value = true;
       }
       if (msg === "user_not_found") {
         this.message.content = "Usuario no existe!";
         this.message.class = "custom-alert-danger";
-
+        this.message.icon = "exclamation-triangle";
         this.message.value = true;
       }
       if (!msg) {
@@ -121,6 +125,6 @@ export default {
 </script>
 <style lang="scss">
 .mt-signin {
-  margin-top: 6.5rem;
+  margin-top: 7rem;
 }
 </style>

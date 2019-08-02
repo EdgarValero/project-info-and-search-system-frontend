@@ -20,7 +20,7 @@ import {
   faSearch,
   faAngleRight,
   faAngleLeft,
-  faExclamationCircle
+  faExclamationTriangle
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -39,7 +39,7 @@ library.add(
   faSearch,
   faAngleRight,
   faAngleLeft,
-  faExclamationCircle
+  faExclamationTriangle
 );
 
 library.add(faFacebook, faTwitter, faInstagram);

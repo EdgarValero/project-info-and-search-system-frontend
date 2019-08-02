@@ -15,7 +15,11 @@
         <h3 class="h1 d-flex justify-content-center text-center px-3">
           Productos Destacados
         </h3>
-        <hooper :itemsToShow="3.5" :infiniteScroll="true" style="height: 100%;">
+        <hooper
+          :itemsToShow="4"
+          :infiniteScroll="true"
+          class="slide-product-featured"
+        >
           <slide
             class="mr-1 p-products-slide"
             v-for="productFeatured in productsFeatureds"
@@ -138,6 +142,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.slide-product-featured {
+  height: 100%;
+}
 .img-hover:hover .overlay {
   opacity: 1;
 }
