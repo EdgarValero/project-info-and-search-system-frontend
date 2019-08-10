@@ -92,19 +92,8 @@ export default {
     };
   },
   methods: {
-    async searchProduct() {
-      console.log(this.search);
-
-      const formData = new FormData();
-      formData.append("productSearch", this.search);
-
-      const res = await fetch("http://localhost:3000/api/search", {
-        method: "POST",
-        body: formData
-      });
-      const data = await res.json();
-      console.log(data);
-      this.$router.push("/productos-buscados");
+    searchProduct() {
+      this.$router.push(`/productos-buscados/${this.search}`);
     }
   }
 };

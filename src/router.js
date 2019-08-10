@@ -44,7 +44,7 @@ export default new Router({
       component: () => import("./views/Single-Product.vue")
     },
     {
-      path: "/productos-buscados",
+      path: "/productos-buscados/:searchProduct",
       name: "products-searchs",
       component: () => import("./views/Product-Search.vue")
     },
