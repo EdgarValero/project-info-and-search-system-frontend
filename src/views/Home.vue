@@ -2,72 +2,7 @@
   <div class="home">
     <Navigation />
     <!--Carrousel Section-->
-    <section class="container-fluid px-0 mt-6">
-      <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-ride="carousel"
-      >
-        <ol class="carousel-indicators">
-          <li
-            data-target="#carouselExampleIndicators"
-            data-slide-to="0"
-            class="active"
-          ></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="../assets/img/banner-1.jpg"
-              class="d-block w-100"
-              alt=""
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="../assets/img/banner-2.jpg"
-              class="d-block w-100"
-              alt=""
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="../assets/img/banner-3.jpg"
-              class="d-block w-100"
-              alt=""
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="../assets/img/banner-4.jpg"
-              class="d-block w-100"
-              alt=""
-            />
-          </div>
-        </div>
-        <a
-          class="carousel-control-prev"
-          href="#carouselExampleIndicators"
-          role="button"
-          data-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a
-          class="carousel-control-next"
-          href="#carouselExampleIndicators"
-          role="button"
-          data-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </section>
+    <Carrousel />
     <!-- View Loading-->
     <div v-if="loading" class="my-5">
       <h2 class="display-4 d-flex justify-content-center align-items-center">
@@ -80,18 +15,40 @@
         <h3 class="h1 d-flex justify-content-center text-center px-3">
           Productos Destacados
         </h3>
-        <hooper :itemsToShow="3.5" :infiniteScroll="true">
+        <hooper
+          :itemsToShow="4"
+          :infiniteScroll="true"
+          class="slide-product-featured"
+        >
           <slide
-            class="mr-1"
+            class="mr-1 p-products-slide"
             v-for="productFeatured in productsFeatureds"
             :key="productFeatured._id"
           >
-            <router-link :to="`/product/${productFeatured._id}`">
-              <img
-                :src="`http://localhost:3000${productFeatured.imagePath}`"
-                class="img-fluid"
-                style="height:200px;"
-              />
+            <router-link
+              :to="`/producto/${productFeatured._id}`"
+              style="text-decoration: none;"
+            >
+              <div class="card shadow text-black mb-2">
+                <img
+                  :src="`http://localhost:3000${productFeatured.imagePath}`"
+                  class="img-fluid"
+                />
+                <div class="card-body d-none-product-slide">
+                  <p class="mb-1">
+                    <strong>{{ productFeatured.productDescription }}</strong>
+                  </p>
+                  <div class="d-flex justify-content-end">
+                    <button
+                      type="button"
+                      class="btn btn-primary text-white px-2 py-1"
+                      style="border-radius: 50%;"
+                    >
+                      <font-awesome-icon icon="search" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </router-link>
           </slide>
           <hooper-navigation slot="hooper-addons"></hooper-navigation>
@@ -102,7 +59,7 @@
         <h3 class="h1 d-flex justify-content-center text-center px-3">
           Categorias de Productos
         </h3>
-        <div class="row mx-4">
+        <div class="row mx-4 d-flex justify-content-center">
           <div
             class="col-12 col-md-6 col-lg-4 col-xl-3 mt-2"
             v-for="category in categories"
@@ -111,16 +68,24 @@
             <router-link
               :to="`${category.categoryUrl}`"
               style="text-decoration: none;"
+              class="img-hover"
             >
               <div class="card shadow">
-                <div class="card-header bg-success px-2 text-center text-white">
-                  <h3>{{ category.categoryName }}</h3>
+                <div
+                  class="card-header bg-success text-center text-white d-md-none"
+                >
+                  <h3>
+                    {{ category.categoryName }}
+                  </h3>
                 </div>
                 <img
                   :src="`http://localhost:3000${category.imagePath}`"
                   class="img-fluid"
                   style="height:250px;"
                 />
+                <div class="overlay">
+                  <div class="text">{{ category.categoryName }}</div>
+                </div>
               </div>
             </router-link>
           </div>
@@ -134,8 +99,9 @@
 <script>
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
-import productController from "../controllers/products.controller";
-import categoryController from "../controllers/categories.controller";
+import Carrousel from "@/components/Carrousel.vue";
+import productController from "@/controllers/products.controller";
+import categoryController from "@/controllers/categories.controller";
 
 import { Hooper, Slide, Navigation as HooperNavigation } from "hooper";
 import "hooper/dist/hooper.css";
@@ -147,7 +113,8 @@ export default {
     Footer,
     Hooper,
     Slide,
-    HooperNavigation
+    HooperNavigation,
+    Carrousel
   },
   data() {
     return {
@@ -174,3 +141,65 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.slide-product-featured {
+  height: 100%;
+}
+.img-hover:hover .overlay {
+  opacity: 1;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: rgba(40, 167, 69, 0.8);
+}
+.text {
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.p-products-slide {
+  @media screen and (min-width: 576px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  @media screen and (min-width: 992px) {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  @media screen and (min-width: 1200px) {
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+.d-none-product-slide {
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+}
+</style>

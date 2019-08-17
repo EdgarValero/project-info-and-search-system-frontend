@@ -2,72 +2,7 @@
   <div class="products">
     <Navigation />
     <!--Carrousel Section-->
-    <section class="container-fluid px-0 mt-6">
-      <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-ride="carousel"
-      >
-        <ol class="carousel-indicators">
-          <li
-            data-target="#carouselExampleIndicators"
-            data-slide-to="0"
-            class="active"
-          ></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="../assets/img/banner-1.jpg"
-              class="d-block w-100"
-              alt=""
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="../assets/img/banner-2.jpg"
-              class="d-block w-100"
-              alt=""
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="../assets/img/banner-3.jpg"
-              class="d-block w-100"
-              alt=""
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="../assets/img/banner-4.jpg"
-              class="d-block w-100"
-              alt=""
-            />
-          </div>
-        </div>
-        <a
-          class="carousel-control-prev"
-          href="#carouselExampleIndicators"
-          role="button"
-          data-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a
-          class="carousel-control-next"
-          href="#carouselExampleIndicators"
-          role="button"
-          data-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </section>
+    <Carrousel />
     <!--Section Products-->
     <div class="row mx-0">
       <div class="col-12 col-md-3 col-lg-3 col-xl-2 p-3 bg-light">
@@ -132,14 +67,14 @@
           <h2 class="h1 d-flex justify-content-center mt-3 text-center px-3">
             Todos los Productos
           </h2>
-          <div class="row mx-5">
+          <div class="row mx-5 d-flex justify-content-center">
             <div
               class="col-12 col-md-6 col-lg-4 col-xl-3 mt-3"
               v-for="product in displayedProducts"
               :key="product._id"
             >
               <router-link
-                :to="`/product/${product._id}`"
+                :to="`/producto/${product._id}`"
                 style="text-decoration: none"
               >
                 <div class="card shadow text-black">
@@ -147,7 +82,7 @@
                     :src="`http://localhost:3000${product.imagePath}`"
                     class="img-fluid"
                   />
-                  <div class="card-body border-top">
+                  <div class="card-body">
                     <p class="mb-1">
                       <strong>{{ product.productDescription }}</strong>
                     </p>
@@ -203,13 +138,15 @@
 <script>
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
-import productController from "../controllers/products.controller";
-import categoryController from "../controllers/categories.controller";
+import Carrousel from "@/components/Carrousel.vue";
+import productController from "@/controllers/products.controller";
+import categoryController from "@/controllers/categories.controller";
 
 export default {
   components: {
     Navigation,
-    Footer
+    Footer,
+    Carrousel
   },
   data() {
     return {
@@ -233,8 +170,8 @@ export default {
     },
     async getCategories() {
       const categories = await categoryController.getCategories();
-      this.loading = false;
       this.categories = categories;
+      this.loading = false;
     },
     pagination(products) {
       let page = this.page;

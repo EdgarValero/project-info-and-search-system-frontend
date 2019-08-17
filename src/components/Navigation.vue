@@ -1,9 +1,11 @@
 <template>
   <div class="bg-success fixed-top" style="border-bottom:5px solid #007bff;">
     <nav
-      class="navbar navbar-expand-md navbar navbar-dark bg-success container"
+      class="navbar navbar-expand-md navbar navbar-dark bg-success container p-0 px-2"
     >
-      <router-link class="navbar-brand" to="/">API SIB</router-link>
+      <router-link class="navbar-brand" to="/">
+        <img src="../assets/img/logo-sis-web.png" height="85" width="85" />
+      </router-link>
       <button
         class="navbar-toggler button-collapse bg-primary text-white mr-2"
         type="button"
@@ -32,13 +34,14 @@
       </button>
       <div class="collapse navbar-collapse row my-2 ml-md-2" id="navbarNav">
         <div class="col-12 col-md-6">
-          <form>
+          <form @submit.prevent="searchProduct">
             <div class="input-group">
               <input
                 type="text"
                 class="form-control"
-                placeholder="Search ..."
+                placeholder="Busca aquí tu producto..."
                 style="border-radius: 20px; padding: 20px;"
+                v-model="search"
               />
               <div class="input-group-prepend">
                 <button
@@ -55,12 +58,12 @@
         <div class="col-12 col-md-6 p-0">
           <ul class="navbar-nav mx-4">
             <li class="nav-item">
-              <router-link class="nav-link" to="/products"
+              <router-link class="nav-link" to="/productos"
                 >Productos</router-link
               >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/sucursals">
+              <router-link class="nav-link" to="/sucursales">
                 Sucursales
               </router-link>
             </li>
@@ -82,5 +85,20 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      search: ""
+    };
+  },
+  methods: {
+    searchProduct() {
+      this.$router.push(`/productos-buscados/${this.search}`);
+      this.searchInProductSearch();
+    },
+    searchInProductSearch() {
+      this.$emit("searchInProductSearch", this.search);
+    }
+  }
+};
 </script>

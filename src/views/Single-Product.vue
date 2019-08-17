@@ -2,11 +2,20 @@
   <div class="single-product">
     <Navigation />
     <div class="row mx-1">
-      <div class="col-12 col-md-4 mt-8 mb-5">
-        <img
-          class="img-fluid"
-          :src="`http://localhost:3000${product.imagePath}`"
-        />
+      <div class="col-12 col-md-4 mt-md-8 mb-5">
+        <div
+          class="m-atras text-primary cursor-pointer"
+          onclick="history.back()"
+        >
+          <font-awesome-icon icon="angle-left" style="font-size: 1rem;" />
+          <strong class="ml-2">Atrás</strong>
+        </div>
+        <div class="d-flex justify-content-center">
+          <img
+            class="img-fluid"
+            :src="`http://localhost:3000${product.imagePath}`"
+          />
+        </div>
         <p class="lead text-center">
           <strong
             >{{ product.productDescription }}
@@ -30,7 +39,7 @@
           </strong>
         </p>
       </div>
-      <div class="col-12 col-md-8 mt-8 mb-5">
+      <div class="col-12 col-md-8 mt-md-9">
         <h2 class="d-flex justify-content-center text-center">
           Informacion sobre el producto
         </h2>
@@ -48,7 +57,7 @@
 <script>
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
-import productController from "../controllers/products.controller";
+import productController from "@/controllers/products.controller";
 
 export default {
   name: "single-product",
@@ -86,3 +95,25 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.mt-md-8 {
+  margin-top: 4.5rem;
+  @media screen and (min-width: 768px) {
+    margin-top: 7rem;
+  }
+}
+.mt-md-9 {
+  @media screen and (min-width: 576px) {
+    margin-top: 0;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 7rem;
+  }
+}
+.m-atras {
+  margin-top: 3rem;
+  @media screen and (min-width: 768px) {
+    margin-top: 1rem;
+  }
+}
+</style>

@@ -14,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path: "/sucursals",
+      path: "/sucursales",
       name: "sucursals",
       component: () => import("./views/Sucursals.vue")
     },
@@ -29,14 +29,24 @@ export default new Router({
       component: () => import("./views/admin/Dashboard.vue")
     },
     {
-      path: "/products",
+      path: "/admin/signin",
+      name: "signin",
+      component: () => import("./views/admin/SignIn-Admin.vue")
+    },
+    {
+      path: "/productos",
       name: "products",
       component: () => import("./views/Products.vue")
     },
     {
-      path: "/product/:id",
+      path: "/producto/:id",
       name: "single-product",
       component: () => import("./views/Single-Product.vue")
+    },
+    {
+      path: "/productos-buscados/:searchProduct",
+      name: "products-searchs",
+      component: () => import("./views/Product-Search.vue")
     },
     {
       path: "/categoria/alimentos-basicos",

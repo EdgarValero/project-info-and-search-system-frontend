@@ -1,7 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
 import JQuery from "jquery";
 window.$ = window.JQuery = JQuery;
 import "popper.js";
@@ -15,11 +14,12 @@ import {
   faListAlt,
   faAngleDown,
   faTrash,
-  faEdit,
+  faSyncAlt,
   faBan,
   faSearch,
   faAngleRight,
-  faAngleLeft
+  faAngleLeft,
+  faExclamationTriangle
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -33,11 +33,12 @@ library.add(
   faListAlt,
   faAngleDown,
   faTrash,
-  faEdit,
+  faSyncAlt,
   faBan,
   faSearch,
   faAngleRight,
-  faAngleLeft
+  faAngleLeft,
+  faExclamationTriangle
 );
 
 library.add(faFacebook, faTwitter, faInstagram);
@@ -47,6 +48,5 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  store,
   render: h => h(App)
 }).$mount("#app");

@@ -8,6 +8,18 @@ html {
   }
 }
 
+//Custom Alerts
+.custom-alert-danger {
+  background: #dc3545;
+  color: #ffffff;
+  button {
+    color: #ffffff;
+  }
+  button:hover {
+    color: #007bff;
+  }
+}
+
 .button-pagination {
   border-radius: 100%;
   margin-left: 0.5 rem;
@@ -70,7 +82,7 @@ html {
 }
 
 .mt-8{
-  margin-top: 5.5rem !important;
+  margin-top: 6rem !important;
 }
 
 .mt-9 {
