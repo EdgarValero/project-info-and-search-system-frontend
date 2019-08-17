@@ -39,7 +39,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Search ..."
+                placeholder="Busca aquí tu producto..."
                 style="border-radius: 20px; padding: 20px;"
                 v-model="search"
               />
@@ -94,6 +94,10 @@ export default {
   methods: {
     searchProduct() {
       this.$router.push(`/productos-buscados/${this.search}`);
+      this.searchInProductSearch();
+    },
+    searchInProductSearch() {
+      this.$emit("searchInProductSearch", this.search);
     }
   }
 };

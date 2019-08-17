@@ -67,7 +67,7 @@
           <h2 class="h1 d-flex justify-content-center mt-3 text-center px-3">
             Todos los Productos
           </h2>
-          <div class="row mx-5">
+          <div class="row mx-5 d-flex justify-content-center">
             <div
               class="col-12 col-md-6 col-lg-4 col-xl-3 mt-3"
               v-for="product in displayedProducts"
@@ -170,8 +170,8 @@ export default {
     },
     async getCategories() {
       const categories = await categoryController.getCategories();
-      this.loading = false;
       this.categories = categories;
+      this.loading = false;
     },
     pagination(products) {
       let page = this.page;
