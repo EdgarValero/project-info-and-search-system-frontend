@@ -90,11 +90,11 @@ export default {
       if (data.msg == "product_not_found") {
         this.msgProductNotFound =
           "No se ha encontrado ningún resultado. Actualmente la búsqueda no está disponible en nuestro inventario";
-        this.searched = data.productSearch;
+        this.searched = this.$route.params.searchProduct || search;
         this.loading = false;
       } else {
-        this.searched = data.productSearch;
-        this.products = data.searched;
+        this.searched = this.$route.params.searchProduct || search;
+        this.products = data;
         this.loading = false;
       }
     }
