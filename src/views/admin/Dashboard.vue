@@ -575,7 +575,6 @@
                               class="form-control"
                               placeholder="Alimentos Basicos"
                               v-model="category.categoryName"
-                              required
                             />
                           </div>
                           <div class="form-group">
@@ -586,7 +585,6 @@
                               class="form-control textarea-form-admin"
                               placeholder="Category Description"
                               v-model="category.categoryDescription"
-                              required
                             >
                             </textarea>
                           </div>
@@ -599,7 +597,6 @@
                               class="form-control"
                               placeholder="/categoria/alimento-y-bebidas"
                               v-model="category.categoryUrl"
-                              required
                             />
                           </div>
                           <div class="form-group">
@@ -1226,21 +1223,68 @@ export default {
       this.categories = categories;
     },
     async addCategory() {
+      if (
+        !this.category.categoryName ||
+        !this.category.categoryDescription ||
+        !this.category.categoryUrl ||
+        !this.category.image
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
+
       const fd = new FormData();
       fd.append("categoryName", this.category.categoryName);
       fd.append("categoryDescription", this.category.categoryDescription);
       fd.append("categoryUrl", this.category.categoryUrl);
       fd.append("image", this.category.image);
 
-      await categoryController.addCategory(fd);
-      this.getCategories();
-      this.category = new Category();
-      this.varShowFormAddCategory = false;
-      this.varShowTableCategory = true;
+      const res = await categoryController.addCategory(fd);
+      if (res.msg == "category_saved") {
+        this.getCategories();
+        this.category = new Category();
+        this.varShowFormAddCategory = false;
+        this.varShowTableCategory = true;
+        return (this.message = {
+          content: "La categoria fue agregada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async deleteCategory(id) {
-      await categoryController.deleteCategory(id);
-      this.getCategories();
+      const res = await categoryController.deleteCategory(id);
+      if (res.msg == "category_deleted") {
+        this.getCategories();
+        return (this.message = {
+          content: "La categoria fue eliminada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async editCategory(id) {
       const data = await categoryController.getCategory(id);
@@ -1251,6 +1295,38 @@ export default {
       );
       this.categoryToEdit = data._id;
       this.showFormEditCategory();
+    },
+    async sendEditCategory() {
+      const fd = new FormData();
+      fd.append("categoryName", this.category.categoryName);
+      fd.append("categoryDescription", this.category.categoryDescription);
+      fd.append("categoryUrl", this.category.categoryUrl);
+      fd.append("image", this.category.image);
+
+      const res = await categoryController.sendEditCategory(
+        this.categoryToEdit,
+        fd
+      );
+      if (res.msg == "category_updated") {
+        this.getCategories();
+        this.category = new Category();
+        this.varShowFormEditCategory = false;
+        this.varShowTableCategory = true;
+        return (this.message = {
+          content: "La categoria fue actulizada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async onFileImgCategory(event) {
       this.category.image = event.target.files[0];
@@ -1297,19 +1373,6 @@ export default {
       this.varShowFormEditCategory = false;
       this.varShowTableCategory = true;
       this.category = new Category();
-    },
-    async sendEditCategory() {
-      const fd = new FormData();
-      fd.append("categoryName", this.category.categoryName);
-      fd.append("categoryDescription", this.category.categoryDescription);
-      fd.append("categoryUrl", this.category.categoryUrl);
-      fd.append("image", this.category.image);
-
-      await categoryController.sendEditCategory(this.categoryToEdit, fd);
-      this.getCategories();
-      this.category = new Category();
-      this.varShowFormEditCategory = false;
-      this.varShowTableCategory = true;
     },
     ///////// SUCURSALS //////////////////////////////////////
     async getSucursals() {
