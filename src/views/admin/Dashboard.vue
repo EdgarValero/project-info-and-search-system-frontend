@@ -786,7 +786,6 @@
                               class="form-control"
                               placeholder="Centro Comercial Plaza, Av.Principal, Calle 13, Valera, Trujillo"
                               v-model="sucursal.direction"
-                              required
                             />
                           </div>
                           <div class="form-group">
@@ -798,7 +797,6 @@
                               class="form-control"
                               placeholder="0800-6749141"
                               v-model="sucursal.numberContact"
-                              required
                             />
                           </div>
                           <div class="form-group">
@@ -809,7 +807,6 @@
                               class="form-control textarea-form-admin"
                               placeholder="iFrame Google Maps"
                               v-model="sucursal.googleMaps"
-                              required
                             >
                             </textarea>
                           </div>
@@ -1381,19 +1378,69 @@ export default {
       this.sucursals = sucursals;
     },
     async addSucursal() {
+      if (
+        !this.sucursal.direction ||
+        !this.sucursal.numberContact ||
+        !this.sucursal.googleMaps
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
+
       const fd = new FormData();
       fd.append("direction", this.sucursal.direction);
       fd.append("numberContact", this.sucursal.numberContact);
       fd.append("googleMaps", this.sucursal.googleMaps);
 
-      await sucursalController.addSucursal(fd);
-      this.getSucursals();
-      this.sucursal = new Sucursal();
-      this.varShowFormAddSucursal = false;
-      this.varShowTableSucursals = true;
+      const res = await sucursalController.addSucursal(fd);
+      if (res.msg == "sucursal_saved") {
+        this.getSucursals();
+        this.sucursal = new Sucursal();
+        this.varShowFormAddSucursal = false;
+        this.varShowTableSucursals = true;
+        return (this.message = {
+          content: "La categoria fue actulizada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async deleteSucursal(id) {
-      await sucursalController.deleteSucursal(id);
+      const res = await sucursalController.deleteSucursal(id);
+      if (res.msg == "sucursal_deleted") {
+        this.getSucursals();
+        this.sucursal = new Sucursal();
+        this.varShowFormEditSucursal = false;
+        this.varShowTableSucursals = true;
+        return (this.message = {
+          content: "La categoria fue eliminada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
       this.getSucursals();
     },
     async editSucursal(id) {
@@ -1412,11 +1459,30 @@ export default {
       fd.append("numberContact", this.sucursal.numberContact);
       fd.append("googleMaps", this.sucursal.googleMaps);
 
-      await sucursalController.sendEditSucursal(this.sucursalToEdit, fd);
-      this.getSucursals();
-      this.sucursal = new Sucursal();
-      this.varShowFormEditSucursal = false;
-      this.varShowTableSucursals = true;
+      const res = await sucursalController.sendEditSucursal(
+        this.sucursalToEdit,
+        fd
+      );
+      if (res.msg == "sucursal_updated") {
+        this.getSucursals();
+        this.sucursal = new Sucursal();
+        this.varShowFormEditSucursal = false;
+        this.varShowTableSucursals = true;
+        return (this.message = {
+          content: "La categoria fue actulizada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     showFormAddSucursal() {
       this.varShowFormAddSucursal = true;
