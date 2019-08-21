@@ -13,14 +13,14 @@ class categoryController {
       body: input
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   }
   async deleteCategory(id) {
     const response = await fetch(`${this.URI}/delete-category/${id}`, {
       method: "DELETE"
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   }
   async getCategory(id) {
     const response = await fetch(`${this.URI}/${id}`);
@@ -33,7 +33,7 @@ class categoryController {
       body: input
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   }
 }
 

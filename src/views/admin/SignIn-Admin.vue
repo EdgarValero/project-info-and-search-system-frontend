@@ -11,7 +11,7 @@
         </div>
         <transition name="slide-fade">
           <div v-if="message.value">
-            <div class="alert p-2" :class="message.class" role="alert">
+            <div :class="['alert p-2', message.class]" role="alert">
               <strong
                 ><font-awesome-icon :icon="message.icon" class="mr-2" />
                 {{ message.content }}</strong

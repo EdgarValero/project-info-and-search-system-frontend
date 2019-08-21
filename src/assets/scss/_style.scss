@@ -20,6 +20,17 @@ html {
   }
 }
 
+.custom-success-danger {
+  background: #28a745;
+  color: #ffffff;
+  button {
+    color: #ffffff;
+  }
+  button:hover {
+    color: #007bff;
+  }
+}
+
 .button-pagination {
   border-radius: 100%;
   margin-left: 0.5 rem;
