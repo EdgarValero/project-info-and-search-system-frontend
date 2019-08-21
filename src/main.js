@@ -26,6 +26,7 @@ import {
   faTwitter,
   faInstagram
 } from "@fortawesome/free-brands-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
   faTachometerAlt,
@@ -40,8 +41,8 @@ library.add(
   faAngleLeft,
   faExclamationTriangle
 );
-
 library.add(faFacebook, faTwitter, faInstagram);
+library.add(faThumbsUp);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.config.productionTip = false;

@@ -13,14 +13,14 @@ class productController {
       body: input
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   }
   async deleteProduct(id) {
     const response = await fetch(`${this.URI}/delete-product/${id}`, {
       method: "DELETE"
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   }
   async getProduct(id) {
     const response = await fetch(`${this.URI}/${id}`);
@@ -33,7 +33,7 @@ class productController {
       body: input
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   }
   async getProductsFeatureds() {
     const response = await fetch(`${this.URI}/featured/products`);

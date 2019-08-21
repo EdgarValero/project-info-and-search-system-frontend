@@ -14,7 +14,13 @@
           <h2>RESULTADOS DE BÚSQUEDA: {{ searched }}</h2>
         </div>
         <div class="row mx-5 d-flex justify-content-center">
+          <div v-if="msgProductNotFound.length">
+            <div class="p-5">
+              <p class="text-center lead">{{ msgProductNotFound }}</p>
+            </div>
+          </div>
           <div
+            v-else
             class="col-12 col-md-6 col-lg-4 col-xl-3 mt-3"
             v-for="product in products"
             :key="product._id"
@@ -60,7 +66,8 @@ export default {
     return {
       loading: true,
       products: [],
-      searched: ""
+      searched: "",
+      msgProductNotFound: ""
     };
   },
   created() {
@@ -68,6 +75,7 @@ export default {
   },
   methods: {
     async searchProduct(search) {
+      this.msgProductNotFound = "";
       this.products = [];
       const formData = new FormData();
       formData.append(
@@ -80,11 +88,13 @@ export default {
       });
       const data = await response.json();
       if (data.msg == "product_not_found") {
-        this.searched = data.productSearch;
+        this.msgProductNotFound =
+          "No se ha encontrado ningún resultado. Actualmente la búsqueda no está disponible en nuestro inventario";
+        this.searched = this.$route.params.searchProduct || search;
         this.loading = false;
       } else {
-        this.searched = data.productSearch;
-        this.products = data.searched;
+        this.searched = this.$route.params.searchProduct || search;
+        this.products = data;
         this.loading = false;
       }
     }

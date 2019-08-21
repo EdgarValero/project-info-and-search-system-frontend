@@ -1,5 +1,26 @@
 <template>
   <div class="dashboard">
+    <!-- Alert Message -->
+    <transition name="slide-fade">
+      <div v-if="message.value">
+        <div class="row">
+          <div class="col-10 col-md-6 mt-3 fixed-top ml-auto">
+            <div :class="['alert p-2 text-center', message.class]" role="alert">
+              <strong
+                ><font-awesome-icon
+                  :icon="[message.iconPrefix, message.icon]"
+                  class="mr-2"
+                />
+                {{ message.content }}</strong
+              >
+              <button type="button" class="close" @click="closeMessage">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-3 col-lg-3 col-xl-2 p-3 bg-dark text-white">
@@ -175,7 +196,6 @@
                                 class="form-control"
                                 placeholder="Harina Pan"
                                 v-model="product.productName"
-                                required
                               />
                             </div>
                             <div class="form-group col-12 col-md-6">
@@ -187,7 +207,6 @@
                                 class="form-control"
                                 placeholder="Harina"
                                 v-model="product.productType"
-                                required
                               />
                             </div>
                           </div>
@@ -199,7 +218,6 @@
                               <select
                                 v-model="product.productCategory"
                                 class="form-control"
-                                required
                               >
                                 <option selected="selected" value="" disabled>
                                   Seleccionar categoria del producto
@@ -236,11 +254,10 @@
                                 >Precio de Venta Producto</label
                               >
                               <input
-                                type="text"
+                                type="number"
                                 class="form-control"
                                 placeholder="Sale Price"
                                 v-model="product.salePrice"
-                                required
                               />
                             </div>
                           </div>
@@ -252,7 +269,6 @@
                               <select
                                 v-model="product.disponibility"
                                 class="form-control"
-                                required
                               >
                                 <option selected="selected" value="" disabled>
                                   Seleccionar disponibilidad del producto
@@ -280,7 +296,6 @@
                                     id="img"
                                     aria-describedby="inputGroupFileAddon01"
                                     @change="onFileImg"
-                                    required
                                   />
                                   <label
                                     class="custom-file-label"
@@ -299,7 +314,6 @@
                               class="form-control textarea-form-admin"
                               placeholder="Descripcion del Producto"
                               v-model="product.productDescription"
-                              required
                             >
                             </textarea>
                           </div>
@@ -406,7 +420,7 @@
                                 >Precio de Venta Producto</label
                               >
                               <input
-                                type="text"
+                                type="number"
                                 class="form-control"
                                 placeholder="Sale Price"
                                 v-model="product.salePrice"
@@ -527,7 +541,7 @@
                           </button>
                           <button
                             type="button"
-                            class="btn btn-success my-1 mx-1"
+                            class="btn btn-primary my-1 mx-1"
                             @click="editProduct(product._id)"
                           >
                             <font-awesome-icon icon="sync-alt" />
@@ -561,7 +575,6 @@
                               class="form-control"
                               placeholder="Alimentos Basicos"
                               v-model="category.categoryName"
-                              required
                             />
                           </div>
                           <div class="form-group">
@@ -572,7 +585,6 @@
                               class="form-control textarea-form-admin"
                               placeholder="Category Description"
                               v-model="category.categoryDescription"
-                              required
                             >
                             </textarea>
                           </div>
@@ -585,7 +597,6 @@
                               class="form-control"
                               placeholder="/categoria/alimento-y-bebidas"
                               v-model="category.categoryUrl"
-                              required
                             />
                           </div>
                           <div class="form-group">
@@ -741,7 +752,7 @@
                           </button>
                           <button
                             type="button"
-                            class="btn btn-success my-1 mx-1"
+                            class="btn btn-primary my-1 mx-1"
                             @click="editCategory(category._id)"
                           >
                             <font-awesome-icon icon="sync-alt" />
@@ -775,7 +786,6 @@
                               class="form-control"
                               placeholder="Centro Comercial Plaza, Av.Principal, Calle 13, Valera, Trujillo"
                               v-model="sucursal.direction"
-                              required
                             />
                           </div>
                           <div class="form-group">
@@ -787,7 +797,6 @@
                               class="form-control"
                               placeholder="0800-6749141"
                               v-model="sucursal.numberContact"
-                              required
                             />
                           </div>
                           <div class="form-group">
@@ -798,7 +807,6 @@
                               class="form-control textarea-form-admin"
                               placeholder="iFrame Google Maps"
                               v-model="sucursal.googleMaps"
-                              required
                             >
                             </textarea>
                           </div>
@@ -920,7 +928,7 @@
                           </button>
                           <button
                             type="button"
-                            class="btn btn-success my-1 mx-1"
+                            class="btn btn-primary my-1 mx-1"
                             @click="editSucursal(sucursal._id)"
                           >
                             <font-awesome-icon icon="sync-alt" />
@@ -979,10 +987,16 @@ class Sucursal {
 }
 
 export default {
-  name: "app",
   data() {
     return {
       loading: true,
+      message: {
+        value: false,
+        content: "",
+        class: "",
+        icon: "",
+        iconPrefix: ""
+      },
       product: {
         productName: "",
         productCategory: "",
@@ -1026,6 +1040,10 @@ export default {
     this.getSucursals();
   },
   methods: {
+    /////// Close Alert Message ////////////////////////
+    closeMessage() {
+      this.message.value = false;
+    },
     ///////   Products   ////////////////////////////////////////////
     async getProducts() {
       const products = await productController.getProducts();
@@ -1033,6 +1051,23 @@ export default {
       this.products = products;
     },
     async addProduct() {
+      if (
+        !this.product.productName ||
+        !this.product.productCategory ||
+        !this.product.productType ||
+        !this.product.productDescription ||
+        !this.product.salePrice ||
+        !this.product.disponibility ||
+        !this.product.image
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
       const fd = new FormData();
       fd.append("productName", this.product.productName);
       fd.append("productType", this.product.productType);
@@ -1042,18 +1077,50 @@ export default {
       fd.append("disponibility", this.product.disponibility);
       fd.append("image", this.product.image);
 
-      await productController.addProduct(fd);
-      this.getProducts();
-      this.product = new Product();
-      this.varShowFormAddProduct = false;
-      this.varShowTableProducts = true;
+      const res = await productController.addProduct(fd);
+      if (res.msg == "product_saved") {
+        this.getProducts();
+        this.product = new Product();
+        this.varShowFormAddProduct = false;
+        this.varShowTableProducts = true;
+        return (this.message = {
+          content: "El producto fue agregado con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async onFileImg(event) {
       this.product.image = event.target.files[0];
     },
     async deleteProduct(id) {
-      await productController.deleteProduct(id);
-      this.getProducts();
+      const res = await productController.deleteProduct(id);
+      if (res.msg == "product_deleted") {
+        this.getProducts();
+        return (this.message = {
+          content: "El producto fue eliminado con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async editProduct(id) {
       const data = await productController.getProduct(id);
@@ -1067,6 +1134,41 @@ export default {
       );
       this.productToEdit = data._id;
       this.showFormEditProduct();
+    },
+    async sendEditProduct() {
+      const fd = new FormData();
+      fd.append("productName", this.product.productName);
+      fd.append("productType", this.product.productType);
+      fd.append("productCategory", this.product.productCategory);
+      fd.append("productDescription", this.product.productDescription);
+      fd.append("salePrice", this.product.salePrice);
+      fd.append("disponibility", this.product.disponibility);
+      fd.append("image", this.product.image);
+
+      const res = await productController.sendEditProduct(
+        this.productToEdit,
+        fd
+      );
+      if (res.msg == "product_updated") {
+        this.getProducts();
+        this.product = new Product();
+        this.varShowFormEditProduct = false;
+        this.varShowTableProducts = true;
+        return (this.message = {
+          content: "El producto fue actualizado con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     showFormAddProduct() {
       this.varShowFormAddProduct = true;
@@ -1100,22 +1202,6 @@ export default {
       this.varShowTableProducts = true;
       this.product = new Product();
     },
-    async sendEditProduct() {
-      const fd = new FormData();
-      fd.append("productName", this.product.productName);
-      fd.append("productType", this.product.productType);
-      fd.append("productCategory", this.product.productCategory);
-      fd.append("productDescription", this.product.productDescription);
-      fd.append("salePrice", this.product.salePrice);
-      fd.append("disponibility", this.product.disponibility);
-      fd.append("image", this.product.image);
-
-      await productController.sendEditProduct(this.productToEdit, fd);
-      this.getProducts();
-      this.product = new Product();
-      this.varShowFormEditProduct = false;
-      this.varShowTableProducts = true;
-    },
     showTableProducts() {
       this.varShowTableProducts = true;
       this.varShowFormEditProduct = false;
@@ -1134,21 +1220,68 @@ export default {
       this.categories = categories;
     },
     async addCategory() {
+      if (
+        !this.category.categoryName ||
+        !this.category.categoryDescription ||
+        !this.category.categoryUrl ||
+        !this.category.image
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
+
       const fd = new FormData();
       fd.append("categoryName", this.category.categoryName);
       fd.append("categoryDescription", this.category.categoryDescription);
       fd.append("categoryUrl", this.category.categoryUrl);
       fd.append("image", this.category.image);
 
-      await categoryController.addCategory(fd);
-      this.getCategories();
-      this.category = new Category();
-      this.varShowFormAddCategory = false;
-      this.varShowTableCategory = true;
+      const res = await categoryController.addCategory(fd);
+      if (res.msg == "category_saved") {
+        this.getCategories();
+        this.category = new Category();
+        this.varShowFormAddCategory = false;
+        this.varShowTableCategory = true;
+        return (this.message = {
+          content: "La categoria fue agregada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async deleteCategory(id) {
-      await categoryController.deleteCategory(id);
-      this.getCategories();
+      const res = await categoryController.deleteCategory(id);
+      if (res.msg == "category_deleted") {
+        this.getCategories();
+        return (this.message = {
+          content: "La categoria fue eliminada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async editCategory(id) {
       const data = await categoryController.getCategory(id);
@@ -1159,6 +1292,38 @@ export default {
       );
       this.categoryToEdit = data._id;
       this.showFormEditCategory();
+    },
+    async sendEditCategory() {
+      const fd = new FormData();
+      fd.append("categoryName", this.category.categoryName);
+      fd.append("categoryDescription", this.category.categoryDescription);
+      fd.append("categoryUrl", this.category.categoryUrl);
+      fd.append("image", this.category.image);
+
+      const res = await categoryController.sendEditCategory(
+        this.categoryToEdit,
+        fd
+      );
+      if (res.msg == "category_updated") {
+        this.getCategories();
+        this.category = new Category();
+        this.varShowFormEditCategory = false;
+        this.varShowTableCategory = true;
+        return (this.message = {
+          content: "La categoria fue actulizada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async onFileImgCategory(event) {
       this.category.image = event.target.files[0];
@@ -1206,19 +1371,6 @@ export default {
       this.varShowTableCategory = true;
       this.category = new Category();
     },
-    async sendEditCategory() {
-      const fd = new FormData();
-      fd.append("categoryName", this.category.categoryName);
-      fd.append("categoryDescription", this.category.categoryDescription);
-      fd.append("categoryUrl", this.category.categoryUrl);
-      fd.append("image", this.category.image);
-
-      await categoryController.sendEditCategory(this.categoryToEdit, fd);
-      this.getCategories();
-      this.category = new Category();
-      this.varShowFormEditCategory = false;
-      this.varShowTableCategory = true;
-    },
     ///////// SUCURSALS //////////////////////////////////////
     async getSucursals() {
       const sucursals = await sucursalController.getSucursals();
@@ -1226,19 +1378,69 @@ export default {
       this.sucursals = sucursals;
     },
     async addSucursal() {
+      if (
+        !this.sucursal.direction ||
+        !this.sucursal.numberContact ||
+        !this.sucursal.googleMaps
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
+
       const fd = new FormData();
       fd.append("direction", this.sucursal.direction);
       fd.append("numberContact", this.sucursal.numberContact);
       fd.append("googleMaps", this.sucursal.googleMaps);
 
-      await sucursalController.addSucursal(fd);
-      this.getSucursals();
-      this.sucursal = new Sucursal();
-      this.varShowFormAddSucursal = false;
-      this.varShowTableSucursals = true;
+      const res = await sucursalController.addSucursal(fd);
+      if (res.msg == "sucursal_saved") {
+        this.getSucursals();
+        this.sucursal = new Sucursal();
+        this.varShowFormAddSucursal = false;
+        this.varShowTableSucursals = true;
+        return (this.message = {
+          content: "La categoria fue actulizada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     async deleteSucursal(id) {
-      await sucursalController.deleteSucursal(id);
+      const res = await sucursalController.deleteSucursal(id);
+      if (res.msg == "sucursal_deleted") {
+        this.getSucursals();
+        this.sucursal = new Sucursal();
+        this.varShowFormEditSucursal = false;
+        this.varShowTableSucursals = true;
+        return (this.message = {
+          content: "La categoria fue eliminada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
       this.getSucursals();
     },
     async editSucursal(id) {
@@ -1257,11 +1459,30 @@ export default {
       fd.append("numberContact", this.sucursal.numberContact);
       fd.append("googleMaps", this.sucursal.googleMaps);
 
-      await sucursalController.sendEditSucursal(this.sucursalToEdit, fd);
-      this.getSucursals();
-      this.sucursal = new Sucursal();
-      this.varShowFormEditSucursal = false;
-      this.varShowTableSucursals = true;
+      const res = await sucursalController.sendEditSucursal(
+        this.sucursalToEdit,
+        fd
+      );
+      if (res.msg == "sucursal_updated") {
+        this.getSucursals();
+        this.sucursal = new Sucursal();
+        this.varShowFormEditSucursal = false;
+        this.varShowTableSucursals = true;
+        return (this.message = {
+          content: "La categoria fue actulizada con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el producto",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
     },
     showFormAddSucursal() {
       this.varShowFormAddSucursal = true;

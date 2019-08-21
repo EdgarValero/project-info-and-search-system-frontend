@@ -13,14 +13,14 @@ class sucursalController {
       body: input
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   }
   async deleteSucursal(id) {
     const response = await fetch(`${this.URI}/delete-sucursal/${id}`, {
       method: "DELETE"
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   }
   async getSucursal(id) {
     const response = await fetch(`${this.URI}/${id}`);
@@ -33,7 +33,7 @@ class sucursalController {
       body: input
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   }
 }
 
