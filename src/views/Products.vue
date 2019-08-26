@@ -69,7 +69,7 @@
           </h2>
           <div class="row mx-5 d-flex justify-content-center">
             <div
-              class="col-12 col-md-6 col-lg-4 col-xl-3 mt-3"
+              class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-3 mt-3"
               v-for="product in displayedProducts"
               :key="product._id"
             >
