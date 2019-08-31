@@ -26,7 +26,7 @@
           </div>
           <div class="carousel-item">
             <img
-              src="../assets/img/banner-2.jpg"
+              src="../assets/img/banner-2.png"
               class="d-block w-100"
               alt=""
             />

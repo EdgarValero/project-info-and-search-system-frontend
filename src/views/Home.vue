@@ -54,43 +54,60 @@
           <hooper-navigation slot="hooper-addons"></hooper-navigation>
         </hooper>
       </section>
-      <!--Category section Section-->
-      <section class="mt3- mb-2">
-        <h3 class="h1 d-flex justify-content-center text-center px-3">
-          Categorias de Productos
-        </h3>
-        <div class="row mx-4 d-flex justify-content-center">
-          <div
-            class="col-12 col-md-6 col-lg-4 col-xl-3 mt-2"
-            v-for="category in categories"
-            :key="category._id"
-          >
-            <router-link
-              :to="`${category.categoryUrl}`"
-              style="text-decoration: none;"
-              class="img-hover"
-            >
-              <div class="card shadow">
-                <div
-                  class="card-header bg-success text-center text-white d-md-none"
+      <div class="row mx-0 px-3">
+        <div class="col-12 col-lg-9">
+          <!--Category section Section-->
+          <section class="mt3- mb-2">
+            <h3 class="h1 d-flex justify-content-center text-center px-3">
+              Categorias de Productos
+            </h3>
+            <div class="row mx-4 d-flex justify-content-center">
+              <div
+                class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mt-2 px-1"
+                v-for="category in categories"
+                :key="category._id"
+              >
+                <router-link
+                  :to="`${category.categoryUrl}`"
+                  style="text-decoration: none;"
+                  class="img-hover"
                 >
-                  <h3>
-                    {{ category.categoryName }}
-                  </h3>
-                </div>
-                <img
-                  :src="`http://localhost:3000${category.imagePath}`"
-                  class="img-fluid"
-                  style="height:250px;"
-                />
-                <div class="overlay">
-                  <div class="text">{{ category.categoryName }}</div>
-                </div>
+                  <div class="card shadow">
+                    <div
+                      class="card-header bg-success text-center text-white d-md-none"
+                    >
+                      <h3>
+                        {{ category.categoryName }}
+                      </h3>
+                    </div>
+                    <img
+                      :src="`http://localhost:3000${category.imagePath}`"
+                      class="img-fluid"
+                      style="height:250px;"
+                    />
+                    <div class="overlay">
+                      <div class="text">{{ category.categoryName }}</div>
+                    </div>
+                  </div>
+                </router-link>
               </div>
-            </router-link>
-          </div>
+            </div>
+          </section>
         </div>
-      </section>
+        <div class="col-lg-3 d-none-publicidad">
+          <img
+            src="../assets/img/publicidad-derecha1.jpg"
+            class="img-fluid my-2"
+          />
+          <img
+            src="../assets/img/publicidad-derecha2.jpg"
+            class="img-fluid my-2"
+          />
+        </div>
+      </div>
+      <div class="col-12 p-1 p-md-3">
+        <img src="../assets/img/publicidad-abajo.png" class="img-fluid" />
+      </div>
     </div>
     <Footer />
   </div>
@@ -199,6 +216,11 @@ export default {
 }
 .d-none-product-slide {
   @media screen and (max-width: 576px) {
+    display: none;
+  }
+}
+.d-none-publicidad {
+  @media screen and (max-width: 992px) {
     display: none;
   }
 }
