@@ -19,11 +19,6 @@ export default new Router({
       component: () => import("./views/Sucursals.vue")
     },
     {
-      path: "/about",
-      name: "about",
-      component: () => import("./views/About.vue")
-    },
-    {
       path: "/admin/dashboard",
       name: "dashboard",
       component: () => import("./views/admin/Dashboard.vue")

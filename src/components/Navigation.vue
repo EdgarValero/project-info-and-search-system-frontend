@@ -68,11 +68,6 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">
-                Acerca
-              </router-link>
-            </li>
-            <li class="nav-item">
               <router-link class="nav-link" to="/admin/dashboard">
                 Dashboard
               </router-link>
