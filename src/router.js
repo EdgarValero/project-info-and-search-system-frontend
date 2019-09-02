@@ -26,7 +26,7 @@ export default new Router({
     {
       path: "/admin/signin",
       name: "signin",
-      component: () => import("./views/admin/SignIn-Admin.vue")
+      component: () => import("./views/admin/SignInAdmin.vue")
     },
     {
       path: "/productos",
@@ -36,27 +36,27 @@ export default new Router({
     {
       path: "/producto/:id",
       name: "single-product",
-      component: () => import("./views/Single-Product.vue")
+      component: () => import("./views/SingleProduct.vue")
     },
     {
       path: "/productos-buscados/:searchProduct",
       name: "products-searchs",
-      component: () => import("./views/Product-Search.vue")
+      component: () => import("./views/ProductSearch.vue")
     },
     {
       path: "/categoria/alimentos-basicos",
       name: "categoria-alimentos-basicos",
-      component: () => import("./views/categories/Alimentos-Basicos.vue")
+      component: () => import("./views/categories/AlimentosBasicos.vue")
     },
     {
       path: "/categoria/dulces-y-snacks",
       name: "categoria-dulces-y-snacks",
-      component: () => import("./views/categories/Dulces-y-Snacks.vue")
+      component: () => import("./views/categories/DulcesSnacks.vue")
     },
     {
       path: "/categoria/cuidado-personal",
       name: "categoria-cuidado-personal",
-      component: () => import("./views/categories/Cuidado-Personal.vue")
+      component: () => import("./views/categories/CuidadoPersonal.vue")
     },
     {
       path: "/categoria/cereales",
@@ -71,12 +71,12 @@ export default new Router({
     {
       path: "/categoria/bebidas-liquidas",
       name: "categoria-bebidas-liquidas",
-      component: () => import("./views/categories/Bebidas-Liquidas.vue")
+      component: () => import("./views/categories/BebidasLiquidas.vue")
     },
     {
       path: "/categoria/bebidas-en-polvo",
       name: "categoria-bebidas-en-polvo",
-      component: () => import("./views/categories/Bebidas-en-Polvo.vue")
+      component: () => import("./views/categories/BebidasEnPolvo.vue")
     },
     {
       path: "/categoria/yogurts",
