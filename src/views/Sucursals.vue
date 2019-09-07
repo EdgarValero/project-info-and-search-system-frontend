@@ -1,22 +1,26 @@
 <template>
   <div class="sucursals">
     <Navigation />
-    <div
-      class="bg-primary text-white mb-4 mt-8 py-1"
-      style="border-top: solid 5px #28a745; border-bottom: solid 5px #28a745;"
-    >
-      <h2 class="h1 px-3 mx-3">
-        Sucursales
-      </h2>
+    <div class="text-white mb-5 mt-banner">
+      <img src="../assets/img/banner-sucursales.jpg" class="img-fluid" />
     </div>
-    <div class="row mx-1 mb-5" v-for="sucursal in sucursals" :key="sucursal">
-      <div class="col-12 col-md-4">
-        <ul>
-          <li>Dirrecion: {{ sucursal.direction }}</li>
-          <li>Telefono: {{ sucursal.numberContact }}</li>
-        </ul>
+    <div
+      class="row mx-2 px-2 mb-5 d-flex justify-content-center"
+      v-for="sucursal in sucursals"
+      :key="sucursal"
+    >
+      <div class="col-12 col-md-6">
+        <div class="info-sucursal">
+          <font-awesome-icon icon="map-marker-alt" /> {{ sucursal.address }}.
+        </div>
+        <div class="info-sucursal">
+          <font-awesome-icon icon="clock" /> {{ sucursal.officeHours }}.
+        </div>
+        <div class="info-sucursal">
+          <font-awesome-icon icon="phone" /> {{ sucursal.numberContact }}.
+        </div>
       </div>
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-md-6">
         <div v-html="`${sucursal.googleMaps}`"></div>
       </div>
     </div>
@@ -50,3 +54,13 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.info-sucursal {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+.mt-banner {
+  margin-top: 6.2rem;
+}
+</style>

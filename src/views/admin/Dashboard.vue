@@ -778,14 +778,25 @@
                       <div class="card-body">
                         <form @submit.prevent="addSucursal">
                           <div class="form-group">
-                            <label for="sucursal.direction"
+                            <label for="sucursal.address"
                               >Direccion de la Sucursal</label
                             >
                             <input
                               type="text"
                               class="form-control"
                               placeholder="Centro Comercial Plaza, Av.Principal, Calle 13, Valera, Trujillo"
-                              v-model="sucursal.direction"
+                              v-model="sucursal.address"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="sucursal.address"
+                              >Horario de Atención</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="8:00am hasta 10:00pm"
+                              v-model="sucursal.officeHours"
                             />
                           </div>
                           <div class="form-group">
@@ -846,14 +857,25 @@
                       <div class="card-body">
                         <form @submit.prevent="sendEditSucursal">
                           <div class="form-group">
-                            <label for="sucursal.direction"
+                            <label for="sucursal.address"
                               >Direccion de la Sucursal</label
                             >
                             <input
                               type="text"
                               class="form-control"
                               placeholder="Centro Comercial Plaza, Av.Principal, Calle 13, Valera, Trujillo"
-                              v-model="sucursal.direction"
+                              v-model="sucursal.address"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="sucursal.address"
+                              >Horario de Atención</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="8:00am hasta 10:00pm"
+                              v-model="sucursal.officeHours"
                             />
                           </div>
                           <div class="form-group">
@@ -910,14 +932,16 @@
                     <thead class="bg-primary text-center text-white">
                       <tr>
                         <th scope="col">Direccion de la Sucursal</th>
+                        <th scope="col">Horario de Atención</th>
                         <th scope="col">Numero de Contacto</th>
                         <th scope="col">Accion</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr v-for="sucursal in sucursals" :key="sucursal._id">
-                        <td>{{ sucursal.direction }}</td>
+                        <td>{{ sucursal.address }}</td>
                         <td>{{ sucursal.numberContact }}</td>
+                        <td>{{ sucursal.officeHours }}</td>
                         <td class="p-2">
                           <button
                             type="button"
@@ -952,41 +976,8 @@ import productController from "../../controllers/products.controller";
 import categoryController from "../../controllers/categories.controller";
 import sucursalController from "../../controllers/sucursals.controller";
 
-class Product {
-  constructor(
-    productName,
-    productType,
-    productCategory,
-    productDescription,
-    salePrice,
-    disponibility
-  ) {
-    this.productName = productName;
-    this.productType = productType;
-    this.productCategory = productCategory;
-    this.productDescription = productDescription;
-    this.salePrice = salePrice;
-    this.disponibility = disponibility;
-  }
-}
-
-class Category {
-  constructor(categoryName, categoryDescription, categoryUrl) {
-    this.categoryName = categoryName;
-    this.categoryDescription = categoryDescription;
-    this.categoryUrl = categoryUrl;
-  }
-}
-
-class Sucursal {
-  constructor(direction, numberContact, googleMaps) {
-    this.direction = direction;
-    this.numberContact = numberContact;
-    this.googleMaps = googleMaps;
-  }
-}
-
 export default {
+  name: "dashboard",
   data() {
     return {
       loading: true,
@@ -1023,7 +1014,8 @@ export default {
       varShowFormAddCategory: false,
       varShowFormEditCategory: false,
       sucursal: {
-        direction: "",
+        address: "",
+        officeHours: "",
         numberContact: "",
         googleMaps: ""
       },
@@ -1080,7 +1072,7 @@ export default {
       const res = await productController.addProduct(fd);
       if (res.msg == "product_saved") {
         this.getProducts();
-        this.product = new Product();
+        this.product = {};
         this.varShowFormAddProduct = false;
         this.varShowTableProducts = true;
         return (this.message = {
@@ -1124,14 +1116,14 @@ export default {
     },
     async editProduct(id) {
       const data = await productController.getProduct(id);
-      this.product = new Product(
-        data.productName,
-        data.productType,
-        data.productCategory,
-        data.productDescription,
-        data.salePrice,
-        data.disponibility
-      );
+      this.product = {
+        productName: data.productName,
+        productType: data.productType,
+        productCategory: data.productCategory,
+        productDescription: data.productDescription,
+        salePrice: data.salePrice,
+        disponibility: data.disponibility
+      };
       this.productToEdit = data._id;
       this.showFormEditProduct();
     },
@@ -1151,7 +1143,7 @@ export default {
       );
       if (res.msg == "product_updated") {
         this.getProducts();
-        this.product = new Product();
+        this.product = {};
         this.varShowFormEditProduct = false;
         this.varShowTableProducts = true;
         return (this.message = {
@@ -1171,6 +1163,7 @@ export default {
       });
     },
     showFormAddProduct() {
+      this.product = {};
       this.varShowFormAddProduct = true;
       this.varShowTableProducts = false;
       this.varShowFormEditProduct = false;
@@ -1184,7 +1177,7 @@ export default {
     cancelFormAddProduct() {
       this.varShowFormAddProduct = false;
       this.varShowTableProducts = true;
-      this.product = new Product();
+      this.product = {};
     },
     showFormEditProduct() {
       this.varShowFormEditProduct = true;
@@ -1200,7 +1193,7 @@ export default {
     cancelFormEditProduct() {
       this.varShowFormEditProduct = false;
       this.varShowTableProducts = true;
-      this.product = new Product();
+      this.product = {};
     },
     showTableProducts() {
       this.varShowTableProducts = true;
@@ -1244,7 +1237,7 @@ export default {
       const res = await categoryController.addCategory(fd);
       if (res.msg == "category_saved") {
         this.getCategories();
-        this.category = new Category();
+        this.category = {};
         this.varShowFormAddCategory = false;
         this.varShowTableCategory = true;
         return (this.message = {
@@ -1285,11 +1278,11 @@ export default {
     },
     async editCategory(id) {
       const data = await categoryController.getCategory(id);
-      this.category = new Category(
-        data.categoryName,
-        data.categoryDescription,
-        data.categoryUrl
-      );
+      this.category = {
+        categoryName: data.categoryName,
+        categoryDescription: data.categoryDescription,
+        categoryUrl: data.categoryUrl
+      };
       this.categoryToEdit = data._id;
       this.showFormEditCategory();
     },
@@ -1306,7 +1299,7 @@ export default {
       );
       if (res.msg == "category_updated") {
         this.getCategories();
-        this.category = new Category();
+        this.category = {};
         this.varShowFormEditCategory = false;
         this.varShowTableCategory = true;
         return (this.message = {
@@ -1340,6 +1333,7 @@ export default {
       this.varShowFormEditSucursal = false;
     },
     showFormAddCategory() {
+      this.category = {};
       this.varShowFormAddCategory = true;
       this.varShowTableProducts = false;
       this.varShowFormEditProduct = false;
@@ -1353,7 +1347,7 @@ export default {
     cancelFormAddCategory() {
       this.varShowFormAddCategory = false;
       this.varShowTableCategory = true;
-      this.category = new Category();
+      this.category = {};
     },
     showFormEditCategory() {
       this.varShowFormEditCategory = true;
@@ -1369,7 +1363,7 @@ export default {
     cancelFormEditCategory() {
       this.varShowFormEditCategory = false;
       this.varShowTableCategory = true;
-      this.category = new Category();
+      this.category = {};
     },
     ///////// SUCURSALS //////////////////////////////////////
     async getSucursals() {
@@ -1379,7 +1373,8 @@ export default {
     },
     async addSucursal() {
       if (
-        !this.sucursal.direction ||
+        !this.sucursal.address ||
+        !this.sucursal.officeHours ||
         !this.sucursal.numberContact ||
         !this.sucursal.googleMaps
       ) {
@@ -1393,18 +1388,19 @@ export default {
       }
 
       const fd = new FormData();
-      fd.append("direction", this.sucursal.direction);
+      fd.append("address", this.sucursal.address);
+      fd.append("officeHours", this.sucursal.officeHours);
       fd.append("numberContact", this.sucursal.numberContact);
       fd.append("googleMaps", this.sucursal.googleMaps);
 
       const res = await sucursalController.addSucursal(fd);
       if (res.msg == "sucursal_saved") {
         this.getSucursals();
-        this.sucursal = new Sucursal();
+        this.sucursal = {};
         this.varShowFormAddSucursal = false;
         this.varShowTableSucursals = true;
         return (this.message = {
-          content: "La categoria fue actulizada con éxito!",
+          content: "La categoria fue agregada con éxito!",
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
@@ -1423,7 +1419,6 @@ export default {
       const res = await sucursalController.deleteSucursal(id);
       if (res.msg == "sucursal_deleted") {
         this.getSucursals();
-        this.sucursal = new Sucursal();
         this.varShowFormEditSucursal = false;
         this.varShowTableSucursals = true;
         return (this.message = {
@@ -1441,21 +1436,22 @@ export default {
         iconPrefix: "fas",
         value: true
       });
-      this.getSucursals();
     },
     async editSucursal(id) {
       const data = await sucursalController.getSucursal(id);
-      this.sucursal = new Sucursal(
-        data.direction,
-        data.numberContact,
-        data.googleMaps
-      );
+      this.sucursal = {
+        address: data.address,
+        officeHours: data.officeHours,
+        numberContact: data.numberContact,
+        googleMaps: data.googleMaps
+      };
       this.sucursalToEdit = data._id;
       this.showFormEditSucursal();
     },
     async sendEditSucursal() {
       const fd = new FormData();
-      fd.append("direction", this.sucursal.direction);
+      fd.append("address", this.sucursal.address);
+      fd.append("officeHours", this.sucursal.officeHours);
       fd.append("numberContact", this.sucursal.numberContact);
       fd.append("googleMaps", this.sucursal.googleMaps);
 
@@ -1465,7 +1461,7 @@ export default {
       );
       if (res.msg == "sucursal_updated") {
         this.getSucursals();
-        this.sucursal = new Sucursal();
+        this.sucursal = {};
         this.varShowFormEditSucursal = false;
         this.varShowTableSucursals = true;
         return (this.message = {
@@ -1485,6 +1481,7 @@ export default {
       });
     },
     showFormAddSucursal() {
+      this.sucursal = {};
       this.varShowFormAddSucursal = true;
       this.varShowTableSucursals = false;
       this.varShowFormEditCategory = false;
@@ -1498,7 +1495,7 @@ export default {
     cancelFormAddSucursal() {
       this.varShowFormAddSucursal = false;
       this.varShowTableSucursals = true;
-      this.sucursal = new Sucursal();
+      this.sucursal = {};
     },
     showTableSucursals() {
       this.varShowTableSucursals = true;
@@ -1525,7 +1522,7 @@ export default {
     calcelFormEditSucursal() {
       this.varShowFormEditSucursal = false;
       this.varShowTableSucursals = true;
-      this.sucursal = new Sucursal();
+      this.sucursal = {};
     }
   }
 };
