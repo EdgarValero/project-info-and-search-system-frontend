@@ -2,28 +2,24 @@
   <div class="dashboard">
     <!-- Alert Message -->
     <transition name="slide-fade">
-      <div v-if="message.value">
-        <div class="row">
-          <div class="col-10 col-md-6 mt-3 fixed-top ml-auto">
-            <div :class="['alert p-2 text-center', message.class]" role="alert">
-              <strong
-                ><font-awesome-icon
-                  :icon="[message.iconPrefix, message.icon]"
-                  class="mr-2"
-                />
-                {{ message.content }}</strong
-              >
-              <button type="button" class="close" @click="closeMessage">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          </div>
+      <div v-if="message.value" class="alert-fixed-top">
+        <div :class="['alert p-alert', message.class]" role="alert">
+          <strong
+            ><font-awesome-icon
+              :icon="[message.iconPrefix, message.icon]"
+              class="mr-2"
+            />
+            {{ message.content }}
+          </strong>
+          <button type="button" class="close" @click="closeMessage">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
       </div>
     </transition>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 col-md-3 col-lg-3 col-xl-2 p-3 bg-dark text-white">
+        <div class="col-12 col-md-3 p-3 bg-dark text-white">
           <div class="d-inline-block">
             <button
               class="btn btn-success d-md-none mb-2 collapsed"
@@ -52,10 +48,15 @@
               </svg>
             </button>
           </div>
-          <div class="d-inline-flex ml-3">
-            <font-awesome-icon icon="tachometer-alt" style="font-size:25px;" />
-            <h4>Admin</h4>
-            <strong>Dashboard</strong>
+          <div class="d-flex justify-content-center">
+            <div class="d-inline-flex">
+              <font-awesome-icon
+                icon="tachometer-alt"
+                style="font-size:25px;"
+              />
+              <h4>Admin</h4>
+              <strong>Dashboard</strong>
+            </div>
           </div>
           <nav class="bd-links collapse p-3" id="NavDashboard">
             <ul class="navbar-nav">
@@ -152,10 +153,7 @@
             </ul>
           </nav>
         </div>
-        <main
-          role="main"
-          class="col-12 col-md-9 col-lg-9 col-xl-10 ml-sm-auto px-4 pb-5"
-        >
+        <main role="main" class="col-12 col-md-9 ml-sm-auto px-4 pb-5">
           <div v-if="loading">
             <h2>
               Esta cargando la informacion de los productos en el dashboard....
@@ -1527,3 +1525,16 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.alert-fixed-top {
+  position: fixed;
+  top: 2%;
+  right: 1%;
+  bottom: auto;
+  left: auto;
+  z-index: 2000;
+  .p-alert {
+    padding: 0.75rem;
+  }
+}
+</style>
