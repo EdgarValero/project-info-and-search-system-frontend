@@ -12,7 +12,7 @@
             {{ message.content }}
           </strong>
           <button type="button" class="close" @click="closeMessage">
-            <span aria-hidden="true">&times;</span>
+            <span class="m-2" aria-hidden="true">&times;</span>
           </button>
         </div>
       </div>
@@ -153,7 +153,10 @@
             </ul>
           </nav>
         </div>
-        <main role="main" class="col-12 col-md-9 ml-sm-auto px-4 pb-5">
+        <main
+          role="main"
+          class="col-12 col-md-9 ml-sm-auto px-main-dashboard pb-5"
+        >
           <div v-if="loading">
             <h2>
               Esta cargando la informacion de los productos en el dashboard....
@@ -163,13 +166,18 @@
             <div
               class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
             >
-              <h1 class="h2">
-                <font-awesome-icon
-                  icon="tachometer-alt"
-                  style="font-size:30px;"
-                />
-                Dashboard
-              </h1>
+              <router-link to="/" class="text-panel-dashboard">
+                <font-awesome-icon icon="home" />
+                Home
+              </router-link>
+              <router-link to="/productos" class="text-panel-dashboard">
+                <font-awesome-icon icon="list-alt" />
+                Productos
+              </router-link>
+              <router-link to="/sucursales" class="text-panel-dashboard">
+                <font-awesome-icon icon="map-marker-alt" />
+                Sucursales
+              </router-link>
             </div>
             <!--FORM ADD PRODUCT-->
             <transition name="slide-fade">
@@ -1536,5 +1544,14 @@ export default {
   .p-alert {
     padding: 0.75rem;
   }
+}
+.px-main-dashboard {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.text-panel-dashboard {
+  font-size: 1.3rem;
+  text-decoration: none !important;
 }
 </style>

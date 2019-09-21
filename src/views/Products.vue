@@ -53,7 +53,7 @@
           </ul>
         </nav>
       </div>
-      <main class="col-12 col-md-9 col-lg-9 col-xl-10 ml-sm-auto px-4">
+      <main class="col-12 col-md-9 col-lg-9 col-xl-10 ml-sm-auto">
         <!-- View Loading-->
         <div v-if="loading" style="margin:100px 0;">
           <h2

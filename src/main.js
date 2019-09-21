@@ -22,7 +22,8 @@ import {
   faExclamationTriangle,
   faMapMarkerAlt,
   faPhone,
-  faClock
+  faClock,
+  faHome
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -45,7 +46,8 @@ library.add(
   faExclamationTriangle,
   faMapMarkerAlt,
   faPhone,
-  faClock
+  faClock,
+  faHome
 );
 library.add(faFacebook, faTwitter, faInstagram);
 library.add(faThumbsUp);
