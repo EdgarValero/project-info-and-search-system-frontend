@@ -7,7 +7,7 @@
     <div
       class="row mx-2 px-2 mb-5 d-flex justify-content-center"
       v-for="sucursal in sucursals"
-      :key="sucursal"
+      :key="sucursal._id"
     >
       <div class="col-12 col-md-6">
         <div class="info-sucursal">
