@@ -178,6 +178,10 @@
                 <font-awesome-icon icon="map-marker-alt" />
                 Sucursales
               </router-link>
+              <router-link to="/logout" class="text-panel-dashboard">
+                <font-awesome-icon icon="sign-out-alt" />
+                Logout
+              </router-link>
             </div>
             <!--FORM ADD PRODUCT-->
             <transition name="slide-fade">

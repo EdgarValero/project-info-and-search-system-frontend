@@ -23,7 +23,8 @@ import {
   faMapMarkerAlt,
   faPhone,
   faClock,
-  faHome
+  faHome,
+  faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -47,7 +48,8 @@ library.add(
   faMapMarkerAlt,
   faPhone,
   faClock,
-  faHome
+  faHome,
+  faSignOutAlt
 );
 library.add(faFacebook, faTwitter, faInstagram);
 library.add(faThumbsUp);
