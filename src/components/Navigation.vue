@@ -67,7 +67,7 @@
                 Sucursales
               </router-link>
             </li>
-            <li class="nav-item">
+            <li v-if="authenticate" class="nav-item">
               <router-link class="nav-link" to="/admin/dashboard">
                 Dashboard
               </router-link>
@@ -85,6 +85,15 @@ export default {
     return {
       search: ""
     };
+  },
+  computed: {
+    authenticate() {
+      if (localStorage.auth_token) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   methods: {
     searchProduct() {

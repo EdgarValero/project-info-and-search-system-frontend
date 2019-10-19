@@ -57,6 +57,7 @@
 </template>
 <script>
 import Navigation from "@/components/Navigation.vue";
+import { onLogin } from "@/utils/auth.js";
 export default {
   components: {
     Navigation
@@ -120,9 +121,9 @@ export default {
           value: true
         });
       }
+      onLogin(token);
       if (!msg) {
         this.$router.push("/admin/dashboard");
-        console.log("Usuario Logeado");
       }
     },
     closeMessage() {

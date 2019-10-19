@@ -178,10 +178,10 @@
                 <font-awesome-icon icon="map-marker-alt" />
                 Sucursales
               </router-link>
-              <router-link to="/logout" class="text-panel-dashboard">
+              <button class="btn btn-primary" @click="logout">
                 <font-awesome-icon icon="sign-out-alt" />
                 Logout
-              </router-link>
+              </button>
             </div>
             <!--FORM ADD PRODUCT-->
             <transition name="slide-fade">
@@ -982,9 +982,10 @@
 </template>
 
 <script>
-import productController from "../../controllers/products.controller";
-import categoryController from "../../controllers/categories.controller";
-import sucursalController from "../../controllers/sucursals.controller";
+import productController from "@/controllers/products.controller";
+import categoryController from "@/controllers/categories.controller";
+import sucursalController from "@/controllers/sucursals.controller";
+import { onLogout } from "@/utils/auth.js";
 
 export default {
   name: "dashboard",
@@ -1042,6 +1043,10 @@ export default {
     this.getSucursals();
   },
   methods: {
+    logout() {
+      onLogout();
+      this.$router.push("/");
+    },
     /////// Close Alert Message ////////////////////////
     closeMessage() {
       this.message.value = false;
