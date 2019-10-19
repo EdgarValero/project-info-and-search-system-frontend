@@ -89,28 +89,36 @@ export default {
       const msg = data.msg;
       const token = data.token;
       if (msg === "intro_your_email") {
-        this.message.content = "Intoduzca su correo electrico";
-        this.message.class = "custom-alert-danger";
-        this.message.icon = "exclamation-triangle";
-        this.message.value = true;
+        return (this.message = {
+          content: "Intoduzca su correo electrico",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          value: true
+        });
       }
       if (msg === "incorrect_password") {
-        this.message.content = "Su contraseña es incorrecta";
-        this.message.class = "custom-alert-danger";
-        this.message.icon = "exclamation-triangle";
-        this.message.value = true;
+        return (this.message = {
+          content: "Su contraseña es incorrecta",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          value: true
+        });
       }
       if (msg === "intro_your_password") {
-        this.message.content = "Introduzca su contraseña";
-        this.message.class = "custom-alert-danger";
-        this.message.icon = "exclamation-triangle";
-        this.message.value = true;
+        return (this.message = {
+          content: "Introduzca su contraseña",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          value: true
+        });
       }
       if (msg === "user_not_found") {
-        this.message.content = "Usuario no existe!";
-        this.message.class = "custom-alert-danger";
-        this.message.icon = "exclamation-triangle";
-        this.message.value = true;
+        return (this.message = {
+          content: "Usuario no existe!",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          value: true
+        });
       }
       if (!msg) {
         this.$router.push("/admin/dashboard");
