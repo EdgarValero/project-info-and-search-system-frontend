@@ -1,6 +1,6 @@
 <template>
-  <div class="footer bg-dark p-0 mt-2" style="border-top: solid 5px #28a745;">
-    <footer class="row text-white mx-3 mt-1">
+  <div class="p-0 mt-2" style="border-top: solid 5px #007bff;">
+    <!-- <footer class="row text-white mx-3 mt-1">
       <div class="col-12 col-md-4">
         <h4 class="text-center mt-2">Categorías</h4>
         <ul class="navbar-nav text-center">
@@ -124,11 +124,8 @@
           </li>
         </ul>
       </div>
-    </footer>
-    <div
-      class="bg-success pt-4 pb-1 px-2 m-0 mt-2 text-white"
-      style="border-bottom: solid 8px #007bff;"
-    >
+    </footer> -->
+    <div class="bg-success pt-4 pb-2 px-2 m-0 text-white">
       <div class="row mx-3 text-center">
         <div class="col-12 col-md-4">
           <strong> Sistema de Informacion y Busqueda 2019 &copy;</strong>

@@ -229,7 +229,7 @@
                                 v-model="product.productCategory"
                                 class="form-control"
                               >
-                                <option selected="selected" value="" disabled>
+                                <option selected disabled>
                                   Seleccionar categoria del producto
                                 </option>
                                 <option value="alimentos basicos" selected
@@ -266,7 +266,7 @@
                               <input
                                 type="number"
                                 class="form-control"
-                                placeholder="Sale Price"
+                                placeholder="Precio"
                                 v-model="product.salePrice"
                               />
                             </div>
@@ -280,7 +280,7 @@
                                 v-model="product.disponibility"
                                 class="form-control"
                               >
-                                <option selected="selected" value="" disabled>
+                                <option selected disabled>
                                   Seleccionar disponibilidad del producto
                                 </option>
                                 <option value="disponible" selected
@@ -498,7 +498,7 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Editar Producto
+                              Guardar Cambios
                               <font-awesome-icon icon="sync-alt" />
                             </button>
                             <button
@@ -519,7 +519,7 @@
             <!--PRODUCT TABLE-->
             <transition name="slide-fade">
               <div v-if="varShowTableProducts">
-                <h2>Tabla de Productos</h2>
+                <h2>Productos</h2>
                 <div class="table-responsive">
                   <table class="table table-bordered table-sm text-center">
                     <thead class="bg-primary text-white">
@@ -593,7 +593,7 @@
                             >
                             <textarea
                               class="form-control textarea-form-admin"
-                              placeholder="Category Description"
+                              placeholder="Descripcion de la Categoria"
                               v-model="category.categoryDescription"
                             >
                             </textarea>
@@ -679,7 +679,7 @@
                             >
                             <textarea
                               class="form-control"
-                              placeholder="Category Description"
+                              placeholder="Descripcion de la Categoria"
                               v-model="category.categoryDescription"
                             >
                             </textarea>
@@ -715,7 +715,7 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Editar Categoria
+                              Guardar Cambios
                               <font-awesome-icon icon="sync-alt" />
                             </button>
                             <button
@@ -736,7 +736,7 @@
             <!--CATEGORIES TABLE-->
             <transition name="slide-fade">
               <div v-if="varShowTableCategory">
-                <h2>Tabla de Categorias de Productos</h2>
+                <h2>Categorias de Productos</h2>
                 <div class="table-responsive">
                   <table class="table table-bordered table-sm text-center">
                     <thead class="bg-primary text-center text-white">
@@ -915,7 +915,7 @@
                               type="submit"
                               class="btn btn-primary btn-block"
                             >
-                              Editar Sucursal
+                              Guardar Cambios
                               <font-awesome-icon icon="sync-alt" />
                             </button>
                             <button
@@ -936,14 +936,14 @@
             <!--SUCURSALS TABLE-->
             <transition name="slide-fade">
               <div v-if="varShowTableSucursals">
-                <h2>Tabla de Sucursales</h2>
+                <h2>Sucursales</h2>
                 <div class="table-responsive">
                   <table class="table table-bordered table-sm text-center">
                     <thead class="bg-primary text-center text-white">
                       <tr>
                         <th scope="col">Direccion de la Sucursal</th>
-                        <th scope="col">Horario de Atención</th>
                         <th scope="col">Numero de Contacto</th>
+                        <th scope="col">Horario de Atención</th>
                         <th scope="col">Accion</th>
                       </tr>
                     </thead>

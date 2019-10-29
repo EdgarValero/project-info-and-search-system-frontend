@@ -65,7 +65,7 @@
         <!--View Products-->
         <div v-else>
           <h2 class="h1 d-flex justify-content-center mt-3 text-center px-3">
-            Todos los Productos
+            Productos
           </h2>
           <div class="row mx-5 d-flex justify-content-center">
             <div

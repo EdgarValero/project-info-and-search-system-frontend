@@ -37,21 +37,33 @@ html {
 }
 
 .footer-icon-facebook {
-  font-size: 3rem;
+  font-size: 2.9rem;
   color: #fff;
   margin: 0 0.5rem;
+}
+
+.footer-icon-facebook:hover {
+  font-size: 3rem;
 }
 
 .footer-icon-twitter {
-  font-size: 3rem;
+  font-size: 2.9rem;
   color: #fff;
   margin: 0 0.5rem;
 }
 
-.footer-icon-instagram {
+.footer-icon-twitter:hover {
   font-size: 3rem;
+}
+
+.footer-icon-instagram {
+  font-size: 2.9rem;
   color: #fff;
   margin: 0 0.5rem;
+}
+
+.footer-icon-instagram:hover {
+  font-size: 3rem;
 }
 
 .footer-link {
