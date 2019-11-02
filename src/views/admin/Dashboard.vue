@@ -150,6 +150,36 @@
                   </ul>
                 </div>
               </li>
+              <li class="nav-item mt-2">
+                <button
+                  type="button"
+                  class="btn btn-success btn-block text-white"
+                  data-toggle="collapse"
+                  data-target="#usersAdminOptions"
+                  aria-expanded="false"
+                  aria-controls="usersAdminOptions"
+                >
+                  Usuarios Admin <font-awesome-icon icon="angle-down" />
+                </button>
+                <div class="collapse" id="usersAdminOptions">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link text-center cursor-pointer"
+                        @click="showFormAddUserAdmin"
+                        >Agregar Usuario Admin <font-awesome-icon icon="plus"
+                      /></a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link text-center cursor-pointer"
+                        @click="showTableUsersAdmin"
+                        >Usuarios Admin <font-awesome-icon icon="list-alt"
+                      /></a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
             </ul>
           </nav>
         </div>
@@ -974,6 +1004,186 @@
                 </div>
               </div>
             </transition>
+            <!--FORM ADD USER ADMIN-->
+            <transition name="slide-fade">
+              <div v-if="varShowFormAddUserAdmin">
+                <div class="row">
+                  <div class="col-12 col-md-10 col-lg-10 px-4 py-3 mx-auto">
+                    <div class="card">
+                      <div
+                        class="card-header bg-primary text-white text-center"
+                      >
+                        <h3>Agregar Usuario Admin</h3>
+                      </div>
+                      <div class="card-body">
+                        <form @submit.prevent="addUserAdmin">
+                          <div class="form-row">
+                            <div class="form-group col-12 col-md-6">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Nombre"
+                                v-model="userAdmin.adminFirstName"
+                              />
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Nombre"
+                                v-model="userAdmin.adminLastName"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <input
+                              type="email"
+                              class="form-control"
+                              placeholder="Correo"
+                              v-model="userAdmin.adminEmail"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <input
+                              type="password"
+                              class="form-control"
+                              placeholder="Contraseña"
+                              v-model="userAdmin.adminPassword"
+                            />
+                          </div>
+                          <div class="form-group mt-2">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-block"
+                            >
+                              Agregar Usuario <font-awesome-icon icon="plus" />
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-danger btn-block"
+                              @click="cancelFormAddUserAdmin"
+                            >
+                              Cancelar <font-awesome-icon icon="ban" />
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </transition>
+            <!--USERS ADMIN TABLE-->
+            <transition name="slide-fade">
+              <div v-if="varShowTableUsersAdmin">
+                <h2>Usuarios Administradores</h2>
+                <div class="table-responsive">
+                  <table class="table table-bordered table-sm text-center">
+                    <thead class="bg-primary text-center text-white">
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Accion</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="user in usersAdmin" :key="user._id">
+                        <td>{{ user.adminFirstName }}</td>
+                        <td>{{ user.adminLastName }}</td>
+                        <td>{{ user.adminEmail }}</td>
+                        <td class="p-2">
+                          <button
+                            type="button"
+                            class="btn btn-danger my-1 mx-1"
+                            @click="deleteUserAdmin(user._id)"
+                          >
+                            <font-awesome-icon icon="trash" />
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-primary my-1 mx-1"
+                            @click="showFormEditUserAdmin(user)"
+                          >
+                            <font-awesome-icon icon="sync-alt" />
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </transition>
+            <!--FORM EDIT USER ADMIN-->
+            <transition name="slide-fade">
+              <div v-if="varShowFormEditUserAdmin">
+                <div class="row">
+                  <div class="col-12 col-md-10 col-lg-8 px-4 py-3 mx-auto">
+                    <div class="card">
+                      <div
+                        class="card-header bg-primary text-white text-center"
+                      >
+                        <h3>Editar Usuario Admin</h3>
+                      </div>
+                      <div class="card-body">
+                        <form @submit.prevent="editUserAdmin">
+                          <div class="form-row">
+                            <div class="form-group col-12 col-md-6">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Nombre"
+                                v-model="userAdmin.adminFirstName"
+                              />
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Nombre"
+                                v-model="userAdmin.adminLastName"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <input
+                              type="email"
+                              class="form-control"
+                              placeholder="Correo"
+                              v-model="userAdmin.adminEmail"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <input
+                              type="password"
+                              class="form-control"
+                              placeholder="Contraseña"
+                              v-model="userAdmin.adminPassword"
+                            />
+                          </div>
+                          <div class="form-group mt-2">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-block"
+                            >
+                              Guardar Cambios
+                              <font-awesome-icon icon="sync-alt" />
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-danger btn-block"
+                              @click="calcelFormEditUserAdmin"
+                            >
+                              Cancelar <font-awesome-icon icon="ban" />
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </transition>
           </div>
         </main>
       </div>
@@ -999,6 +1209,7 @@ export default {
         icon: "",
         iconPrefix: ""
       },
+      // Products
       product: {
         productName: "",
         productCategory: "",
@@ -1013,6 +1224,7 @@ export default {
       varShowFormAddProduct: false,
       varShowTableProducts: true,
       varShowFormEditProduct: false,
+      // Categories
       category: {
         categoryName: "",
         categoryDescription: "",
@@ -1024,6 +1236,7 @@ export default {
       varShowTableCategory: false,
       varShowFormAddCategory: false,
       varShowFormEditCategory: false,
+      // Sucursals
       sucursal: {
         address: "",
         officeHours: "",
@@ -1034,13 +1247,25 @@ export default {
       sucursalToEdit: "",
       varShowFormAddSucursal: false,
       varShowFormEditSucursal: false,
-      varShowTableSucursals: false
+      varShowTableSucursals: false,
+      // Users Admin
+      userAdmin: {
+        adminFirstName: "",
+        adminLastName: "",
+        adminEmail: "",
+        adminPassword: ""
+      },
+      usersAdmin: [],
+      varShowFormAddUserAdmin: false,
+      varShowFormEditUserAdmin: false,
+      varShowTableUsersAdmin: false
     };
   },
   created() {
     this.getProducts();
     this.getCategories();
     this.getSucursals();
+    this.getUsersAdmin();
   },
   methods: {
     logout() {
@@ -1050,6 +1275,190 @@ export default {
     /////// Close Alert Message ////////////////////////
     closeMessage() {
       this.message.value = false;
+    },
+    // Users Admin
+    async getUsersAdmin() {
+      const response = await fetch("http://localhost:3000/api/users-admin");
+      const usersAdmin = await response.json();
+      this.usersAdmin = usersAdmin;
+    },
+    async addUserAdmin() {
+      if (
+        !this.userAdmin.adminFirstName ||
+        !this.userAdmin.adminLastName ||
+        !this.userAdmin.adminEmail ||
+        !this.userAdmin.adminPassword
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
+      const fd = new FormData();
+      fd.append("adminFirstName", this.userAdmin.adminFirstName);
+      fd.append("adminLastName", this.userAdmin.adminLastName);
+      fd.append("adminEmail", this.userAdmin.adminEmail);
+      fd.append("adminPassword", this.userAdmin.adminPassword);
+      const response = await fetch(
+        "http://localhost:3000/api/users-admin/signup",
+        {
+          method: "POST",
+          body: fd
+        }
+      );
+      const data = await response.json();
+      if (data.msg == "user_admin_saved") {
+        this.getUsersAdmin();
+        this.userAdmin = {};
+        this.varShowFormAddUserAdmin = false;
+        this.varShowTableUsersAdmin = true;
+        return (this.message = {
+          content: "El usuario admin fue agregado con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el usuario admin",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
+    },
+    async editUserAdmin() {
+      if (
+        !this.userAdmin.adminFirstName ||
+        !this.userAdmin.adminLastName ||
+        !this.userAdmin.adminEmail ||
+        !this.userAdmin.adminPassword
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
+      const fd = new FormData();
+      fd.append("adminFirstName", this.userAdmin.adminFirstName);
+      fd.append("adminLastName", this.userAdmin.adminLastName);
+      fd.append("adminEmail", this.userAdmin.adminEmail);
+      fd.append("adminPassword", this.userAdmin.adminPassword);
+      const response = await fetch(
+        `http://localhost:3000/api/users-admin/update/${this.userAdmin._id}`,
+        {
+          method: "PUT",
+          body: fd
+        }
+      );
+      const data = await response.json();
+      if (data.msg == "user_admin_updated") {
+        this.getUsersAdmin();
+        this.userAdmin = {};
+        this.varShowFormEditUserAdmin = false;
+        this.varShowTableUsersAdmin = true;
+        return (this.message = {
+          content: "El usuario admin fue actualizado con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al actualizar el usuario admin",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
+    },
+    async deleteUserAdmin(id) {
+      const response = await fetch(
+        `http://localhost:3000/api/users-admin/delete/${id}`,
+        {
+          method: "DELETE"
+        }
+      );
+      const data = await response.json();
+      if (data.msg == "user_admin_deleted") {
+        this.getUsersAdmin();
+        return (this.message = {
+          content: "El usuario admin fue agregado con éxito!",
+          class: "custom-success-danger",
+          icon: "thumbs-up",
+          iconPrefix: "far",
+          value: true
+        });
+      }
+      return (this.message = {
+        content: "Hubo un error al agregar el usuario admin",
+        class: "custom-alert-danger",
+        icon: "exclamation-triangle",
+        iconPrefix: "fas",
+        value: true
+      });
+    },
+    showFormAddUserAdmin() {
+      this.userAdmin = {};
+      this.varShowFormAddUserAdmin = true;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
+      this.varShowFormAddProduct = false;
+      this.varShowTableProducts = false;
+      this.varShowFormEditProduct = false;
+      this.varShowFormAddCategory = false;
+      this.varShowTableCategory = false;
+      this.varShowFormEditCategory = false;
+      this.varShowTableSucursals = false;
+      this.varShowFormAddSucursal = false;
+      this.varShowFormEditSucursal = false;
+    },
+    showFormEditUserAdmin(user) {
+      this.userAdmin = user;
+      this.varShowFormEditUserAdmin = true;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.varShowFormAddProduct = false;
+      this.varShowTableProducts = false;
+      this.varShowFormEditProduct = false;
+      this.varShowFormAddCategory = false;
+      this.varShowTableCategory = false;
+      this.varShowFormEditCategory = false;
+      this.varShowTableSucursals = false;
+      this.varShowFormAddSucursal = false;
+      this.varShowFormEditSucursal = false;
+    },
+    showTableUsersAdmin() {
+      this.varShowTableUsersAdmin = true;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowFormEditUserAdmin = false;
+      this.varShowFormAddProduct = false;
+      this.varShowTableProducts = false;
+      this.varShowFormEditProduct = false;
+      this.varShowFormAddCategory = false;
+      this.varShowTableCategory = false;
+      this.varShowFormEditCategory = false;
+      this.varShowTableSucursals = false;
+      this.varShowFormAddSucursal = false;
+      this.varShowFormEditSucursal = false;
+    },
+    cancelFormAddUserAdmin() {
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = true;
+      this.userAdmin = {};
+    },
+    calcelFormEditUserAdmin() {
+      this.varShowFormEditUserAdmin = false;
+      this.varShowTableUsersAdmin = true;
+      this.userAdmin = {};
     },
     ///////   Products   ////////////////////////////////////////////
     async getProducts() {
@@ -1143,6 +1552,22 @@ export default {
       this.showFormEditProduct();
     },
     async sendEditProduct() {
+      if (
+        !this.product.productName ||
+        !this.product.productCategory ||
+        !this.product.productType ||
+        !this.product.productDescription ||
+        !this.product.salePrice ||
+        !this.product.disponibility
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
       const fd = new FormData();
       fd.append("productName", this.product.productName);
       fd.append("productType", this.product.productType);
@@ -1188,6 +1613,9 @@ export default {
       this.varShowTableSucursals = false;
       this.varShowFormAddSucursal = false;
       this.varShowFormEditSucursal = false;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
     },
     cancelFormAddProduct() {
       this.varShowFormAddProduct = false;
@@ -1204,6 +1632,9 @@ export default {
       this.varShowTableSucursals = false;
       this.varShowFormAddSucursal = false;
       this.varShowFormEditSucursal = false;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
     },
     cancelFormEditProduct() {
       this.varShowFormEditProduct = false;
@@ -1220,6 +1651,9 @@ export default {
       this.varShowTableSucursals = false;
       this.varShowFormAddSucursal = false;
       this.varShowFormEditSucursal = false;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
     },
     ///////   CATEGORIES  ////////////////////////////////////////////
     async getCategories() {
@@ -1302,6 +1736,20 @@ export default {
       this.showFormEditCategory();
     },
     async sendEditCategory() {
+      if (
+        !this.category.categoryName ||
+        !this.category.categoryDescription ||
+        !this.category.categoryUrl
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
+
       const fd = new FormData();
       fd.append("categoryName", this.category.categoryName);
       fd.append("categoryDescription", this.category.categoryDescription);
@@ -1346,6 +1794,9 @@ export default {
       this.varShowTableSucursals = false;
       this.varShowFormAddSucursal = false;
       this.varShowFormEditSucursal = false;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
     },
     showFormAddCategory() {
       this.category = {};
@@ -1358,6 +1809,9 @@ export default {
       this.varShowTableSucursals = false;
       this.varShowFormAddSucursal = false;
       this.varShowFormEditSucursal = false;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
     },
     cancelFormAddCategory() {
       this.varShowFormAddCategory = false;
@@ -1374,6 +1828,9 @@ export default {
       this.varShowTableSucursals = false;
       this.varShowFormAddSucursal = false;
       this.varShowFormEditSucursal = false;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
     },
     cancelFormEditCategory() {
       this.varShowFormEditCategory = false;
@@ -1464,6 +1921,20 @@ export default {
       this.showFormEditSucursal();
     },
     async sendEditSucursal() {
+      if (
+        !this.sucursal.address ||
+        !this.sucursal.officeHours ||
+        !this.sucursal.numberContact ||
+        !this.sucursal.googleMaps
+      ) {
+        return (this.message = {
+          content: "Llene Todos los campos del formulario",
+          class: "custom-alert-danger",
+          icon: "exclamation-triangle",
+          iconPrefix: "fas",
+          value: true
+        });
+      }
       const fd = new FormData();
       fd.append("address", this.sucursal.address);
       fd.append("officeHours", this.sucursal.officeHours);
@@ -1506,6 +1977,9 @@ export default {
       this.varShowFormAddCategory = false;
       this.varShowTableCategory = false;
       this.varShowFormEditSucursal = false;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
     },
     cancelFormAddSucursal() {
       this.varShowFormAddSucursal = false;
@@ -1522,6 +1996,9 @@ export default {
       this.varShowFormAddCategory = false;
       this.varShowTableCategory = false;
       this.varShowFormEditCategory = false;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
     },
     showFormEditSucursal() {
       this.varShowFormEditSucursal = true;
@@ -1533,6 +2010,9 @@ export default {
       this.varShowFormAddCategory = false;
       this.varShowTableCategory = false;
       this.varShowFormEditCategory = false;
+      this.varShowFormAddUserAdmin = false;
+      this.varShowTableUsersAdmin = false;
+      this.ShowFormEditUserAdmin = false;
     },
     calcelFormEditSucursal() {
       this.varShowFormEditSucursal = false;
