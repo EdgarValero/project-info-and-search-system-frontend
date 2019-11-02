@@ -25,31 +25,31 @@
             v-for="productFeatured in productsFeatureds"
             :key="productFeatured._id"
           >
-            <router-link
-              :to="`/producto/${productFeatured._id}`"
-              style="text-decoration: none;"
+            <div
+              class="card text-black mb-2"
+              data-toggle="modal"
+              data-target="#modalSingleProduct"
+              @click="fillModalSingleProduct(productFeatured)"
             >
-              <div class="card shadow text-black mb-2">
-                <img
-                  :src="`http://localhost:3000${productFeatured.imagePath}`"
-                  class="img-fluid"
-                />
-                <div class="card-body d-none-product-slide">
-                  <p class="mb-1">
-                    <strong>{{ productFeatured.productDescription }}</strong>
-                  </p>
-                  <div class="d-flex justify-content-end">
-                    <button
-                      type="button"
-                      class="btn btn-primary text-white px-2 py-1"
-                      style="border-radius: 50%;"
-                    >
-                      <font-awesome-icon icon="search" />
-                    </button>
-                  </div>
+              <img
+                :src="`http://localhost:3000${productFeatured.imagePath}`"
+                class="img-fluid"
+              />
+              <div class="card-body d-none-product-slide">
+                <p class="mb-1">
+                  <strong>{{ productFeatured.productDescription }}</strong>
+                </p>
+                <div class="d-flex justify-content-end">
+                  <button
+                    type="button"
+                    class="btn btn-primary text-white px-2 py-1"
+                    style="border-radius: 50%;"
+                  >
+                    <font-awesome-icon icon="search" />
+                  </button>
                 </div>
               </div>
-            </router-link>
+            </div>
           </slide>
           <hooper-navigation slot="hooper-addons"></hooper-navigation>
         </hooper>
@@ -109,6 +109,7 @@
         <img src="../assets/img/publicidad-abajo.png" class="img-fluid" />
       </div>
     </div>
+    <ModalSingleProduct :product="product" />
     <Footer />
   </div>
 </template>
@@ -117,6 +118,7 @@
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
 import Carrousel from "@/components/Carrousel.vue";
+import ModalSingleProduct from "@/components/ModalSingleProduct.vue";
 import productController from "@/controllers/products.controller";
 import categoryController from "@/controllers/categories.controller";
 
@@ -131,13 +133,16 @@ export default {
     Hooper,
     Slide,
     HooperNavigation,
-    Carrousel
+    Carrousel,
+    ModalSingleProduct
   },
   data() {
     return {
       loading: true,
       productsFeatureds: [],
-      categories: []
+      categories: [],
+      // Prop ModalSingleProduct
+      product: {}
     };
   },
   created() {
@@ -154,6 +159,9 @@ export default {
       const categories = await categoryController.getCategories();
       this.loading = false;
       this.categories = categories;
+    },
+    fillModalSingleProduct(product) {
+      this.product = product;
     }
   }
 };
