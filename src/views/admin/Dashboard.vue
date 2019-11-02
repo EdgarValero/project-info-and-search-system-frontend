@@ -575,7 +575,9 @@
                           <button
                             type="button"
                             class="btn btn-danger my-1 mx-1"
-                            @click="deleteProduct(product._id)"
+                            data-toggle="modal"
+                            data-target="#modalDeleteProduct"
+                            @click="fillModalDeleteProduct(product)"
                           >
                             <font-awesome-icon icon="trash" />
                           </button>
@@ -786,7 +788,9 @@
                           <button
                             type="button"
                             class="btn btn-danger my-1 mx-1"
-                            @click="deleteCategory(category._id)"
+                            data-toggle="modal"
+                            data-target="#modalDeleteCategory"
+                            @click="fillModalDeleteCategory(category)"
                           >
                             <font-awesome-icon icon="trash" />
                           </button>
@@ -986,7 +990,9 @@
                           <button
                             type="button"
                             class="btn btn-danger my-1 mx-1"
-                            @click="deleteSucursal(sucursal._id)"
+                            data-toggle="modal"
+                            data-target="#modalDeleteSucursal"
+                            @click="fillModalDeleteSucursal(sucursal)"
                           >
                             <font-awesome-icon icon="trash" />
                           </button>
@@ -1096,7 +1102,9 @@
                           <button
                             type="button"
                             class="btn btn-danger my-1 mx-1"
-                            @click="deleteUserAdmin(user._id)"
+                            data-toggle="modal"
+                            data-target="#modalDeleteUserAdmin"
+                            @click="fillModalDeleteUserAdmin(user)"
                           >
                             <font-awesome-icon icon="trash" />
                           </button>
@@ -1188,6 +1196,204 @@
         </main>
       </div>
     </div>
+    <!-- MODAL CONFIRMATION DELETE PRODUCT-->
+    <div
+      class="modal fade"
+      id="modalDeleteProduct"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmación para eliminar</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">
+              ¿Estás seguro de eliminar el producto
+              <strong>{{ productTempToDelete.productName }}</strong
+              >?
+            </p>
+          </div>
+          <div class="modal-footer d-flex justify-content-between">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-dismiss="modal"
+              @click="deleteProduct(productTempToDelete._id)"
+            >
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL CONFIRMATION DELETE CATEGORY-->
+    <div
+      class="modal fade"
+      id="modalDeleteCategory"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmación para eliminar</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">
+              ¿Estás seguro de eliminar la categoría
+              <strong>{{ categoryTempToDelete.categoryName }}</strong
+              >?
+            </p>
+          </div>
+          <div class="modal-footer d-flex justify-content-between">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-dismiss="modal"
+              @click="deleteCategory(categoryTempToDelete._id)"
+            >
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL CONFIRMATION DELETE SUCURSAL-->
+    <div
+      class="modal fade"
+      id="modalDeleteSucursal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmación para eliminar</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">
+              ¿Estás seguro de eliminar la sucursal
+              <strong>{{ sucursalTempToDelete.address }}</strong
+              >?
+            </p>
+          </div>
+          <div class="modal-footer d-flex justify-content-between">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-dismiss="modal"
+              @click="deleteSucursal(sucursalTempToDelete._id)"
+            >
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL CONFIRMATION DELETE USER ADMIN-->
+    <div
+      class="modal fade"
+      id="modalDeleteUserAdmin"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmación para eliminar</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">
+              ¿Estás seguro de eliminar el usuario administrador
+              <strong
+                >{{ userAdminTempToDelete.adminFirstName }}
+                {{ userAdminTempToDelete.adminLastName }}</strong
+              >?
+            </p>
+          </div>
+          <div class="modal-footer d-flex justify-content-between">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-dismiss="modal"
+              @click="deleteUserAdmin(userAdminTempToDelete._id)"
+            >
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -1209,6 +1415,11 @@ export default {
         icon: "",
         iconPrefix: ""
       },
+      // Modal Confirmation Delete
+      productTempToDelete: {},
+      categoryTempToDelete: {},
+      sucursalTempToDelete: {},
+      userAdminTempToDelete: {},
       // Products
       product: {
         productName: "",
@@ -1275,6 +1486,19 @@ export default {
     /////// Close Alert Message ////////////////////////
     closeMessage() {
       this.message.value = false;
+    },
+    // Fills Modal Confirmation Delete
+    fillModalDeleteProduct(product) {
+      this.productTempToDelete = product;
+    },
+    fillModalDeleteCategory(category) {
+      this.categoryTempToDelete = category;
+    },
+    fillModalDeleteSucursal(sucursal) {
+      this.sucursalTempToDelete = sucursal;
+    },
+    fillModalDeleteUserAdmin(user) {
+      this.userAdminTempToDelete = user;
     },
     // Users Admin
     async getUsersAdmin() {
