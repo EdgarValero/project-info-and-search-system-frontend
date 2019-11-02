@@ -1,134 +1,9 @@
 <template>
   <div class="p-0 mt-2" style="border-top: solid 5px #007bff;">
-    <!-- <footer class="row text-white mx-3 mt-1">
-      <div class="col-12 col-md-4">
-        <h4 class="text-center mt-2">Categorías</h4>
-        <ul class="navbar-nav text-center">
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-        </ul>
-      </div>
-      <div class="col-12 col-md-4">
-        <h4 class="text-center mt-2">Otros Links</h4>
-        <ul class="navbar-nav text-center">
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-        </ul>
-      </div>
-      <div class="col-12 col-md-4">
-        <h4 class="text-center mt-2">Sucursales</h4>
-        <ul class="navbar-nav text-center">
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link footer-link"
-              to="/categoria/alimentos-basicos"
-            >
-              <font-awesome-icon icon="angle-right"></font-awesome-icon>
-              Alimentos Básicos
-            </router-link>
-          </li>
-        </ul>
-      </div>
-    </footer> -->
-    <div class="bg-success pt-4 pb-2 px-2 m-0 text-white">
+    <div class="bg-success pt-3 px-2 m-0 text-white">
       <div class="row mx-3 text-center">
         <div class="col-12 col-md-4">
-          <strong> Sistema de Informacion y Busqueda 2019 &copy;</strong>
+          <strong> Sistema de Información y Búsqueda 2019 &copy;</strong>
         </div>
         <div class="col-12 col-md-4">
           <ul class="list-unstyled list-inline">
@@ -161,6 +36,34 @@
     </div>
   </div>
 </template>
-<script>
-export default {};
-</script>
+<style lang="scss">
+.footer-icon-facebook {
+  font-size: 2.9rem;
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.footer-icon-facebook:hover {
+  color: #ccc;
+}
+
+.footer-icon-twitter {
+  font-size: 2.9rem;
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.footer-icon-twitter:hover {
+  color: #ccc;
+}
+
+.footer-icon-instagram {
+  font-size: 2.9rem;
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.footer-icon-instagram:hover {
+  color: #ccc;
+}
+</style>

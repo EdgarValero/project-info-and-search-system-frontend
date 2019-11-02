@@ -58,17 +58,17 @@
         <div class="col-12 col-md-6 p-0">
           <ul class="navbar-nav mx-4">
             <li class="nav-item">
-              <router-link class="nav-link" to="/productos"
+              <router-link class="nav-link navbar-link" to="/productos"
                 >Productos</router-link
               >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/sucursales">
+              <router-link class="nav-link navbar-link" to="/sucursales">
                 Sucursales
               </router-link>
             </li>
             <li v-if="authenticate" class="nav-item">
-              <router-link class="nav-link" to="/admin/dashboard">
+              <router-link class="nav-link navbar-link" to="/admin/dashboard">
                 Dashboard
               </router-link>
             </li>
@@ -78,7 +78,6 @@
     </nav>
   </div>
 </template>
-
 <script>
 export default {
   data() {
@@ -106,3 +105,11 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.navbar-link {
+  color: #fff !important;
+}
+.navbar-link:hover {
+  color: #ccc !important;
+}
+</style>
