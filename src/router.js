@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import {isAuthenticated, isNotAuthenticated} from './utils/auth.js';
+import { isAuthenticated, isNotAuthenticated } from "./utils/auth.js";
 
 Vue.use(Router);
 
@@ -37,12 +37,6 @@ export default new Router({
       path: "/productos",
       name: "products",
       component: () => import("./views/Products.vue"),
-      beforeEnter: isNotAuthenticated
-    },
-    {
-      path: "/producto/:id",
-      name: "single-product",
-      component: () => import("./views/SingleProduct.vue"),
       beforeEnter: isNotAuthenticated
     },
     {

@@ -73,36 +73,37 @@
               v-for="product in products"
               :key="product._id"
             >
-              <router-link
-                :to="`/producto/${product._id}`"
-                style="text-decoration: none;"
+              <div
+                class="card shadow text-black"
+                data-toggle="modal"
+                data-target="#modalSingleProduct"
+                @click="fillModalSingleProduct(product)"
               >
-                <div class="card shadow text-black">
-                  <img
-                    :src="`http://localhost:3000${product.imagePath}`"
-                    class="img-fluid"
-                  />
-                  <div class="card-body">
-                    <p>
-                      <strong>{{ product.productDescription }}</strong>
-                    </p>
-                    <div class="d-flex justify-content-end">
-                      <button
-                        type="button"
-                        class="btn btn-primary text-white px-2 py-1"
-                        style="border-radius: 50%;"
-                      >
-                        <font-awesome-icon icon="search" />
-                      </button>
-                    </div>
+                <img
+                  :src="`http://localhost:3000${product.imagePath}`"
+                  class="img-fluid"
+                />
+                <div class="card-body">
+                  <p>
+                    <strong>{{ product.productDescription }}</strong>
+                  </p>
+                  <div class="d-flex justify-content-end">
+                    <button
+                      type="button"
+                      class="btn btn-primary text-white px-2 py-1"
+                      style="border-radius: 50%;"
+                    >
+                      <font-awesome-icon icon="search" />
+                    </button>
                   </div>
                 </div>
-              </router-link>
+              </div>
             </div>
           </div>
         </div>
       </main>
     </div>
+    <ModalSingleProduct :product="product" />
     <Footer />
   </div>
 </template>
@@ -110,6 +111,7 @@
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
 import Carrousel from "@/components/Carrousel.vue";
+import ModalSingleProduct from "@/components/ModalSingleProduct.vue";
 import productController from "@/controllers/products.controller";
 import categoryController from "@/controllers/categories.controller";
 
@@ -117,13 +119,16 @@ export default {
   components: {
     Navigation,
     Footer,
-    Carrousel
+    Carrousel,
+    ModalSingleProduct
   },
   data() {
     return {
       loading: true,
       products: [],
-      categories: []
+      categories: [],
+      // Prop ModalSingleProduct
+      product: {}
     };
   },
   created() {
@@ -140,6 +145,9 @@ export default {
       const categories = await categoryController.getCategories();
       this.loading = false;
       this.categories = categories;
+    },
+    fillModalSingleProduct(product) {
+      this.product = product;
     }
   }
 };

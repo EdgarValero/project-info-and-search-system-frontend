@@ -25,49 +25,55 @@
             v-for="product in products"
             :key="product._id"
           >
-            <router-link
-              :to="`/producto/${product._id}`"
-              style="text-decoration: none"
+            <div
+              class="card shadow text-black"
+              data-toggle="modal"
+              data-target="#modalSingleProduct"
+              @click="fillModalSingleProduct(product)"
             >
-              <div class="card shadow text-black">
-                <img
-                  :src="`http://localhost:3000${product.imagePath}`"
-                  class="img-fluid"
-                />
-                <div class="card-body">
-                  <p class="mb-1">
-                    <strong>{{ product.productDescription }}</strong>
-                  </p>
-                  <div class="d-flex justify-content-end">
-                    <button
-                      type="button"
-                      class="btn btn-primary text-white px-2 py-1"
-                      style="border-radius: 50%;"
-                    >
-                      <font-awesome-icon icon="search" />
-                    </button>
-                  </div>
+              <img
+                :src="`http://localhost:3000${product.imagePath}`"
+                class="img-fluid"
+              />
+              <div class="card-body">
+                <p class="mb-1">
+                  <strong>{{ product.productDescription }}</strong>
+                </p>
+                <div class="d-flex justify-content-end">
+                  <button
+                    type="button"
+                    class="btn btn-primary text-white px-2 py-1"
+                    style="border-radius: 50%;"
+                  >
+                    <font-awesome-icon icon="search" />
+                  </button>
                 </div>
               </div>
-            </router-link>
+            </div>
           </div>
         </div>
       </div>
     </main>
+    <ModalSingleProduct :product="product" />
   </div>
 </template>
 <script>
 import Navigation from "@/components/Navigation.vue";
+import ModalSingleProduct from "@/components/ModalSingleProduct.vue";
+
 export default {
   components: {
-    Navigation
+    Navigation,
+    ModalSingleProduct
   },
   data() {
     return {
       loading: true,
       products: [],
       searched: "",
-      msgProductNotFound: ""
+      msgProductNotFound: "",
+      // Prop ModalSingleProduct
+      product: {}
     };
   },
   created() {
@@ -97,6 +103,9 @@ export default {
         this.products = data;
         this.loading = false;
       }
+    },
+    fillModalSingleProduct(product) {
+      this.product = product;
     }
   }
 };
