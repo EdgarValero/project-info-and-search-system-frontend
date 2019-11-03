@@ -1,6 +1,6 @@
 class categoryController {
   constructor() {
-    this.URI = "http://localhost:3000/api/categories";
+    this.URI = "/api/categories";
   }
   async getCategories() {
     const response = await fetch(this.URI);

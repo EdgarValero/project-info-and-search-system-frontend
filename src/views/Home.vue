@@ -29,10 +29,7 @@
               data-target="#modalSingleProduct"
               @click="fillModalSingleProduct(productFeatured)"
             >
-              <img
-                :src="`http://localhost:3000${productFeatured.imagePath}`"
-                class="img-fluid"
-              />
+              <img :src="`${productFeatured.imagePath}`" class="img-fluid" />
               <div class="card-body d-none-product-slide">
                 <p class="mb-1">
                   <strong>{{ productFeatured.productDescription }}</strong>
@@ -79,7 +76,7 @@
                       </h3>
                     </div>
                     <img
-                      :src="`http://localhost:3000${category.imagePath}`"
+                      :src="`${category.imagePath}`"
                       class="img-fluid"
                       style="height:250px;"
                     />
@@ -198,26 +195,26 @@ export default {
 }
 .p-products-slide {
   @media screen and (min-width: 576px) {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
   @media screen and (min-width: 768px) {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
   @media screen and (min-width: 992px) {
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
   @media screen and (min-width: 1200px) {
-    padding-left: 4.5rem;
-    padding-right: 4.5rem;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }

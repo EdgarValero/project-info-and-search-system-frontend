@@ -1,6 +1,6 @@
 class productController {
   constructor() {
-    this.URI = "http://localhost:3000/api/products";
+    this.URI = "/api/products";
   }
   async getProducts() {
     const response = await fetch(this.URI);

@@ -82,7 +82,7 @@ export default {
       formData.append("adminEmail", this.signin.email);
       formData.append("adminPassword", this.signin.password);
 
-      const res = await fetch("http://localhost:3000/api/users-admin/signin", {
+      const res = await fetch("/api/users-admin/signin", {
         method: "POST",
         body: formData
       });

@@ -30,7 +30,7 @@
               @click="fillModalSingleProduct(product)"
             >
               <img
-                :src="`http://localhost:3000${product.imagePath}`"
+                :src="`${product.imagePath}`"
                 class="img-fluid"
               />
               <div class="card-body">
@@ -88,7 +88,7 @@ export default {
         "productSearch",
         this.$route.params.searchProduct || search
       );
-      const response = await fetch(`http://localhost:3000/api/search`, {
+      const response = await fetch(`/api/search`, {
         method: "POST",
         body: formData
       });
