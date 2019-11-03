@@ -24,7 +24,9 @@ import {
   faPhone,
   faClock,
   faHome,
-  faSignOutAlt
+  faSignOutAlt,
+  faCircleNotch,
+  faSadTear
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -49,7 +51,9 @@ library.add(
   faPhone,
   faClock,
   faHome,
-  faSignOutAlt
+  faSignOutAlt,
+  faCircleNotch,
+  faSadTear
 );
 library.add(faFacebook, faTwitter, faInstagram);
 library.add(faThumbsUp);

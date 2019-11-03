@@ -187,10 +187,8 @@
           role="main"
           class="col-12 col-md-9 ml-sm-auto px-main-dashboard pb-5"
         >
-          <div v-if="loading">
-            <h2>
-              Esta cargando la informacion de los productos en el dashboard....
-            </h2>
+          <div v-if="loading" class="mt-5">
+            <Loading />
           </div>
           <div v-else>
             <div
@@ -1398,6 +1396,7 @@
 </template>
 
 <script>
+import Loading from "@/components/Loading.vue";
 import productController from "@/controllers/products.controller";
 import categoryController from "@/controllers/categories.controller";
 import sucursalController from "@/controllers/sucursals.controller";
@@ -1405,6 +1404,9 @@ import { onLogout } from "@/utils/auth.js";
 
 export default {
   name: "dashboard",
+  components: {
+    Loading
+  },
   data() {
     return {
       loading: true,
@@ -2266,5 +2268,17 @@ export default {
 .text-panel-dashboard {
   font-size: 1.3rem;
   text-decoration: none !important;
+}
+
+.modal-header {
+  border-bottom: 0 !important;
+}
+
+.modal-body {
+  padding: 1rem 0 1rem 0 !important;
+}
+
+.modal-footer {
+  border-top: 0 !important;
 }
 </style>

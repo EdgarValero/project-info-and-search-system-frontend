@@ -5,9 +5,7 @@
     <Carrousel />
     <!-- View Loading-->
     <div v-if="loading" class="my-5">
-      <h2 class="display-4 d-flex justify-content-center align-items-center">
-        Esta cargando la informacion...
-      </h2>
+      <Loading />
     </div>
     <div v-else>
       <!--Products Featureds Section Glide-->
@@ -119,6 +117,7 @@ import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
 import Carrousel from "@/components/Carrousel.vue";
 import ModalSingleProduct from "@/components/ModalSingleProduct.vue";
+import Loading from "@/components/Loading.vue";
 import productController from "@/controllers/products.controller";
 import categoryController from "@/controllers/categories.controller";
 
@@ -134,7 +133,8 @@ export default {
     Slide,
     HooperNavigation,
     Carrousel,
-    ModalSingleProduct
+    ModalSingleProduct,
+    Loading
   },
   data() {
     return {

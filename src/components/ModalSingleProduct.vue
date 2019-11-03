@@ -11,7 +11,6 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">{{ product.productName }}</h5>
             <button
               type="button"
               class="close"
@@ -67,3 +66,11 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.modal-header {
+  border-bottom: 0 !important;
+}
+.modal-body {
+  padding: 0 0 1rem 0 !important;
+}
+</style>

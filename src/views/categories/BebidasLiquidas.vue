@@ -56,11 +56,7 @@
       <main class="col-12 col-md-9 col-lg-9 col-xl-10 ml-sm-auto pb-5">
         <!-- View Loading-->
         <div v-if="loading" style="margin:100px 0;">
-          <h2
-            class="display-3 d-flex justify-content-center align-items-center"
-          >
-            Estan cargando los Productos...
-          </h2>
+          <Loading />
         </div>
         <!--View Products-->
         <div v-else>
@@ -112,6 +108,7 @@ import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
 import Carrousel from "@/components/Carrousel.vue";
 import ModalSingleProduct from "@/components/ModalSingleProduct.vue";
+import Loading from "@/components/Loading.vue";
 import productController from "@/controllers/products.controller";
 import categoryController from "@/controllers/categories.controller";
 
@@ -120,7 +117,8 @@ export default {
     Navigation,
     Footer,
     Carrousel,
-    ModalSingleProduct
+    ModalSingleProduct,
+    Loading
   },
   data() {
     return {

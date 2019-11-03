@@ -4,9 +4,7 @@
     <main class="px-4 my-5 container">
       <!-- View Loading -->
       <div v-if="loading" style="margin:100px 0;">
-        <h2 class="display-3 d-flex justify-content-center align-items-center">
-          Estan cargando los Productos...
-        </h2>
+        <Loading />
       </div>
       <!-- View Products -->
       <div v-else>
@@ -60,11 +58,13 @@
 <script>
 import Navigation from "@/components/Navigation.vue";
 import ModalSingleProduct from "@/components/ModalSingleProduct.vue";
+import Loading from "@/components/Loading.vue";
 
 export default {
   components: {
     Navigation,
-    ModalSingleProduct
+    ModalSingleProduct,
+    Loading
   },
   data() {
     return {
