@@ -30,7 +30,7 @@
               @click="fillModalSingleProduct(product)"
             >
               <img
-                :src="`${product.imagePath}`"
+                :src="`http://localhost:3000${product.imagePath}`"
                 class="img-fluid"
               />
               <div class="card-body">

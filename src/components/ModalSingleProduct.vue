@@ -23,7 +23,7 @@
           <div class="modal-body">
             <div class="d-flex justify-content-center">
               <img
-                :src="`${product.imagePath}`"
+                :src="`http://localhost:3000${product.imagePath}`"
                 class="img-fluid"
                 width="300"
                 height="300"

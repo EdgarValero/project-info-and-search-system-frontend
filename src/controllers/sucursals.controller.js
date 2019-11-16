@@ -1,6 +1,6 @@
 class sucursalController {
   constructor() {
-    this.URI = "/api/sucursals";
+    this.URI = "http://localhost:3000/api/sucursals";
   }
   async getSucursals() {
     const response = await fetch(this.URI);

@@ -14,7 +14,7 @@
           Productos Destacados
         </h3>
         <hooper
-          :itemsToShow="4"
+          :itemsToShow="3.5"
           :infiniteScroll="true"
           class="slide-product-featured"
         >
@@ -29,7 +29,10 @@
               data-target="#modalSingleProduct"
               @click="fillModalSingleProduct(productFeatured)"
             >
-              <img :src="`${productFeatured.imagePath}`" class="img-fluid" />
+              <img
+                :src="`http://localhost:3000${productFeatured.imagePath}`"
+                class="img-fluid"
+              />
               <div class="card-body d-none-product-slide">
                 <p class="mb-1">
                   <strong>{{ productFeatured.productDescription }}</strong>
@@ -50,7 +53,7 @@
         </hooper>
       </section>
       <div class="row mx-0 px-3">
-        <div class="col-12 col-lg-9">
+        <div class="col-12 col-lg-9 px-2">
           <!--Category section Section-->
           <section class="mt3- mb-2">
             <h3 class="h1 d-flex justify-content-center text-center px-3">
@@ -68,15 +71,8 @@
                   class="img-hover"
                 >
                   <div class="card shadow">
-                    <div
-                      class="card-header bg-success text-center text-white d-md-none"
-                    >
-                      <h3>
-                        {{ category.categoryName }}
-                      </h3>
-                    </div>
                     <img
-                      :src="`${category.imagePath}`"
+                      :src="`http://localhost:3000${category.imagePath}`"
                       class="img-fluid"
                       style="height:250px;"
                     />
@@ -89,14 +85,14 @@
             </div>
           </section>
         </div>
-        <div class="col-lg-3 d-none-publicidad">
+        <div class="col-lg-3 px-0 mt-5 pr-1 d-none-publicidad">
           <img
             src="../assets/img/publicidad-derecha1.jpg"
-            class="img-fluid my-2"
+            class="img-fluid my-2 mx-1"
           />
           <img
             src="../assets/img/publicidad-derecha2.jpg"
-            class="img-fluid my-2"
+            class="img-fluid my-2 mx-1"
           />
         </div>
       </div>
@@ -225,7 +221,7 @@ export default {
   }
 }
 .d-none-publicidad {
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 991px) {
     display: none;
   }
 }

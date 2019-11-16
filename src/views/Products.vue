@@ -75,7 +75,10 @@
                 data-target="#modalSingleProduct"
                 @click="fillModalSingleProduct(product)"
               >
-                <img :src="`${product.imagePath}`" class="img-fluid" />
+                <img
+                  :src="`http://localhost:3000${product.imagePath}`"
+                  class="img-fluid"
+                />
                 <div class="card-body">
                   <p class="mb-1">
                     <strong>{{ product.productDescription }}</strong>

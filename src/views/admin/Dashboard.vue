@@ -1504,7 +1504,7 @@ export default {
     },
     // Users Admin
     async getUsersAdmin() {
-      const response = await fetch("/api/users-admin");
+      const response = await fetch("http://localhost:3000/api/users-admin");
       const usersAdmin = await response.json();
       this.usersAdmin = usersAdmin;
     },
@@ -1528,10 +1528,13 @@ export default {
       fd.append("adminLastName", this.userAdmin.adminLastName);
       fd.append("adminEmail", this.userAdmin.adminEmail);
       fd.append("adminPassword", this.userAdmin.adminPassword);
-      const response = await fetch("/api/users-admin/signup", {
-        method: "POST",
-        body: fd
-      });
+      const response = await fetch(
+        "http://localhost:3000/api/users-admin/signup",
+        {
+          method: "POST",
+          body: fd
+        }
+      );
       const data = await response.json();
       if (data.msg == "user_admin_saved") {
         this.getUsersAdmin();
@@ -1575,7 +1578,7 @@ export default {
       fd.append("adminEmail", this.userAdmin.adminEmail);
       fd.append("adminPassword", this.userAdmin.adminPassword);
       const response = await fetch(
-        `/api/users-admin/update/${this.userAdmin._id}`,
+        `http://localhost:3000/api/users-admin/update/${this.userAdmin._id}`,
         {
           method: "PUT",
           body: fd
@@ -1604,9 +1607,12 @@ export default {
       });
     },
     async deleteUserAdmin(id) {
-      const response = await fetch(`/api/users-admin/delete/${id}`, {
-        method: "DELETE"
-      });
+      const response = await fetch(
+        `http://localhost:3000/api/users-admin/delete/${id}`,
+        {
+          method: "DELETE"
+        }
+      );
       const data = await response.json();
       if (data.msg == "user_admin_deleted") {
         this.getUsersAdmin();
