@@ -42,6 +42,7 @@
                 placeholder="Busca aquí tu producto..."
                 style="border-radius: 20px; padding: 20px;"
                 v-model="search"
+                required
               />
               <div class="input-group-prepend">
                 <button

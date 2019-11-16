@@ -1512,8 +1512,7 @@ export default {
       if (
         !this.userAdmin.adminFirstName ||
         !this.userAdmin.adminLastName ||
-        !this.userAdmin.adminEmail ||
-        !this.userAdmin.adminPassword
+        !this.userAdmin.adminEmail
       ) {
         return (this.message = {
           content: "Llene Todos los campos del formulario",
@@ -1561,8 +1560,7 @@ export default {
       if (
         !this.userAdmin.adminFirstName ||
         !this.userAdmin.adminLastName ||
-        !this.userAdmin.adminEmail ||
-        !this.userAdmin.adminPassword
+        !this.userAdmin.adminEmail
       ) {
         return (this.message = {
           content: "Llene Todos los campos del formulario",
@@ -1649,6 +1647,7 @@ export default {
     },
     showFormEditUserAdmin(user) {
       this.userAdmin = user;
+      delete this.userAdmin.adminPassword;
       this.varShowFormEditUserAdmin = true;
       this.varShowFormAddUserAdmin = false;
       this.varShowTableUsersAdmin = false;

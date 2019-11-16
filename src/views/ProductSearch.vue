@@ -88,7 +88,7 @@ export default {
         "productSearch",
         this.$route.params.searchProduct || search
       );
-      const response = await fetch(`/api/search`, {
+      const response = await fetch(`http://localhost:3000/api/search`, {
         method: "POST",
         body: formData
       });
