@@ -14,7 +14,7 @@
           Productos Destacados
         </h3>
         <hooper
-          :itemsToShow="3.5"
+          :itemsToShow="3.6"
           :infiniteScroll="true"
           class="slide-product-featured"
         >
@@ -209,8 +209,8 @@ export default {
     padding-bottom: 1rem;
   }
   @media screen and (min-width: 1200px) {
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
+    padding-left: 5.5rem;
+    padding-right: 5.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
