@@ -10,14 +10,14 @@ class categoryController {
   async addCategory(input) {
     const response = await fetch(`${this.URI}/add-category`, {
       method: "POST",
-      body: input
+      body: input,
     });
     const data = await response.json();
     return data;
   }
   async deleteCategory(id) {
     const response = await fetch(`${this.URI}/delete-category/${id}`, {
-      method: "DELETE"
+      method: "DELETE",
     });
     const data = await response.json();
     return data;
@@ -30,7 +30,7 @@ class categoryController {
   async sendEditCategory(id, input) {
     const response = await fetch(`${this.URI}/edit-category/${id}`, {
       method: "PUT",
-      body: input
+      body: input,
     });
     const data = await response.json();
     return data;

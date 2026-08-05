@@ -101,16 +101,16 @@ class Category {
 export default {
   components: {
     Navigation,
-    Footer
+    Footer,
   },
   data() {
     return {
       category: {
         categoryName: "",
         categoryDescription: "",
-        image: null
+        image: null,
       },
-      categories: []
+      categories: [],
     };
   },
   created() {
@@ -137,7 +137,7 @@ export default {
     },
     async onFileImg(event) {
       this.category.image = event.target.files[0];
-    }
-  }
+    },
+  },
 };
 </script>

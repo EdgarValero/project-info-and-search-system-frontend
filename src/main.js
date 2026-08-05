@@ -19,12 +19,12 @@ import {
   faSearch,
   faAngleRight,
   faAngleLeft,
-  faExclamationTriangle
+  faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faTwitter,
-  faInstagram
+  faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 
@@ -49,5 +49,5 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

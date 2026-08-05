@@ -35,9 +35,7 @@
           </button>
         </div>
         <div class="d-inline-block ml-2 mt-3">
-          <h4>
-            Categorias
-          </h4>
+          <h4>Categorias</h4>
         </div>
         <nav class="bd-links collapse px-4" id="NavDashboard">
           <ul
@@ -55,7 +53,7 @@
       </div>
       <main class="col-12 col-md-9 col-lg-9 col-xl-10 ml-sm-auto px-4 pb-5">
         <!-- View Loading-->
-        <div v-if="loading" style="margin:100px 0;">
+        <div v-if="loading" style="margin: 100px 0">
           <h2
             class="display-3 d-flex justify-content-center align-items-center"
           >
@@ -75,7 +73,7 @@
             >
               <router-link
                 :to="`/producto/${product._id}`"
-                style="text-decoration: none;"
+                style="text-decoration: none"
               >
                 <div class="card shadow text-black">
                   <img
@@ -90,7 +88,7 @@
                       <button
                         type="button"
                         class="btn btn-primary text-white px-2 py-1"
-                        style="border-radius: 50%;"
+                        style="border-radius: 50%"
                       >
                         <font-awesome-icon icon="search" />
                       </button>
@@ -117,13 +115,13 @@ export default {
   components: {
     Navigation,
     Footer,
-    Carrousel
+    Carrousel,
   },
   data() {
     return {
       loading: true,
       products: [],
-      categories: []
+      categories: [],
     };
   },
   created() {
@@ -132,7 +130,8 @@ export default {
   },
   methods: {
     async getProducts() {
-      const products = await productController.getProductsCategoryBebidasLiquidas();
+      const products =
+        await productController.getProductsCategoryBebidasLiquidas();
       this.loading = false;
       this.products = products;
     },
@@ -140,7 +139,7 @@ export default {
       const categories = await categoryController.getCategories();
       this.loading = false;
       this.categories = categories;
-    }
-  }
+    },
+  },
 };
 </script>

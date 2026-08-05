@@ -53,7 +53,7 @@
             </button>
           </div>
           <div class="d-inline-flex ml-3">
-            <font-awesome-icon icon="tachometer-alt" style="font-size:25px;" />
+            <font-awesome-icon icon="tachometer-alt" style="font-size: 25px" />
             <h4>Admin</h4>
             <strong>Dashboard</strong>
           </div>
@@ -168,7 +168,7 @@
               <h1 class="h2">
                 <font-awesome-icon
                   icon="tachometer-alt"
-                  style="font-size:30px;"
+                  style="font-size: 30px"
                 />
                 Dashboard
               </h1>
@@ -222,31 +222,31 @@
                                 <option selected="selected" value="" disabled>
                                   Seleccionar categoria del producto
                                 </option>
-                                <option value="alimentos basicos" selected
-                                  >Alimentos Básicos</option
-                                >
-                                <option value="bebidas en polvo"
-                                  >Bebidas en Polvo</option
-                                >
-                                <option value="bebidas liquidas"
-                                  >Bebidas Líquidas</option
-                                >
-                                <option value="bebidas gaseosas"
-                                  >Bebidas Gaseosas</option
-                                >
+                                <option value="alimentos basicos" selected>
+                                  Alimentos Básicos
+                                </option>
+                                <option value="bebidas en polvo">
+                                  Bebidas en Polvo
+                                </option>
+                                <option value="bebidas liquidas">
+                                  Bebidas Líquidas
+                                </option>
+                                <option value="bebidas gaseosas">
+                                  Bebidas Gaseosas
+                                </option>
                                 <option value="cereales">Cereales</option>
                                 <option value="helados">Helados</option>
                                 <option value="yogurts">Yogurts</option>
-                                <option value="sopas, salasas y aderezos"
-                                  >Sopas, Salsas y Aderezos</option
-                                >
-                                <option value="dulces y snacks"
-                                  >Dulces y Snacks</option
-                                >
+                                <option value="sopas, salasas y aderezos">
+                                  Sopas, Salsas y Aderezos
+                                </option>
+                                <option value="dulces y snacks">
+                                  Dulces y Snacks
+                                </option>
                                 <option value="charcuteria">Charcuteria</option>
-                                <option value="cuidado personal"
-                                  >Cuidado Personal</option
-                                >
+                                <option value="cuidado personal">
+                                  Cuidado Personal
+                                </option>
                               </select>
                             </div>
                             <div class="form-group col-12 col-md-6">
@@ -273,15 +273,15 @@
                                 <option selected="selected" value="" disabled>
                                   Seleccionar disponibilidad del producto
                                 </option>
-                                <option value="disponible" selected
-                                  >Disponible</option
-                                >
-                                <option value="poca disponibilidad" selected
-                                  >Poca Disponibilidad</option
-                                >
-                                <option value="no disponible"
-                                  >No Disponible</option
-                                >
+                                <option value="disponible" selected>
+                                  Disponible
+                                </option>
+                                <option value="poca disponibilidad" selected>
+                                  Poca Disponibilidad
+                                </option>
+                                <option value="no disponible">
+                                  No Disponible
+                                </option>
                               </select>
                             </div>
                             <div class="form-group col-12 col-md-6">
@@ -388,31 +388,31 @@
                                 <option selected="selected" value="" disabled>
                                   Seleccionar categoria del producto
                                 </option>
-                                <option value="alimentos basicos" selected
-                                  >Alimentos Básicos</option
-                                >
-                                <option value="bebidas en polvo"
-                                  >Bebidas en Polvo</option
-                                >
-                                <option value="bebidas liquidas"
-                                  >Bebidas Líquidas</option
-                                >
-                                <option value="bebidas gaseosas"
-                                  >Bebidas Gaseosas</option
-                                >
+                                <option value="alimentos basicos" selected>
+                                  Alimentos Básicos
+                                </option>
+                                <option value="bebidas en polvo">
+                                  Bebidas en Polvo
+                                </option>
+                                <option value="bebidas liquidas">
+                                  Bebidas Líquidas
+                                </option>
+                                <option value="bebidas gaseosas">
+                                  Bebidas Gaseosas
+                                </option>
                                 <option value="cereales">Cereales</option>
                                 <option value="helados">Helados</option>
                                 <option value="yogurts">Yogurts</option>
-                                <option value="sopas, salasas y aderezos"
-                                  >Sopas, Salsas y Aderezos</option
-                                >
-                                <option value="dulces y snacks"
-                                  >Dulces y Snacks</option
-                                >
+                                <option value="sopas, salasas y aderezos">
+                                  Sopas, Salsas y Aderezos
+                                </option>
+                                <option value="dulces y snacks">
+                                  Dulces y Snacks
+                                </option>
                                 <option value="charcuteria">Charcuteria</option>
-                                <option value="cuidado personal"
-                                  >Cuidado Personal</option
-                                >
+                                <option value="cuidado personal">
+                                  Cuidado Personal
+                                </option>
                               </select>
                             </div>
                             <div class="form-group col-12 col-md-6">
@@ -439,15 +439,15 @@
                                 <option selected="selected" value="" disabled>
                                   Seleccional disponibilidad del producto
                                 </option>
-                                <option value="disponible" selected
-                                  >Disponible</option
-                                >
-                                <option value="poca disponibilidad" selected
-                                  >Poca Disponibilidad</option
-                                >
-                                <option value="no disponible"
-                                  >No Disponible</option
-                                >
+                                <option value="disponible" selected>
+                                  Disponible
+                                </option>
+                                <option value="poca disponibilidad" selected>
+                                  Poca Disponibilidad
+                                </option>
+                                <option value="no disponible">
+                                  No Disponible
+                                </option>
                               </select>
                             </div>
                             <div class="form-group col-12 col-md-6">
@@ -995,7 +995,7 @@ export default {
         content: "",
         class: "",
         icon: "",
-        iconPrefix: ""
+        iconPrefix: "",
       },
       product: {
         productName: "",
@@ -1004,7 +1004,7 @@ export default {
         productDescription: "",
         salePrice: "",
         disponibility: "",
-        image: null
+        image: null,
       },
       products: [],
       productToEdit: "",
@@ -1015,7 +1015,7 @@ export default {
         categoryName: "",
         categoryDescription: "",
         categoryUrl: "",
-        image: null
+        image: null,
       },
       categories: [],
       categoryToEdit: "",
@@ -1025,13 +1025,13 @@ export default {
       sucursal: {
         direction: "",
         numberContact: "",
-        googleMaps: ""
+        googleMaps: "",
       },
       sucursals: [],
       sucursalToEdit: "",
       varShowFormAddSucursal: false,
       varShowFormEditSucursal: false,
-      varShowTableSucursals: false
+      varShowTableSucursals: false,
     };
   },
   created() {
@@ -1065,7 +1065,7 @@ export default {
           class: "custom-alert-danger",
           icon: "exclamation-triangle",
           iconPrefix: "fas",
-          value: true
+          value: true,
         });
       }
       const fd = new FormData();
@@ -1088,7 +1088,7 @@ export default {
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
-          value: true
+          value: true,
         });
       }
       return (this.message = {
@@ -1096,7 +1096,7 @@ export default {
         class: "custom-alert-danger",
         icon: "exclamation-triangle",
         iconPrefix: "fas",
-        value: true
+        value: true,
       });
     },
     async onFileImg(event) {
@@ -1111,7 +1111,7 @@ export default {
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
-          value: true
+          value: true,
         });
       }
       return (this.message = {
@@ -1119,7 +1119,7 @@ export default {
         class: "custom-alert-danger",
         icon: "exclamation-triangle",
         iconPrefix: "fas",
-        value: true
+        value: true,
       });
     },
     async editProduct(id) {
@@ -1159,7 +1159,7 @@ export default {
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
-          value: true
+          value: true,
         });
       }
       return (this.message = {
@@ -1167,7 +1167,7 @@ export default {
         class: "custom-alert-danger",
         icon: "exclamation-triangle",
         iconPrefix: "fas",
-        value: true
+        value: true,
       });
     },
     showFormAddProduct() {
@@ -1231,7 +1231,7 @@ export default {
           class: "custom-alert-danger",
           icon: "exclamation-triangle",
           iconPrefix: "fas",
-          value: true
+          value: true,
         });
       }
 
@@ -1252,7 +1252,7 @@ export default {
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
-          value: true
+          value: true,
         });
       }
       return (this.message = {
@@ -1260,7 +1260,7 @@ export default {
         class: "custom-alert-danger",
         icon: "exclamation-triangle",
         iconPrefix: "fas",
-        value: true
+        value: true,
       });
     },
     async deleteCategory(id) {
@@ -1272,7 +1272,7 @@ export default {
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
-          value: true
+          value: true,
         });
       }
       return (this.message = {
@@ -1280,7 +1280,7 @@ export default {
         class: "custom-alert-danger",
         icon: "exclamation-triangle",
         iconPrefix: "fas",
-        value: true
+        value: true,
       });
     },
     async editCategory(id) {
@@ -1314,7 +1314,7 @@ export default {
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
-          value: true
+          value: true,
         });
       }
       return (this.message = {
@@ -1322,7 +1322,7 @@ export default {
         class: "custom-alert-danger",
         icon: "exclamation-triangle",
         iconPrefix: "fas",
-        value: true
+        value: true,
       });
     },
     async onFileImgCategory(event) {
@@ -1388,7 +1388,7 @@ export default {
           class: "custom-alert-danger",
           icon: "exclamation-triangle",
           iconPrefix: "fas",
-          value: true
+          value: true,
         });
       }
 
@@ -1408,7 +1408,7 @@ export default {
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
-          value: true
+          value: true,
         });
       }
       return (this.message = {
@@ -1416,7 +1416,7 @@ export default {
         class: "custom-alert-danger",
         icon: "exclamation-triangle",
         iconPrefix: "fas",
-        value: true
+        value: true,
       });
     },
     async deleteSucursal(id) {
@@ -1431,7 +1431,7 @@ export default {
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
-          value: true
+          value: true,
         });
       }
       return (this.message = {
@@ -1439,7 +1439,7 @@ export default {
         class: "custom-alert-danger",
         icon: "exclamation-triangle",
         iconPrefix: "fas",
-        value: true
+        value: true,
       });
       this.getSucursals();
     },
@@ -1473,7 +1473,7 @@ export default {
           class: "custom-success-danger",
           icon: "thumbs-up",
           iconPrefix: "far",
-          value: true
+          value: true,
         });
       }
       return (this.message = {
@@ -1481,7 +1481,7 @@ export default {
         class: "custom-alert-danger",
         icon: "exclamation-triangle",
         iconPrefix: "fas",
-        value: true
+        value: true,
       });
     },
     showFormAddSucursal() {
@@ -1526,7 +1526,7 @@ export default {
       this.varShowFormEditSucursal = false;
       this.varShowTableSucursals = true;
       this.sucursal = new Sucursal();
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="footer bg-dark p-0 mt-5" style="border-top: solid 5px #28a745;">
+  <div class="footer bg-dark p-0 mt-5" style="border-top: solid 5px #28a745">
     <footer class="row text-white mx-3 mt-1">
       <div class="col-12 col-md-4">
         <h4 class="text-center mt-2">Categorías</h4>
@@ -127,7 +127,7 @@
     </footer>
     <div
       class="bg-success pt-4 pb-1 px-2 m-0 mt-2 text-white"
-      style="border-bottom: solid 8px #007bff;"
+      style="border-bottom: solid 8px #007bff"
     >
       <div class="row mx-3 text-center">
         <div class="col-12 col-md-4">

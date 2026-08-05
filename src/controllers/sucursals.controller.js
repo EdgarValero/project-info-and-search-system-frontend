@@ -10,14 +10,14 @@ class sucursalController {
   async addSucursal(input) {
     const response = await fetch(`${this.URI}/add-sucursal`, {
       method: "POST",
-      body: input
+      body: input,
     });
     const data = await response.json();
     return data;
   }
   async deleteSucursal(id) {
     const response = await fetch(`${this.URI}/delete-sucursal/${id}`, {
-      method: "DELETE"
+      method: "DELETE",
     });
     const data = await response.json();
     return data;
@@ -30,7 +30,7 @@ class sucursalController {
   async sendEditSucursal(id, input) {
     const response = await fetch(`${this.URI}/edit-sucursal/${id}`, {
       method: "PUT",
-      body: input
+      body: input,
     });
     const data = await response.json();
     return data;

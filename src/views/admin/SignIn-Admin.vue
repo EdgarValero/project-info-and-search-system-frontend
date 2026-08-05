@@ -59,20 +59,20 @@
 import Navigation from "@/components/Navigation.vue";
 export default {
   components: {
-    Navigation
+    Navigation,
   },
   data() {
     return {
       signin: {
         email: "",
-        password: ""
+        password: "",
       },
       message: {
         value: false,
         content: "",
         class: "",
-        icon: ""
-      }
+        icon: "",
+      },
     };
   },
   methods: {
@@ -83,7 +83,7 @@ export default {
 
       const res = await fetch("http://localhost:3000/api/users-admin/signin", {
         method: "POST",
-        body: formData
+        body: formData,
       });
       const data = await res.json();
       const msg = data.msg;
@@ -119,8 +119,8 @@ export default {
     },
     closeMessage() {
       this.message.value = false;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

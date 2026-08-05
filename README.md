@@ -1,5 +1,7 @@
 # frontend
 
+Requiere **Node.js 24 LTS** (ver `.nvmrc`).
+
 ## Project setup
 ```
 npm install

@@ -10,14 +10,14 @@ class productController {
   async addProduct(input) {
     const response = await fetch(`${this.URI}/add-product`, {
       method: "POST",
-      body: input
+      body: input,
     });
     const data = await response.json();
     return data;
   }
   async deleteProduct(id) {
     const response = await fetch(`${this.URI}/delete-product/${id}`, {
-      method: "DELETE"
+      method: "DELETE",
     });
     const data = await response.json();
     return data;
@@ -30,7 +30,7 @@ class productController {
   async sendEditProduct(id, input) {
     const response = await fetch(`${this.URI}/edit-product/${id}`, {
       method: "PUT",
-      body: input
+      body: input,
     });
     const data = await response.json();
     return data;

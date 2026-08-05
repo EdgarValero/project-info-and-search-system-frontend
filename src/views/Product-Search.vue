@@ -3,7 +3,7 @@
     <Navigation @searchInProductSearch="searchProduct" />
     <main class="px-4 my-5 container">
       <!-- View Loading -->
-      <div v-if="loading" style="margin:100px 0;">
+      <div v-if="loading" style="margin: 100px 0">
         <h2 class="display-3 d-flex justify-content-center align-items-center">
           Estan cargando los Productos...
         </h2>
@@ -42,7 +42,7 @@
                     <button
                       type="button"
                       class="btn btn-primary text-white px-2 py-1"
-                      style="border-radius: 50%;"
+                      style="border-radius: 50%"
                     >
                       <font-awesome-icon icon="search" />
                     </button>
@@ -60,14 +60,14 @@
 import Navigation from "@/components/Navigation.vue";
 export default {
   components: {
-    Navigation
+    Navigation,
   },
   data() {
     return {
       loading: true,
       products: [],
       searched: "",
-      msgProductNotFound: ""
+      msgProductNotFound: "",
     };
   },
   created() {
@@ -84,7 +84,7 @@ export default {
       );
       const response = await fetch(`http://localhost:3000/api/search`, {
         method: "POST",
-        body: formData
+        body: formData,
       });
       const data = await response.json();
       if (data.msg == "product_not_found") {
@@ -97,8 +97,8 @@ export default {
         this.products = data;
         this.loading = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

@@ -27,7 +27,7 @@
           >
             <router-link
               :to="`/producto/${productFeatured._id}`"
-              style="text-decoration: none;"
+              style="text-decoration: none"
             >
               <div class="card shadow text-black mb-2">
                 <img
@@ -42,7 +42,7 @@
                     <button
                       type="button"
                       class="btn btn-primary text-white px-2 py-1"
-                      style="border-radius: 50%;"
+                      style="border-radius: 50%"
                     >
                       <font-awesome-icon icon="search" />
                     </button>
@@ -67,7 +67,7 @@
           >
             <router-link
               :to="`${category.categoryUrl}`"
-              style="text-decoration: none;"
+              style="text-decoration: none"
               class="img-hover"
             >
               <div class="card shadow">
@@ -81,7 +81,7 @@
                 <img
                   :src="`http://localhost:3000${category.imagePath}`"
                   class="img-fluid"
-                  style="height:250px;"
+                  style="height: 250px"
                 />
                 <div class="overlay">
                   <div class="text">{{ category.categoryName }}</div>
@@ -114,13 +114,13 @@ export default {
     Hooper,
     Slide,
     HooperNavigation,
-    Carrousel
+    Carrousel,
   },
   data() {
     return {
       loading: true,
       productsFeatureds: [],
-      categories: []
+      categories: [],
     };
   },
   created() {
@@ -137,8 +137,8 @@ export default {
       const categories = await categoryController.getCategories();
       this.loading = false;
       this.categories = categories;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

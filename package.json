@@ -2,36 +2,42 @@
   "name": "frontend-api-sis-web",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.18",
-    "@fortawesome/free-brands-svg-icons": "^5.9.0",
-    "@fortawesome/free-regular-svg-icons": "^5.10.1",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
-    "@fortawesome/vue-fontawesome": "^0.1.6",
-    "bootstrap": "^4.3.1",
-    "core-js": "^2.6.5",
-    "hooper": "^0.1.5",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.15.0",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.3"
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^0.1.10",
+    "bootstrap": "^4.6.2",
+    "core-js": "^3.39.0",
+    "hooper": "^0.3.4",
+    "jquery": "^3.7.1",
+    "popper.js": "^1.16.1",
+    "vue": "2.7.16",
+    "vue-router": "^3.6.5"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.7.0",
-    "@vue/cli-plugin-eslint": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "sass": "^1.20.1",
-    "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.5.21"
+    "@babel/core": "^7.26.10",
+    "@babel/eslint-parser": "^7.26.10",
+    "@vue/cli-plugin-babel": "^5.0.9",
+    "@vue/cli-plugin-eslint": "^5.0.9",
+    "@vue/cli-service": "^5.0.9",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^8.7.1",
+    "prettier": "^2.8.8",
+    "sass": "^1.77.0",
+    "sass-loader": "^12.6.0",
+    "vue-template-compiler": "2.7.16"
   },
   "eslintConfig": {
     "root": true,
@@ -42,9 +48,12 @@
       "plugin:vue/essential",
       "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "vue/multi-word-component-names": "off"
+    },
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@babel/eslint-parser",
+      "requireConfigFile": false
     }
   },
   "postcss": {
@@ -54,6 +63,13 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
-  ]
+    "last 2 versions",
+    "not dead"
+  ],
+  "overrides": {
+    "serialize-javascript": "7.0.7",
+    "cross-spawn": "^7.0.6",
+    "uuid": "^11.1.1",
+    "postcss": "^8.5.25"
+  }
 }

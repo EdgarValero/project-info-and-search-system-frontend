@@ -3,11 +3,9 @@
     <Navigation />
     <div
       class="bg-primary text-white mb-4 mt-8 py-1"
-      style="border-top: solid 5px #28a745; border-bottom: solid 5px #28a745;"
+      style="border-top: solid 5px #28a745; border-bottom: solid 5px #28a745"
     >
-      <h2 class="h1 px-3 mx-3">
-        Sucursales
-      </h2>
+      <h2 class="h1 px-3 mx-3">Sucursales</h2>
     </div>
     <div class="row mx-1 mb-5" v-for="sucursal in sucursals" :key="sucursal">
       <div class="col-12 col-md-4">
@@ -32,11 +30,11 @@ export default {
   name: "sucursals",
   components: {
     Navigation,
-    Footer
+    Footer,
   },
   data() {
     return {
-      sucursals: []
+      sucursals: [],
     };
   },
   created() {
@@ -46,7 +44,7 @@ export default {
     async getSucursals() {
       const sucursals = await sucursalController.getSucursals();
       this.sucursals = sucursals;
-    }
-  }
+    },
+  },
 };
 </script>

@@ -11,92 +11,92 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Home
+      component: Home,
     },
     {
       path: "/sucursales",
       name: "sucursals",
-      component: () => import("./views/Sucursals.vue")
+      component: () => import("./views/Sucursals.vue"),
     },
     {
       path: "/about",
       name: "about",
-      component: () => import("./views/About.vue")
+      component: () => import("./views/About.vue"),
     },
     {
       path: "/admin/dashboard",
       name: "dashboard",
-      component: () => import("./views/admin/Dashboard.vue")
+      component: () => import("./views/admin/Dashboard.vue"),
     },
     {
       path: "/admin/signin",
       name: "signin",
-      component: () => import("./views/admin/SignIn-Admin.vue")
+      component: () => import("./views/admin/SignIn-Admin.vue"),
     },
     {
       path: "/productos",
       name: "products",
-      component: () => import("./views/Products.vue")
+      component: () => import("./views/Products.vue"),
     },
     {
       path: "/producto/:id",
       name: "single-product",
-      component: () => import("./views/Single-Product.vue")
+      component: () => import("./views/Single-Product.vue"),
     },
     {
       path: "/productos-buscados/:searchProduct",
       name: "products-searchs",
-      component: () => import("./views/Product-Search.vue")
+      component: () => import("./views/Product-Search.vue"),
     },
     {
       path: "/categoria/alimentos-basicos",
       name: "categoria-alimentos-basicos",
-      component: () => import("./views/categories/Alimentos-Basicos.vue")
+      component: () => import("./views/categories/Alimentos-Basicos.vue"),
     },
     {
       path: "/categoria/dulces-y-snacks",
       name: "categoria-dulces-y-snacks",
-      component: () => import("./views/categories/Dulces-y-Snacks.vue")
+      component: () => import("./views/categories/Dulces-y-Snacks.vue"),
     },
     {
       path: "/categoria/cuidado-personal",
       name: "categoria-cuidado-personal",
-      component: () => import("./views/categories/Cuidado-Personal.vue")
+      component: () => import("./views/categories/Cuidado-Personal.vue"),
     },
     {
       path: "/categoria/cereales",
       name: "categoria-cereales",
-      component: () => import("./views/categories/Cereales.vue")
+      component: () => import("./views/categories/Cereales.vue"),
     },
     {
       path: "/categoria/charcuteria",
       name: "categoria-charcuteria",
-      component: () => import("./views/categories/Charcuteria.vue")
+      component: () => import("./views/categories/Charcuteria.vue"),
     },
     {
       path: "/categoria/bebidas-liquidas",
       name: "categoria-bebidas-liquidas",
-      component: () => import("./views/categories/Bebidas-Liquidas.vue")
+      component: () => import("./views/categories/Bebidas-Liquidas.vue"),
     },
     {
       path: "/categoria/bebidas-en-polvo",
       name: "categoria-bebidas-en-polvo",
-      component: () => import("./views/categories/Bebidas-en-Polvo.vue")
+      component: () => import("./views/categories/Bebidas-en-Polvo.vue"),
     },
     {
       path: "/categoria/yogurts",
       name: "categoria-yogurts",
-      component: () => import("./views/categories/Yogurts.vue")
+      component: () => import("./views/categories/Yogurts.vue"),
     },
     {
       path: "/categoria/helados",
       name: "categoria-helados",
-      component: () => import("./views/categories/Helados.vue")
+      component: () => import("./views/categories/Helados.vue"),
     },
     {
       path: "*",
       name: "Error404NotFound",
-      component: () => import("./views/404.vue")
-    }
-  ]
+      component: () => import("./views/404.vue"),
+    },
+  ],
 });

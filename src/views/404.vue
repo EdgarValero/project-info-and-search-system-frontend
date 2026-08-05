@@ -10,6 +10,6 @@ export default {
   name: "Error404NotFound",
   mounted() {
     document.title = "Error 404";
-  }
+  },
 };
 </script>

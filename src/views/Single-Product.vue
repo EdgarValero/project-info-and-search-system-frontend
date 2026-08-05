@@ -7,7 +7,7 @@
           class="m-atras text-primary cursor-pointer"
           onclick="history.back()"
         >
-          <font-awesome-icon icon="angle-left" style="font-size: 1rem;" />
+          <font-awesome-icon icon="angle-left" style="font-size: 1rem" />
           <strong class="ml-2">Atrás</strong>
         </div>
         <div class="d-flex justify-content-center">
@@ -63,7 +63,7 @@ export default {
   name: "single-product",
   components: {
     Navigation,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -74,8 +74,8 @@ export default {
         productDescription: "",
         salePrice: "",
         disponibility: "",
-        imagePath: ""
-      }
+        imagePath: "",
+      },
     };
   },
   created() {
@@ -91,8 +91,8 @@ export default {
       this.product.salePrice = data.salePrice;
       this.product.disponibility = data.disponibility;
       this.product.imagePath = data.imagePath;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

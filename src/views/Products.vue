@@ -35,9 +35,7 @@
           </button>
         </div>
         <div class="d-inline-block ml-2 mt-3">
-          <h4>
-            Categorias
-          </h4>
+          <h4>Categorias</h4>
         </div>
         <nav class="bd-links collapse px-4" id="NavDashboard">
           <ul
@@ -55,7 +53,7 @@
       </div>
       <main class="col-12 col-md-9 col-lg-9 col-xl-10 ml-sm-auto px-4">
         <!-- View Loading-->
-        <div v-if="loading" style="margin:100px 0;">
+        <div v-if="loading" style="margin: 100px 0">
           <h2
             class="display-3 d-flex justify-content-center align-items-center"
           >
@@ -90,7 +88,7 @@
                       <button
                         type="button"
                         class="btn btn-primary text-white px-2 py-1"
-                        style="border-radius: 50%;"
+                        style="border-radius: 50%"
                       >
                         <font-awesome-icon icon="search" />
                       </button>
@@ -146,7 +144,7 @@ export default {
   components: {
     Navigation,
     Footer,
-    Carrousel
+    Carrousel,
   },
   data() {
     return {
@@ -155,7 +153,7 @@ export default {
       page: 1,
       perPage: 12,
       pages: [],
-      categories: []
+      categories: [],
     };
   },
   created() {
@@ -185,17 +183,17 @@ export default {
       for (let i = 1; i <= numberOfPages; i++) {
         this.pages.push(i);
       }
-    }
+    },
   },
   computed: {
     displayedProducts() {
       return this.pagination(this.products);
-    }
+    },
   },
   watch: {
     products() {
       this.setProducts();
-    }
-  }
+    },
+  },
 };
 </script>
